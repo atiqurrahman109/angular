@@ -1,0 +1,104 @@
+<!-- ------header---- -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Management Header</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 py-2">
+  <a class="navbar-brand" href="#">🏫 School Management</a>
+  
+  <!-- Toggler for mobile -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar Content -->
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Teachers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Classes</a>
+      </li>
+    </ul>
+
+    <!-- Search box -->
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search student..." aria-label="Search">
+      <button class="btn btn-light" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+<router-outlet />
+
+
+<!-- Footer -->
+<footer class="bg-primary text-white pt-4">
+  <div class="container">
+    <div class="row">
+
+      <!-- About Section -->
+      <div class="col-md-4 mb-3">
+        <h5>🏫 School Management</h5>
+        <p>Efficiently manage students, teachers, classes, and more — all in one place.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4 mb-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white text-decoration-none">Dashboard</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Admissions</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-4 mb-3">
+        <h5>Contact</h5>
+        <p>Email: infoschool.edu</p>
+        <p>Phone: +880 123-456-789</p>
+        <div>
+          <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="border-white">
+    <div class="text-center pb-2">
+      &copy; 2025 School Management System. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap Icons CDN (optional for social icons) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</body>
+</html>
