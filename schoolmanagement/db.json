@@ -1,28 +1,3 @@
 {
-  "students": [
-    {
-      "id": "1",
-      "name": "Atik",
-      "email": "atik@gmail.com",
-      "fee": 15000
-    },
-    {
-      "id": "2",
-      "name": "Reja",
-      "email": "reja@gmail.com",
-      "fee": 15000
-    },
-    {
-      "id": "efa0",
-      "name": "sadiar rahman",
-      "email": "sadiar@gmail.com",
-      "fee": "sadiar@gmail.com"
-    },
-    {
-      "id": "ca1b",
-      "name": "yasin",
-      "email": "yasin@gamil",
-      "fee": "3432"
-    }
-  ]
+  "students": []
 }

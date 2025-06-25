@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { StudentService } from '../service/student.service';
 import { Student } from '../../model/student.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,10 @@ import { Student } from '../../model/student.model';
 })
 export class ViewAllStudent implements OnInit {
   students:any;
-  constructor(private studentService : StudentService){}
+  constructor(private studentService : StudentService,
+    private router:Router,
+    private cdr:ChangeDetectorRef
+  ){}
 
 
   ngOnInit(): void {
@@ -24,6 +28,26 @@ export class ViewAllStudent implements OnInit {
 
   }
 
+  deleteStudent(id:string):void{
+
+    this.studentService.deleteStudent(id).subscribe({
+
+      next:(res)=>{
+      
+        console.log(res);
+        this.loadAllStudent();
+       this.cdr.reattach();
+
+      },
+
+      error:(err)=>{
+      console.log(err);
+      
+      }
+
+    })
+  }
+  
 
 
 }
