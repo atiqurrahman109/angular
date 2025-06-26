@@ -49,6 +49,28 @@ export class ViewAllStudent implements OnInit {
     });
     
   }
+
+  getStudentById(id:string):void{
+
+    this.studentService.getStudentByid(id).subscribe({
+      next :(res)=>{
+        console.log(res);
+        console.log("data get successfully");
+        this.router.navigate(['/updatestudent',id])
+
+
+      },
+      error:(err)=>{
+
+        console.log(err);
+
+      }
+
+
+    });
+
+
+  }
   
 
 

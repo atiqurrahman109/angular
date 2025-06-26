@@ -25,7 +25,7 @@ private cdr:ChangeDetectorRef,
 
  
   ngOnInit(): void {
-    
+    this.loadStudentById();
   }
 
   loadStudentById(){
@@ -47,9 +47,21 @@ private cdr:ChangeDetectorRef,
       });
 
   }
+
+  updateStudent():void{
+    this.studentService.updateStudent(this.id,this.student).subscribe({
+      next:()=>this.router.navigate(['/allstu']),
+      error:err =>console.error('update failed',err)
+
+    });
+
+  }
   
 
 }
+
+
+
 
     
 
