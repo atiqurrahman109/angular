@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Student } from '../student/student';
 import { error } from 'console';
+import { LocationService } from '../service/location.service';
 
 @Component({
   selector: 'app-addstudent',
@@ -18,7 +19,8 @@ export class Addstudent implements OnInit{
 constructor(
   private studentService: StudentService,
   private formBuilder:FormBuilder,
-  private router:Router
+  private router:Router,
+  private locationService: LocationService
 ){
 
 
