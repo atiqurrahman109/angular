@@ -12,7 +12,7 @@ baseUrl: string= "http://localhost:3000/students";
 
   constructor(private http:HttpClient) { }
 
-getAllStudent(){
+getAllStudent(): Observable<any>{
 
 return this.http.get(this.baseUrl);
 

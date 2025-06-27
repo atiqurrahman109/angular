@@ -1,10 +1,17 @@
 
 
 
-export class Student{
+export class Student {
 
-id !: number;
-name !: string;
-email !:string;
-fee ! : number;
+    id !: string;
+    name !: string;
+    email !: string;
+    fee !: number;
+    location !: {
+        id: string;
+        name: string;
+        photo: string;
+    };
 }
+
+
