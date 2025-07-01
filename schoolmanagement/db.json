@@ -6,13 +6,10 @@
       "email": "sadiar@gmail.com",
       "fee": "100",
       "location": {
- 
-      "id": "1",
-      "name": "Rajshahi",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIWnLIrLZWa9jrSGyNez3145ZitfaY5ijOA&s"
-    }
-  
-      
+        "id": "1",
+        "name": "Rajshahi",
+        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIWnLIrLZWa9jrSGyNez3145ZitfaY5ijOA&s"
+      }
     },
     {
       "id": "2",
@@ -25,6 +22,12 @@
       "name": "imran vai",
       "email": "imran@gmail.com",
       "fee": "50000"
+    },
+    {
+      "id": "6d23",
+      "name": "imran ",
+      "email": "rahmatullah@gmail.com",
+      "fee": "525"
     }
   ],
   "location": [

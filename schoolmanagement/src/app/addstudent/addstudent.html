@@ -22,6 +22,15 @@
             <input type="email" class="form-control" id="studentEmail" formControlName="fee" placeholder="Enter email address" required>
           </div>
           
+            <!-- <div class="col-md-6 " formGroupName="location">
+                <div class="invalid-feedback">Please select a location.</div>
+                <label for="location" class="form-label">Location:</label>
+                <select id="location" formControlName="name" class="form-select" required>
+                    <option *ngFor="let loc of locations" [ngValue]="loc.name">{{loc.name}}</option>
+                </select>
+
+            </div> -->
+
 
 <div class="d-flex justify-content-between mt-4">
     <button type="submit" class="btn btn-success" (click)="addStudent()">Add Student</button>

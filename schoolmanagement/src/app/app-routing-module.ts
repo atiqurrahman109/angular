@@ -15,7 +15,6 @@ const routes: Routes = [
   {path :'allstu',component:ViewAllStudent},
   {path :'addstu',component:Addstudent},
   {path :'updatestudent/:id',component:UpdateStudent},
-
   {path: 'allloc', component: ViewAllLocation},
   {path: 'addloc', component: Addlocation}
 

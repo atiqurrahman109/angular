@@ -1,9 +1,9 @@
 <div class="container my-3">
     <div class="bg-success text-center">
-        <h1 class="jumborton">Add Student</h1>
+        <h1 class="jumborton">Add Location</h1>
     </div>
     <!--    start form-->
-    <form [formGroup]="formgroup"  >
+    <form [formGroup]="formgroup"  method="post">
         <div class="row">
             <div class="col-md-6">
                 <label for="exampleInputEmail1" class="form-label">Name</label>
@@ -12,7 +12,7 @@
 
             <div class="col-md-6">
                 <label for="exampleInputEmail1" class="form-label">Photo</label>
-                <input type="text" class="form-control" id="photo" formControlName="photo" placeholder="example@gmail.com">
+                <input type="text" class="form-control" id="photo" formControlName="photo" placeholder="photo link">
             </div>        
         </div>
         
