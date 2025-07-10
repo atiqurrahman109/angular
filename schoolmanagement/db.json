@@ -26,6 +26,16 @@
       "mothername": "fsadfs",
       "class": "5",
       "section": "D"
+    },
+    {
+      "id": "6b0d",
+      "name": "asdfsadf",
+      "email": "sadfasdf",
+      "fathername": "sadfsadf",
+      "mothername": "sadfasdf",
+      "class": "safsadf",
+      "section": "B"
     }
-  ]
+  ],
+  "teacher":[]
 }

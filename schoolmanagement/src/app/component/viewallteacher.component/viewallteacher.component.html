@@ -1,0 +1,33 @@
+
+
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Student Information Table</h2>
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Father's Name</th>
+        <th>Mother's Name</th>
+        <th>Designstion</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of teachers|async">
+        <td>{{t.id}}</td>
+        <td>{{t.name}}</td>
+        <td>{{t.email}}</td>
+        <td>{{t.fathername}}</td>
+        <td>{{t.mothername}}</td>
+        <td>{{t.class}}</td>
+        <td>{{t.section}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+

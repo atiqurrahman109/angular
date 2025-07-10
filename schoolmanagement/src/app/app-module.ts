@@ -3,8 +3,7 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { StudentComponent } from './component/student.component/student.component';
-import { TeacherComponent } from './component/teacher.component/teacher.component';
+
 import { AttendenceComponent } from './component/attendence.component/attendence.component';
 import { ExamComponent } from './component/exam.component/exam.component';
 import { FeeComponent } from './component/fee.component/fee.component';
@@ -15,24 +14,31 @@ import { ViewallstudentComponent } from './component/viewallstudent.component/vi
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AddteacherComponent } from './component/addteacher.component/addteacher.component';
+import { UpdateteacherComponent } from './component/updateteacher.component/updateteacher.component';
+import { ViewallteacherComponent } from './component/viewallteacher.component/viewallteacher.component';
+
 @NgModule({
   declarations: [
     App,
-    StudentComponent,
-    TeacherComponent,
+ 
     AttendenceComponent,
     ExamComponent,
     FeeComponent,
     ResultComponent,
     AddstudentComponent,
     UpdatestudentComponent,
-    ViewallstudentComponent
+    ViewallstudentComponent,
+  
+    AddteacherComponent,
+    UpdateteacherComponent,
+    ViewallteacherComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

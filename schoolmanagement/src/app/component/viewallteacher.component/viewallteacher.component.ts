@@ -1,23 +1,20 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { StudentService } from '../../service/student.service';
-import { forkJoin } from 'rxjs';
+import { TeacherService } from '../../service/teacher.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-viewallstudent.component',
+  selector: 'app-viewallteacher.component',
   standalone: false,
-  templateUrl: './viewallstudent.component.html',
-  styleUrl: './viewallstudent.component.css'
+  templateUrl: './viewallteacher.component.html',
+  styleUrl: './viewallteacher.component.css'
 })
-export class ViewallstudentComponent implements OnInit {
+export class ViewallteacherComponent implements OnInit {
 
-
-  students: any;
-  
-
+  teachers: any;
+ 
 
   constructor(
-    private studentService: StudentService,
+    private teacherService: TeacherService,
     private router: Router,
     private cdr: ChangeDetectorRef,
 
@@ -29,19 +26,16 @@ export class ViewallstudentComponent implements OnInit {
   }
 
 
-
   loadData(): void {
 
-
-    this.students = this.studentService.getAllStudent();
-
+    this.teachers = this.teacherService.getAllTeacher();
 
   }
 
 
-  deleteStudent(id: string): void {
+  deleteTeacher(id: string): void {
 
-    this.studentService.deleteStudent(id).subscribe({
+    this.teacherService.deleteTeacher(id).subscribe({
 
       next: (res) => {
 
@@ -62,11 +56,11 @@ export class ViewallstudentComponent implements OnInit {
 
   getStudentById(id: string): void {
 
-    this.studentService.getStudentByid(id).subscribe({
+    this.teacherService.getTeacherByid(id).subscribe({
       next: (res) => {
         console.log(res);
         console.log("data get successfully");
-        this.router.navigate(['/updatestudent', id])
+        this.router.navigate(['/updateteacher', id])
 
 
       },
@@ -81,5 +75,4 @@ export class ViewallstudentComponent implements OnInit {
 
 
   }
-
 }
