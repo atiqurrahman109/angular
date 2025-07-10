@@ -2,39 +2,30 @@
   "students": [
     {
       "id": "1",
-      "name": "sadiar",
-      "email": "sadiar@gmail.com",
-      "fee": "100",
-      "location": {
-        "id": "1",
-        "name": "Rajshahi",
-        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIWnLIrLZWa9jrSGyNez3145ZitfaY5ijOA&s"
-      }
+      "name": "atik",
+      "email": "atik@",
+      "fathername": "Belal Hossain",
+      "mothername": "bilkis akter",
+      "class": "uihkh",
+      "section": "yuyg"
     },
     {
-      "id": "2",
-      "name": "yasin",
-      "email": "sadiar@gmail.com",
-      "fee": "100"
+      "id": "370e",
+      "name": "retwet",
+      "email": "sdfasd@sdgfadsf.com",
+      "fathername": "ewtewrtwe",
+      "mothername": "tewter",
+      "class": "10",
+      "section": ""
     },
     {
-      "id": "12c3",
-      "name": "imran vai",
-      "email": "imran@gmail.com",
-      "fee": "50000"
-    },
-    {
-      "id": "6d23",
-      "name": "imran ",
-      "email": "rahmatullah@gmail.com",
-      "fee": "525"
-    }
-  ],
-  "location": [
-    {
-      "id": "1",
-      "name": "Rajshahi",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIWnLIrLZWa9jrSGyNez3145ZitfaY5ijOA&s"
+      "id": "e476",
+      "name": "reja",
+      "email": "asdf@dsafa.sgdf",
+      "fathername": "sdafds",
+      "mothername": "fsadfs",
+      "class": "5",
+      "section": "D"
     }
   ]
 }
