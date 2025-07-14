@@ -13,6 +13,7 @@
         <th>Mother's Name</th>
         <th>Class</th>
         <th>Section</th>
+         <th>action</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,14 @@
         <td>{{s.mothername}}</td>
         <td>{{s.class}}</td>
         <td>{{s.section}}</td>
+
+         <td>
+      <button class="btn btn-sm btn-warning me-2" (click)=" updateStudent()">edit</button>
+ 
+      <button class="btn btn-sm btn-danger" (click)="deleteStudent(students.id)">delete   </button>
+      
+   
+    </td>
       </tr>
     </tbody>
   </table>

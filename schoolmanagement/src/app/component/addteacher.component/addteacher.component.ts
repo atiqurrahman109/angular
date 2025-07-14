@@ -33,9 +33,6 @@ private router:Router
       mothername: [''],
       designation:['']
 
-
-
-
     });
 
 

@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { StudentService } from '../../service/student.service';
-import { forkJoin } from 'rxjs';
+
 import { Router } from '@angular/router';
+import { identity } from 'rxjs';
+import { Student } from '../../model/student.model';
 
 @Component({
   selector: 'app-viewallstudent.component',
@@ -10,7 +12,8 @@ import { Router } from '@angular/router';
   styleUrl: './viewallstudent.component.css'
 })
 export class ViewallstudentComponent implements OnInit {
-
+ id: string='';
+ teacher:Student = new Student();
 
   students: any;
   
@@ -79,6 +82,15 @@ export class ViewallstudentComponent implements OnInit {
 
     });
 
+
+  }
+
+  updateStudent():void{
+    this.studentService.updateStudent(this.id,this.students).subscribe({
+      next:()=>this.router.navigate(['/allstu']),
+      error:err =>console.error('update failed',err)
+
+    });
 
   }
 
