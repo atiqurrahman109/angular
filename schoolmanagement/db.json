@@ -19,5 +19,14 @@
       "section": "B"
     }
   ],
-  "teacher": []
+  "teacher": [
+    {
+      "id": "80df",
+      "name": "emran hossain",
+      "email": "emranhossain@gmail.com",
+      "fathername": "unknown",
+      "mothername": "unknown",
+      "designation": "senior teacher"
+    }
+  ]
 }
