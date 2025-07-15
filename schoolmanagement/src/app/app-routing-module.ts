@@ -4,15 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddstudentComponent } from './component/addstudent.component/addstudent.component';
 import { ViewallstudentComponent } from './component/viewallstudent.component/viewallstudent.component';
 import { AddteacherComponent } from './component/addteacher.component/addteacher.component';
+import { ViewallteacherComponent } from './component/viewallteacher.component/viewallteacher.component';
+import { UpdatestudentComponent } from './component/updatestudent.component/updatestudent.component';
+import { UpdateteacherComponent } from './component/updateteacher.component/updateteacher.component';
 
 const routes: Routes = [
+  { path: 'viewteacher', component: ViewallteacherComponent },
+  { path: 'updatestudent/:id', component: UpdatestudentComponent },
+  { path: 'addteacher', component: AddteacherComponent },
+  { path: 'addstudent', component: AddstudentComponent },
+  { path: 'viewstudent', component: ViewallstudentComponent },
+  { path: '', component: AddstudentComponent },
+  { path: 'updateteacher/:id', component: UpdateteacherComponent }
 
-{path:'addteacher',component:AddteacherComponent},
-{path:'addstudent',component:AddstudentComponent},
-{path:'viewstudent',component:ViewallstudentComponent},
-{path:'',component:AddstudentComponent}
 
- 
 
 ];
 
@@ -20,7 +25,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 
 }

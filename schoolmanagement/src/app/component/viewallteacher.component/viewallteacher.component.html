@@ -2,7 +2,7 @@
 
 
 <div class="container mt-5">
-  <h2 class="mb-4 text-center">Student Information Table</h2>
+  <h2 class="mb-4 text-center">Teacher Information Table</h2>
   <table class="table table-bordered table-striped table-hover">
     <thead class="table-dark">
       <tr>
@@ -12,6 +12,7 @@
         <th>Father's Name</th>
         <th>Mother's Name</th>
         <th>Designstion</th>
+        <th>action</th>
        
       </tr>
     </thead>
@@ -22,8 +23,14 @@
         <td>{{t.email}}</td>
         <td>{{t.fathername}}</td>
         <td>{{t.mothername}}</td>
-        <td>{{t.class}}</td>
-        <td>{{t.section}}</td>
+        <td>{{t.designation}}</td>
+        <td>
+      <button class="btn btn-sm btn-warning me-2" (click)="updateTeacher(t.id)">edit</button>
+ 
+      <button class="btn btn-sm btn-danger" (click)=" deleteTeacher(t.id)">delete </button>
+      
+   
+    </td>
       </tr>
     </tbody>
   </table>

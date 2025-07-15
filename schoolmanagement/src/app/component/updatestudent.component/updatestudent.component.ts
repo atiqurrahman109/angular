@@ -12,47 +12,44 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdatestudentComponent {
 
 
-   id: string='';
- student:Student = new Student();
+  id!: string;
+  student: Student = new Student();
 
- constructor(
+  constructor(
 
-private studentService:StudentService,
-private router:Router,
-private route:ActivatedRoute,
-private cdr:ChangeDetectorRef,
+    private studentService: StudentService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
 
- ){}
+  ) { }
 
- 
+
   ngOnInit(): void {
     this.loadStudentById();
   }
 
-  loadStudentById(){
-    this.id=this.route.snapshot.params['id'];
+  loadStudentById() {
+    this.id = this.route.snapshot.params['id'];
 
     this.studentService.getStudentByid(this.id).subscribe({
-
-      next:(res)=> {
-        this.student=res;
+      next: (res) => {
+        this.student = res;
         this.cdr.markForCheck();
+      },
 
-          },
+      error: (err) => {
+        console.error('error fatching student:', err)
+      }
 
-          error:(err)=>{
-            console.error('error fatching student:',err)
-
-             }
-         
-      });
+    });
 
   }
 
-  updateStudent():void{
-    this.studentService.updateStudent(this.id,this.student).subscribe({
-      next:()=>this.router.navigate(['/allstu']),
-      error:err =>console.error('update failed',err)
+  updateStudent(): void {
+    this.studentService.updateStudent(this.id, this.student).subscribe({
+      next: () => this.router.navigate(['/viewstudent']),
+      error: err => console.error('update failed', err)
 
     });
 

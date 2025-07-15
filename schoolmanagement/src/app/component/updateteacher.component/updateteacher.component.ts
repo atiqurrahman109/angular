@@ -12,47 +12,47 @@ import { TeacherService } from '../../service/teacher.service';
 })
 export class UpdateteacherComponent {
 
-    id: string='';
- teacher:Teacher = new Teacher();
+  id: string = '';
+  teacher: Teacher = new Teacher();
 
- constructor(
+  constructor(
 
-private teacherService:TeacherService,
-private router:Router,
-private route:ActivatedRoute,
-private cdr:ChangeDetectorRef,
+    private teacherService: TeacherService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
 
- ){}
+  ) { }
 
- 
+
   ngOnInit(): void {
     this.loadteacherById();
   }
 
-  loadteacherById(){
-    this.id=this.route.snapshot.params['id'];
+  loadteacherById() {
+    this.id = this.route.snapshot.params['id'];
 
     this.teacherService.getTeacherByid(this.id).subscribe({
 
-      next:(res)=> {
-        this.teacher=res;
+      next: (res) => {
+        this.teacher = res;
         this.cdr.markForCheck();
 
-          },
+      },
 
-          error:(err)=>{
-            console.error('error fatching student:',err)
+      error: (err) => {
+        console.error('error fatching student:', err)
 
-             }
-         
-      });
+      }
+
+    });
 
   }
 
-  updateTeacher():void{
-    this.teacherService.updateTeacher(this.id,this.teacher).subscribe({
-      next:()=>this.router.navigate(['/allteacher']),
-      error:err =>console.error('update failed',err)
+  updateTeacher(): void {
+    this.teacherService.updateTeacher(this.id, this.teacher).subscribe({
+      next: () => this.router.navigate(['/viewteacher']),
+      error: err => console.error('update failed', err)
 
     });
 

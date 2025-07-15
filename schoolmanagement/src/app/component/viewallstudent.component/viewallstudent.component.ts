@@ -13,7 +13,7 @@ import { Student } from '../../model/student.model';
 })
 export class ViewallstudentComponent implements OnInit {
  id: string='';
- teacher:Student = new Student();
+ student:Student = new Student();
 
   students: any;
   

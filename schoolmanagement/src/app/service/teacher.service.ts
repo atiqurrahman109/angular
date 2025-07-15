@@ -9,10 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class TeacherService {
   baseUrl:string="http://localhost:3000/teacher";
 
-  constructor(
-
-    private http:HttpClient
-  ) { }
+  constructor(private http:HttpClient) { }
 
   getAllTeacher(): Observable<any>{
   
@@ -22,7 +19,7 @@ export class TeacherService {
   
   saveTeacher(teachers:Teacher):Observable<any>{
   
-  return this.http.post(this.baseUrl,Teacher);
+  return this.http.post(this.baseUrl,teachers);
   
   
   }
@@ -40,7 +37,7 @@ export class TeacherService {
   
   }
   
-  updateTeacher(id:string,teacher:Teacher):Observable<any>{
+  updateTeacher(id:string, teacher:Teacher):Observable<any>{
   
   
     return this.http.put(this.baseUrl+"/"+id,teacher);

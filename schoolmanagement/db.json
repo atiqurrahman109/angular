@@ -1,58 +1,22 @@
 {
   "students": [
     {
-      "id": "1",
-      "name": "atik",
-      "email": "atik@",
-      "fathername": "Belal Hossain",
-      "mothername": "bilkis akter",
-      "class": "uihkh",
-      "section": "yuyg"
-    },
-    {
-      "id": "370e",
-      "name": "retwet",
-      "email": "sdfasd@sdgfadsf.com",
-      "fathername": "ewtewrtwe",
-      "mothername": "tewter",
-      "class": "10",
-      "section": ""
-    },
-    {
-      "id": "e476",
-      "name": "reja",
-      "email": "asdf@dsafa.sgdf",
-      "fathername": "sdafds",
-      "mothername": "fsadfs",
-      "class": "5",
-      "section": "D"
-    },
-    {
-      "id": "6b0d",
-      "name": "asdfsadf",
-      "email": "sadfasdf",
-      "fathername": "sadfsadf",
-      "mothername": "sadfasdf",
-      "class": "safsadf",
-      "section": "B"
-    },
-    {
       "id": "923b",
-      "name": "ghfg",
-      "email": "fhgf",
-      "fathername": "fghfgh",
-      "mothername": "ghjfg",
+      "name": "Sadiar Rahman",
+      "email": "sadiar@gmail.com",
+      "fathername": "Jani Na",
+      "mothername": "Jani Na",
       "class": "12",
       "section": "A"
     },
     {
-      "id": "5f71",
-      "name": "gdg",
-      "email": "sdg",
-      "fathername": "dfgd",
-      "mothername": "dfg",
-      "class": "d",
-      "section": "A"
+      "id": "51a1",
+      "name": "Parvej Alam",
+      "email": "janina@gmail.com",
+      "fathername": "Jani Na",
+      "mothername": "Jani Na",
+      "class": "10",
+      "section": "B"
     }
   ],
   "teacher": []

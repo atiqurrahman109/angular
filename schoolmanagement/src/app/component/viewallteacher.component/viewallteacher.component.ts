@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { TeacherService } from '../../service/teacher.service';
 import { Router } from '@angular/router';
+import { Teacher } from '../../model/teacher.model';
 
 @Component({
   selector: 'app-viewallteacher.component',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrl: './viewallteacher.component.css'
 })
 export class ViewallteacherComponent implements OnInit {
-
+id: string='';
+ teacher:Teacher = new Teacher();
   teachers: any;
  
 
@@ -74,5 +76,9 @@ export class ViewallteacherComponent implements OnInit {
     });
 
 
+  }
+
+  updateTeacher(id: string):void{
+    this.router.navigate(['/updateteacher', id]);
   }
 }

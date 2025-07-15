@@ -27,9 +27,9 @@
         <td>{{s.section}}</td>
 
          <td>
-      <button class="btn btn-sm btn-warning me-2" (click)=" updateStudent()">edit</button>
+      <button class="btn btn-sm btn-warning me-2" (click)="getStudentById(s.id)">edit</button>
  
-      <button class="btn btn-sm btn-danger" (click)="deleteStudent(students.id)">delete   </button>
+      <button class="btn btn-sm btn-danger" (click)="deleteStudent(s.id)">delete </button>
       
    
     </td>
