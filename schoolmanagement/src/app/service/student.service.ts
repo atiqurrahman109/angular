@@ -29,6 +29,12 @@ return this.http.post(this.baseUrl,students);
 
 
 }
+  uploadImg(file: File){
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post(this.baseUrl+"/uploadImg", formData);
+  }
+  
 
 deleteStudent(id:string):Observable<any>{
 

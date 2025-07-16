@@ -1,8 +1,17 @@
 export class Teacher {
-    id!: string;
-    email !: string;
+    id!: number;
     name!: string;
-    fathername!: string;
-    mothername!: string;
-   designation!:string;
+    email!: string;
+    phone!: string;
+    firstname!:string;
+    lastname!:string;
+    fathersname!: string;
+    mothersname!: string;
+    gender!: string;
+    dob!: string;
+    joiningDate!: string;
+    photo!: string | null;
+    designation!: string;
+    address!:string;
+    
 }

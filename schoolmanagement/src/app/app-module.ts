@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddteacherComponent } from './component/addteacher.component/addteacher.component';
 import { UpdateteacherComponent } from './component/updateteacher.component/updateteacher.component';
 import { ViewallteacherComponent } from './component/viewallteacher.component/viewallteacher.component';
+import { ViewallstudentdetailsComponent } from './component/viewallstudentdetails.component/viewallstudentdetails.component';
+import { ViewallteacherdetailsComponent } from './component/viewallteacherdetails.component/viewallteacherdetails.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ViewallteacherComponent } from './component/viewallteacher.component/vi
   
     AddteacherComponent,
     UpdateteacherComponent,
-    ViewallteacherComponent
+    ViewallteacherComponent,
+    ViewallstudentdetailsComponent,
+    ViewallteacherdetailsComponent
   ],
   imports: [
     BrowserModule,

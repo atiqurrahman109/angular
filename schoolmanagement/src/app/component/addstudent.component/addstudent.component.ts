@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../service/student.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Student } from '../../model/student.model';
 
@@ -12,59 +12,40 @@ import { Student } from '../../model/student.model';
 })
 export class AddstudentComponent implements OnInit {
 
-  formGroup!: FormGroup;
+  studentForm!: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private studentService: StudentService,
-    private formBuilder: FormBuilder,
-    private router: Router,
+    private router: Router
+  ) {}
 
-  ) {
-
-
-
-  }
   ngOnInit(): void {
-
-    this.formGroup = this.formBuilder.group({
-
-      name: [''],
-      email: [''],
-      fathername: [''],
-      mothername: [''],
-      class: [''],
-      section: ['']
-
-
+    this.studentForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      fathername: ['', Validators.required],
+      mothername: ['', Validators.required],
+      class: ['', Validators.required],
+      section: ['', Validators.required],
+      roll: ['', Validators.required],
+      dob: ['', Validators.required],
+      address: ['', Validators.required],
+      gender: ['', Validators.required],
+      phone: ['', Validators.required],
+      photo: ['']
     });
-
-
-
-
   }
 
-  addStudent(): void {
-
-
-    const student: Student = { ...this.formGroup.value };
-    this.studentService.saveStudent(student).subscribe({
-
-      next: (res) => {
-        console.log("student saved", res);
-        this.formGroup.reset();
-        this.router.navigate(['/viewstudent']);
-
-
-      },
-      error: (error) => {
-
-        console.log(error);
-
-      }
-
-
-    })
-
+  onSubmit(): void {
+    if (this.studentForm.valid) {
+      const newStudent: Student = this.studentForm.value;
+      this.studentService.saveStudent(newStudent).subscribe(() => {
+        alert('Student added successfully!');
+        this.router.navigate(['/students']);
+      });
+    }
   }
 
 

@@ -12,11 +12,11 @@ import { Student } from '../../model/student.model';
   styleUrl: './viewallstudent.component.css'
 })
 export class ViewallstudentComponent implements OnInit {
- id: string='';
- student:Student = new Student();
+  id: string = '';
+  student: Student = new Student();
 
   students: any;
-  
+
 
 
   constructor(
@@ -85,13 +85,17 @@ export class ViewallstudentComponent implements OnInit {
 
   }
 
-  updateStudent():void{
-    this.studentService.updateStudent(this.id,this.students).subscribe({
-      next:()=>this.router.navigate(['/allstu']),
-      error:err =>console.error('update failed',err)
+  updateStudent(): void {
+    this.studentService.updateStudent(this.id, this.students).subscribe({
+      next: () => this.router.navigate(['/allstu']),
+      error: err => console.error('update failed', err)
 
     });
 
+  }
+
+  viewStudentDetails(id: string): void {
+    this.router.navigate(['/viewstudentdetials', id]);
   }
 
 }

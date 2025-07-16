@@ -1,23 +1,4 @@
 {
-  "students": [
-    {
-      "id": "923b",
-      "name": "Sadiar Rahman",
-      "email": "sadiar@gmail.com",
-      "fathername": "Jani Na",
-      "mothername": "Jani Na",
-      "class": "12",
-      "section": "A"
-    },
-    {
-      "id": "51a1",
-      "name": "Parvej Alam",
-      "email": "janina@gmail.com",
-      "fathername": "Jani Na",
-      "mothername": "Jani Na",
-      "class": "10",
-      "section": "B"
-    }
-  ],
+  "students": [],
   "teacher": []
 }

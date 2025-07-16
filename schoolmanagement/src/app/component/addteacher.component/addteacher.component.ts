@@ -10,28 +10,36 @@ import { Teacher } from '../../model/teacher.model';
   templateUrl: './addteacher.component.html',
   styleUrl: './addteacher.component.css'
 })
-export class AddteacherComponent implements OnInit{
- 
- formgroup!:FormGroup;
- 
- constructor(
-private teacherService:TeacherService,
-private formbuilder:FormBuilder,
-private router:Router
+export class AddteacherComponent implements OnInit {
 
- ){}
+  teacherForm!: FormGroup;
+
+  constructor(
+    private teacherService: TeacherService,
+    private formbuilder: FormBuilder,
+    private router: Router
+
+  ) { }
 
 
- 
- ngOnInit(): void {
-    
-    this.formgroup=this.formbuilder.group({
 
-      name: [''],
+  ngOnInit(): void {
+
+    this.teacherForm = this.formbuilder.group({
+
+      firstname: [''],
+      lastname:[''],
       email: [''],
-      fathername: [''],
-      mothername: [''],
-      designation:['']
+      fathersname: [''],
+      mothersname: [''],
+      designation: [''],
+      dob:[''],
+      joiningDate:[''],
+      gender:[''],
+      address:[''],
+      phone:[''],
+      photo:[''],
+     
 
     });
 
@@ -39,26 +47,26 @@ private router:Router
   }
 
   addTeacher(): void {
-  
-  
-      const teacher: Teacher = { ...this.formgroup.value };
-      this.teacherService.saveTeacher(teacher).subscribe({
-  
-        next: (res) => {
-          console.log("teacher saved", res);
-          this.formgroup.reset();
-          this.router.navigate(['/viewteacher']);
-  
-  
-        },
-        error: (error) => {
-  
-          console.log(error);
-  
-        }
-  
-  
-      });
 
-}
+
+    const teacher: Teacher = { ...this.teacherForm.value };
+    this.teacherService.saveTeacher(teacher).subscribe({
+
+      next: (res) => {
+        console.log("teacher saved", res);
+        this.teacherForm.reset();
+        this.router.navigate(['/viewteacher']);
+
+
+      },
+      error: (error) => {
+
+        console.log(error);
+
+      }
+
+
+    });
+
+  }
 }

@@ -81,4 +81,7 @@ id: string='';
   updateTeacher(id: string):void{
     this.router.navigate(['/updateteacher', id]);
   }
+  viewTeacherDetails(id: string):void{
+    this.router.navigate(['/viewteacherdetails', id]);
+  }
 }

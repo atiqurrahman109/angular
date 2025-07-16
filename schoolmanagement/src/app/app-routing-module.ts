@@ -7,10 +7,14 @@ import { AddteacherComponent } from './component/addteacher.component/addteacher
 import { ViewallteacherComponent } from './component/viewallteacher.component/viewallteacher.component';
 import { UpdatestudentComponent } from './component/updatestudent.component/updatestudent.component';
 import { UpdateteacherComponent } from './component/updateteacher.component/updateteacher.component';
+import { ViewallstudentdetailsComponent } from './component/viewallstudentdetails.component/viewallstudentdetails.component';
+import { ViewallteacherdetailsComponent } from './component/viewallteacherdetails.component/viewallteacherdetails.component';
 
 const routes: Routes = [
   { path: 'viewteacher', component: ViewallteacherComponent },
   { path: 'updatestudent/:id', component: UpdatestudentComponent },
+  { path: 'viewstudentdetials/:id', component: ViewallstudentdetailsComponent },
+  { path: 'viewteacherdetails/:id',component:ViewallteacherdetailsComponent},
   { path: 'addteacher', component: AddteacherComponent },
   { path: 'addstudent', component: AddstudentComponent },
   { path: 'viewstudent', component: ViewallstudentComponent },

@@ -1,41 +1,36 @@
-
-
-
 <div class="container mt-5">
-  <h2 class="mb-4 text-center">Student Information Table</h2>
-  <table class="table table-bordered table-striped table-hover">
-    <thead class="table-dark">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Father's Name</th>
-        <th>Mother's Name</th>
-        <th>Class</th>
-        <th>Section</th>
-         <th>action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let s of students|async">
-        <td>{{s.id}}</td>
-        <td>{{s.name}}</td>
-        <td>{{s.email}}</td>
-        <td>{{s.fathername}}</td>
-        <td>{{s.mothername}}</td>
-        <td>{{s.class}}</td>
-        <td>{{s.section}}</td>
-
-         <td>
-      <button class="btn btn-sm btn-warning me-2" (click)="getStudentById(s.id)">edit</button>
- 
-      <button class="btn btn-sm btn-danger" (click)="deleteStudent(s.id)">delete </button>
-      
-   
-    </td>
-      </tr>
-    </tbody>
-  </table>
+  <h2 class="mb-4 text-center text-primary">Student Information Table</h2>
+  
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Class</th>
+          <th>Section</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let s of students | async">
+          <td>{{ s.id }}</td>
+          <td>{{ s.firstname }} {{ s.lastname }}</td>
+          <td>{{ s.class }}</td>
+          <td>{{ s.section }}</td>
+          <td>
+            <button class="btn btn-sm btn-info me-1" title="View" (click)="viewStudentDetails(s.id)">
+              <i class="fas fa-eye"></i>
+            </button>
+            <button class="btn btn-sm btn-warning me-1" (click)="getStudentById(s.id)" title="Edit">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteStudent(s.id)" title="Delete">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-
