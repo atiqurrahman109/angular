@@ -1,4 +1,37 @@
 {
+<<<<<<< HEAD
   "students": [],
   "teacher": []
+=======
+  "students": [
+    {
+      "id": "923b",
+      "name": "Sadiar Rahman",
+      "email": "sadiar@gmail.com",
+      "fathername": "Jani Na",
+      "mothername": "Jani Na",
+      "class": "12",
+      "section": "A"
+    },
+    {
+      "id": "51a1",
+      "name": "Parvej Alam",
+      "email": "janina@gmail.com",
+      "fathername": "Jani Na",
+      "mothername": "Jani Na",
+      "class": "10",
+      "section": "B"
+    }
+  ],
+  "teacher": [
+    {
+      "id": "80df",
+      "name": "emran hossain",
+      "email": "emranhossain@gmail.com",
+      "fathername": "unknown",
+      "mothername": "unknown",
+      "designation": "senior teacher"
+    }
+  ]
+>>>>>>> b4225cc1f95582d20299f91f580deac85162eed4
 }
