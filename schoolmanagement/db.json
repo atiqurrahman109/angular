@@ -1,44 +1,47 @@
 {
-
-
   "students": [
     {
-      "id": "923b",
-      "name": "Sadiar Rahman",
-      "email": "sadiar@gmail.com",
-      "fathername": "Jani Na",
-      "mothername": "Jani Na",
-      "class": "12",
-      "section": "A"
-    },
-    {
-      "id": "51a1",
-      "name": "Parvej Alam",
-      "email": "janina@gmail.com",
-      "fathername": "Jani Na",
-      "mothername": "Jani Na",
+      "id": "6bb8",
+      "email": "rakibislam@gmail.com",
+      "firstname": "Rakib",
+      "lastname": "Islam",
+      "fathername": "Rakib's Father Name",
+      "mothername": "Rakib's Mother Name",
       "class": "10",
-      "section": "B"
+      "section": "A",
+      "roll": "15",
+      "dob": "2000-01-01",
+      "address": "Mohammadpur, Dhaka",
+      "gender": "Male",
+      "phone": "01886321584",
+      "photo": "https://avatars.githubusercontent.com/u/196038058?v=4"
     }
   ],
   "teacher": [
     {
-      "id": "80df",
-      "name": "emran hossain",
-      "email": "emranhossain@gmail.com",
-      "fathername": "unknown",
-      "mothername": "unknown",
-      "designation": "senior teacher"
+      "id": "580f",
+      "firstname": "Muhammad Emran",
+      "lastname": "Hossain",
+      "email": "emransir@gmail.com",
+      "fathersname": "-----------",
+      "mothersname": "----------",
+      "designation": "Traineer",
+      "dob": "1990-07-17",
+      "joiningDate": "2025-01-01",
+      "gender": "Male",
+      "address": "Khilgaon, Dhaka",
+      "phone": "018659848752",
+      "photo": "https://avatars.githubusercontent.com/u/21266856?v=4"
     }
   ],
-"studentFee":[{
-
-  "feeid":"number",
-"feeCatagory":"string",
-"feeMonth":"string",
-"feeamount":"string",
-"paymentDate":"string"
-
-
-}]
+  "studentFee": [
+    {
+      "feeid": "number",
+      "feeCatagory": "string",
+      "feeMonth": "string",
+      "feeamount": "string",
+      "paymentDate": "string",
+      "id": "da16"
+    }
+  ]
 }
