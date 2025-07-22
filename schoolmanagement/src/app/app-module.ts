@@ -38,6 +38,7 @@ import { Login } from './Auth/login/login';
 import { Logout } from './Auth/logout/logout';
 import { Registration } from './Auth/registration/registration';
 import { UserProfile } from './Auth/user-profile/user-profile';
+import { ViewComponent } from './component/view.component/view.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { UserProfile } from './Auth/user-profile/user-profile';
     Logout,
     Registration,
     UserProfile,
+    ViewComponent,
 
     
   ],

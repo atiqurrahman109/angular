@@ -7,7 +7,7 @@
       "lastname": "Islam",
       "fathername": "Rakib's Father Name",
       "mothername": "Rakib's Mother Name",
-      "class": "10",
+      "class": "six",
       "section": "A",
       "roll": "15",
       "dob": "2000-01-01",
@@ -23,7 +23,7 @@
       "lastname": "sadfasdf",
       "fathername": "sadfasd",
       "mothername": "safdasd",
-      "class": "sdafasd",
+      "class": "seven",
       "section": "asdfdasf",
       "roll": "safsda",
       "dob": "2025-07-01",
@@ -39,7 +39,7 @@
       "lastname": "sadfsadf",
       "fathername": "asdfsda",
       "mothername": "sdfgfsdg",
-      "class": "70",
+      "class": "eight",
       "section": "dfgs",
       "roll": "140",
       "dob": "2025-07-18",
@@ -255,14 +255,7 @@
       "id": "e338"
     }
   ],
-  "attendence": [
-    {
-      "ssid": 68,
-      "aDates": "2025-07-22",
-      "aattendance": "Leave",
-      "id": "84e0"
-    }
-  ],
+  "attendence": [],
   "exam": [
     {
       "id": "707c",
@@ -305,7 +298,33 @@
   ],
   "notice": [],
   "studentfee": [],
-  "payment": [],
+  "payment": [
+    {
+      "id": "5170",
+      "students": {
+        "id": "6bb8",
+        "email": "rakibislam@gmail.com",
+        "firstname": "Rakib",
+        "lastname": "Islam",
+        "fathername": "Rakib's Father Name",
+        "mothername": "Rakib's Mother Name",
+        "class": "six",
+        "section": "A",
+        "roll": "15",
+        "dob": "2000-01-01",
+        "address": "Mohammadpur, Dhaka",
+        "gender": "Male",
+        "phone": "01886321584",
+        "photo": "https://avatars.githubusercontent.com/u/196038058?v=4"
+      },
+      "fromDate": "2025-07-01",
+      "toDate": "2025-09-02",
+      "month": "3",
+      "fee": 450,
+      "count": 3,
+      "totalAmount": 1350
+    }
+  ],
   "class": [
     {
       "id": "6",

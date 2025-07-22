@@ -1,55 +1,47 @@
-<div class="container mt-4">
-  <h2>Add Payment</h2>
-  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-      <label>Payment ID</label>
-      <input type="text" class="form-control" formControlName="pid">
-    </div>
-    <div class="mb-3">
-      <label>Class</label>
-      <input type="text" class="form-control" formControlName="pclass">
-    </div>
-    <div class="mb-3">
-      <label>Roll</label>
-      <input type="text" class="form-control" formControlName="pRoll">
-    </div>
-    <div class="mb-3">
-      <label>Payment Date</label>
-      <input type="date" class="form-control" formControlName="pDate">
-    </div>
-    <div class="mb-3">
-      <label>Month</label>
-      <input type="text" class="form-control" formControlName="pMonth">
-    </div>
-    <button type="submit" class="btn btn-success">Add Payment</button>
-  </form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-4 bg-white shadow rounded" style="max-width: 600px; margin: auto;">
+  <h3 class="text-center mb-4">Student Payment Entry</h3>
 
-  <hr>
+  <div class="mb-3">
+    <label for="students" class="form-label">Select Student</label>
+    <select formControlName="students" id="students" class="form-select" required>
+      <option value="" disabled selected>Select Student</option>
+      <option *ngFor="let stu of students" [ngValue]="stu">
+        {{ stu.id }} - {{ stu.firstname }} {{ stu.lastname }}
+      </option>
+    </select>
+  </div>
 
-  <h3>All Payments</h3>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Class</th>
-        <th>Roll</th>
-        <th>Date</th>
-        <th>Month</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let payment of paymentList">
-        <td>{{ payment.id }}</td>
-        <td>{{ payment.pclass }}</td>
-        <td>{{ payment.pRoll }}</td>
-        <td>{{ payment.pDate }}</td>
-        <td>{{ payment.pMonth }}</td>
-        <td>
-          <button class="btn btn-danger btn-sm" (click)="deletePayment(payment.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="fromDate" class="form-label">From Date</label>
+      <input type="date" formControlName="fromDate" id="fromDate" class="form-control" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="toDate" class="form-label">To Date</label>
+      <input type="date" formControlName="toDate" id="toDate" class="form-control" required />
+    </div>
+  </div>
 
+  <div class="mb-3">
+    <label for="month" class="form-label">Month</label>
+    <input type="text" formControlName="month" id="month" class="form-control" placeholder="e.g., July" required />
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="fee" class="form-label">Fee per Unit</label>
+      <input type="number" formControlName="fee" id="fee" class="form-control" required />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="count" class="form-label">Unit Count</label>
+      <input type="number" formControlName="count" id="count" class="form-control" required />
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="totalAmount" class="form-label">Total Amount</label>
+    <input type="number" formControlName="totalAmount" id="totalAmount" class="form-control" readonly />
+  </div>
+
+  <button type="submit" class="btn btn-success w-100">Submit Payment</button>
+</form>

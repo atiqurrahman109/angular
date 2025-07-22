@@ -27,7 +27,7 @@ export class ApplyeditComponent implements OnInit {
         appFirstName: [data.appFirstName],
         applastName: [data.applastName],
         appEmail: [data.appEmail],
-        ppPhone: [data.ppPhone],
+        ppPhone: [data.appPhone],
         appClss: [data.appClss],
         appCatogory: [data.appCatogory],
         approved: [data.approved]

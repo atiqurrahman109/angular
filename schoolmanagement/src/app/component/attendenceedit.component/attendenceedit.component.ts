@@ -25,7 +25,6 @@ form!: FormGroup;
     this.id = this.route.snapshot.params['id'];
     this.service.getById(this.id).subscribe(data => {
       this.form = this.fb.group({
-        ssid: [data.ssid],
         aDates: [data.aDates],
         aattendance: [data.aattendance]
       });

@@ -1,11 +1,48 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input type="number" formControlName="ssid" placeholder="Student ID" required />
-  <input type="date" formControlName="aDates" placeholder="Date" required />
-  <select formControlName="aattendance">
-    <option value="Present">Present</option>
-    <option value="Absent">Absent</option>
-    <option value="Leave">Leave</option>
-  </select>
-  <button type="submit">Add Attendance</button>
-</form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="p-4 shadow rounded bg-white" style="max-width: 500px; margin: auto;">
+  <h3 class="text-center mb-4">Class Attendance</h3>
 
+  <div class="mb-3">
+    <label for="ssid" class="form-label fw-semibold">Student ID</label>
+    <select
+      id="ssid"
+      formControlName="ssid"
+      class="form-select"
+      required
+    >
+      <option value="" disabled selected>Select Student ID</option>
+      <option *ngFor="let stu of students" [value]="stu.id">
+        {{ stu.id }} - {{ stu.firstname }} {{ stu.lastname }}
+      </option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="aDates" class="form-label">Date</label>
+    <input
+      type="date"
+      id="aDates"
+      formControlName="aDates"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <div class="mb-4">
+    <label for="aattendance" class="form-label">Attendance Status</label>
+    <select
+      id="aattendance"
+      formControlName="aattendance"
+      class="form-select"
+      required
+    >
+      <option value="" disabled selected>Select status</option>
+      <option value="Present">Present</option>
+      <option value="Absent">Absent</option>
+      <option value="Leave">Leave</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">
+    Submit Attendance
+  </button>
+</form>

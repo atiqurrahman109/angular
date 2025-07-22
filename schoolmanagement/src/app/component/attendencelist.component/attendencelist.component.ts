@@ -19,7 +19,7 @@ attendanceList: Attendance[] = [];
   }
 
   loadData() {
-    this.service.getAll().subscribe(data => this.attendanceList = data);
+    this.service.getAllAtten().subscribe(data => this.attendanceList = data);
   }
 
   onEdit(id: string) {

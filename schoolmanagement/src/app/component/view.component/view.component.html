@@ -1,0 +1,87 @@
+<style>
+  .profile-label {
+    font-weight: bold;
+    width: 180px;
+  }
+
+  .profile-value {
+    flex: 1;
+  }
+
+  .profile-row {
+    display: flex;
+    padding: 8px 0;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .photo-box img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+  }
+</style>
+
+<div class="container mt-5 mb-5">
+  <div class="card shadow">
+    <div class="card-header bg-success text-white text-center">
+      <h3>Student Payment Profile</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <!-- Left Payment Info -->
+        <div class="col-md-8">
+          <div class="profile-row">
+            <span class="profile-label">Payment ID:</span>
+            <span class="profile-value">{{ payment.id }}</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Student Name:</span>
+            <span class="profile-value">{{ payment.students.firstname }} {{ payment.students.lastname }}</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Class:</span>
+            <span class="profile-value">{{ payment.students.class }}</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Roll:</span>
+            <span class="profile-value">{{ payment.students.roll }}</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Phone:</span>
+            <span class="profile-value">{{ payment.students.phone }}</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Payment From:</span>
+            <span class="profile-value">{{ payment.fromDate }}</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Payment To:</span>
+            <span class="profile-value">{{ payment.toDate }}</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Month Count:</span>
+            <span class="profile-value">{{ payment.month }} months</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Fee Per Month:</span>
+            <span class="profile-value">{{ payment.fee }} Tk</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Total Amount:</span>
+            <span class="profile-value"><strong>{{ payment.totalAmount }} Tk</strong></span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Address:</span>
+            <span class="profile-value">{{ payment.students.address }}</span>
+          </div>
+        </div>
+
+        <!-- Right Student Photo -->
+        <div class="col-md-4 text-center photo-box mt-4">
+          <img [src]="payment.students.photo" alt="Student Photo" class="img-thumbnail shadow-sm" *ngIf="payment.students.photo" />
+          <p class="mt-2 text-muted">Student Photo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

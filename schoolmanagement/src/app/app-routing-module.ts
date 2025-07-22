@@ -29,6 +29,8 @@ import { ClassComponent } from './component/class.component/class.component';
 import { Login } from './Auth/login/login';
 import { Registration } from './Auth/registration/registration';
 import { UserProfile } from './Auth/user-profile/user-profile';
+import { PaymentComponent } from './component/payment.component/payment.component';
+import { ViewComponent } from './component/view.component/view.component';
 
 const routes: Routes = [
   { path: 'viewteacher', component: ViewallteacherComponent },
@@ -57,6 +59,8 @@ const routes: Routes = [
   { path: 'studentfeeedit/:id', component: StudentfeeeditComponent },
   { path: 'studentfeelist', component: StudentfeelistComponent },
   { path: 'class', component: ClassComponent },
+  {path: 'addPayment' , component: PaymentComponent},
+  {path: 'viewPayment' , component: ViewComponent},
 
 
 

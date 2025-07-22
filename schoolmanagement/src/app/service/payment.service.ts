@@ -11,16 +11,16 @@ private baseUrl = 'http://localhost:3000/payment'; // Update this to your backen
 
   constructor(private http: HttpClient) {}
 
-  getAllPayments(): Observable<Payment[]> {
-    return this.http.get<Payment[]>(`${this.baseUrl}`);
+   create(payment: Payment): Observable<any> {
+    return this.http.post(`${this.baseUrl}`, payment);
   }
 
-  addPayment(payment: Payment): Observable<Payment> {
-    return this.http.post<Payment>(`${this.baseUrl}`, payment);
+  getAll(): Observable<Payment[]> {
+    return this.http.get<Payment[]>(this.baseUrl);
   }
 
-  deletePayment(pid: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${pid}`);
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
   
 }
