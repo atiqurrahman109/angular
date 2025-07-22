@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Subject Name Form</h2>
+  <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="subName" class="form-label">Subject Name</label>
+      <input type="text" class="form-control" formControlName="subName" placeholder="Enter subject name" required />
+    </div>
+    <button type="submit" class="btn btn-success">
+      {{ isEditing ? 'Update' : 'Add' }} Subject
+    </button>
+  </form>
+
+  <hr />
+
+  <h3>Subject List</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Subject Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subject of subjectList">
+        <td>{{ subject.subid }}</td>
+        <td>{{ subject.subName }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="editSubject(subject)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteSubject(subject.subid)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

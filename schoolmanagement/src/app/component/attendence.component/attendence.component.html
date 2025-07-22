@@ -1,1 +1,11 @@
-<p>attendence.component works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="number" formControlName="ssid" placeholder="Student ID" required />
+  <input type="date" formControlName="aDates" placeholder="Date" required />
+  <select formControlName="aattendance">
+    <option value="Present">Present</option>
+    <option value="Absent">Absent</option>
+    <option value="Leave">Leave</option>
+  </select>
+  <button type="submit">Add Attendance</button>
+</form>
+

@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <h2>Add Payment</h2>
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Payment ID</label>
+      <input type="text" class="form-control" formControlName="pid">
+    </div>
+    <div class="mb-3">
+      <label>Class</label>
+      <input type="text" class="form-control" formControlName="pclass">
+    </div>
+    <div class="mb-3">
+      <label>Roll</label>
+      <input type="text" class="form-control" formControlName="pRoll">
+    </div>
+    <div class="mb-3">
+      <label>Payment Date</label>
+      <input type="date" class="form-control" formControlName="pDate">
+    </div>
+    <div class="mb-3">
+      <label>Month</label>
+      <input type="text" class="form-control" formControlName="pMonth">
+    </div>
+    <button type="submit" class="btn btn-success">Add Payment</button>
+  </form>
+
+  <hr>
+
+  <h3>All Payments</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Class</th>
+        <th>Roll</th>
+        <th>Date</th>
+        <th>Month</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of paymentList">
+        <td>{{ payment.id }}</td>
+        <td>{{ payment.pclass }}</td>
+        <td>{{ payment.pRoll }}</td>
+        <td>{{ payment.pDate }}</td>
+        <td>{{ payment.pMonth }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deletePayment(payment.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

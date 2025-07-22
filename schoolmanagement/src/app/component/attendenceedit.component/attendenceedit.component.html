@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="onUpdate()">
+  <input type="number" formControlName="ssid" placeholder="Student ID" />
+  <input type="date" formControlName="aDates" placeholder="Date" />
+  <select formControlName="aattendance">
+    <option value="Present">Present</option>
+    <option value="Absent">Absent</option>
+    <option value="Leave">Leave</option>
+  </select>
+  <button type="submit">Update</button>
+</form>
+

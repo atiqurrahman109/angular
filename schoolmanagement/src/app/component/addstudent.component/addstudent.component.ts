@@ -33,7 +33,7 @@ export class AddstudentComponent implements OnInit {
       dob: ['', Validators.required],
       address: ['', Validators.required],
       gender: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10,15}$')]],
       photo: ['']
     });
   }
@@ -41,10 +41,18 @@ export class AddstudentComponent implements OnInit {
   onSubmit(): void {
     if (this.studentForm.valid) {
       const newStudent: Student = this.studentForm.value;
-      this.studentService.saveStudent(newStudent).subscribe(() => {
-        alert('Student added successfully!');
-        this.router.navigate(['/students']);
+      this.studentService.saveStudent(newStudent).subscribe({
+        next: () => {
+          alert('Student added successfully!');
+          this.router.navigate(['/students']);
+        },
+        error: (err) => {
+          console.error('Error saving student:', err);
+          alert('Failed to save student. Try again later.');
+        }
       });
+    } else {
+      this.studentForm.markAllAsTouched();
     }
   }
 

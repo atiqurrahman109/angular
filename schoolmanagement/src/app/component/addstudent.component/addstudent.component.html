@@ -15,6 +15,7 @@
             <input type="text" class="form-control" formControlName="firstname">
           </div>
         </div>
+
         <div class="row mb-3">
           <div class="col-md-6">
             <label>Last Name</label>
@@ -25,6 +26,7 @@
             <input type="text" class="form-control" formControlName="fathername">
           </div>
         </div>
+
         <div class="row mb-3">
           <div class="col-md-6">
             <label>Mother's Name</label>
@@ -35,6 +37,7 @@
             <input type="text" class="form-control" formControlName="class">
           </div>
         </div>
+
         <div class="row mb-3">
           <div class="col-md-6">
             <label>Section</label>
@@ -45,6 +48,7 @@
             <input type="text" class="form-control" formControlName="roll">
           </div>
         </div>
+
         <div class="row mb-3">
           <div class="col-md-6">
             <label>Date of Birth</label>
@@ -60,10 +64,12 @@
             </div>
           </div>
         </div>
+
         <div class="mb-3">
           <label>Address</label>
           <textarea class="form-control" rows="3" formControlName="address"></textarea>
         </div>
+
         <div class="row mb-3">
           <div class="col-md-6">
             <label>Phone</label>
@@ -74,8 +80,9 @@
             <input type="text" class="form-control" formControlName="photo">
           </div>
         </div>
+
         <div class="d-grid">
-          <button class="btn btn-success" type="submit" [disabled]="studentForm.invalid">Add Student</button>
+          <button class="btn btn-success" type="submit">Add Student</button>
         </div>
       </form>
     </div>

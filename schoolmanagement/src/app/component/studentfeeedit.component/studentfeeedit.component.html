@@ -1,0 +1,28 @@
+<form [formGroup]="form" >
+  <h3>Student Fee</h3>
+  <input formControlName="feeCatagory" placeholder="Fee Category" />
+  <input formControlName="feeMonth" placeholder="Fee Month" />
+  <input formControlName="feeamount" placeholder="Amount" />
+  <input type="date" formControlName="paymentDate" />
+
+  <h3>Student Info</h3>
+  <div formGroupName="Student">
+    <input formControlName="id" placeholder="Student ID" />
+    <input formControlName="firstname" placeholder="First Name" />
+    <input formControlName="lastname" placeholder="Last Name" />
+    <input formControlName="email" placeholder="Email" />
+    <input formControlName="fathername" placeholder="Father's Name" />
+    <input formControlName="mothername" placeholder="Mother's Name" />
+    <input formControlName="class" placeholder="Class" />
+    <input formControlName="section" placeholder="Section" />
+    <input formControlName="roll" placeholder="Roll" />
+    <input formControlName="dob" type="date" placeholder="DOB" />
+    <input formControlName="address" placeholder="Address" />
+    <input formControlName="gender" placeholder="Gender" />
+    <input formControlName="phone" placeholder="Phone" />
+    <input formControlName="photo" placeholder="Photo URL" />
+  </div>
+
+  <button type="submit">Update</button>
+</form>
+

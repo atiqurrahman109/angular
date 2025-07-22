@@ -15,6 +15,38 @@
       "gender": "Male",
       "phone": "01886321584",
       "photo": "https://avatars.githubusercontent.com/u/196038058?v=4"
+    },
+    {
+      "id": "7189",
+      "email": "afd@sadfsda",
+      "firstname": "asdfsadf",
+      "lastname": "sadfasdf",
+      "fathername": "sadfasd",
+      "mothername": "safdasd",
+      "class": "sdafasd",
+      "section": "asdfdasf",
+      "roll": "safsda",
+      "dob": "2025-07-01",
+      "address": "sadfasdf",
+      "gender": "Male",
+      "phone": "01683022109",
+      "photo": "sadfasd"
+    },
+    {
+      "id": "4ad9",
+      "email": "fasdfsda@sfsdaf",
+      "firstname": "dsaf",
+      "lastname": "sadfsadf",
+      "fathername": "asdfsda",
+      "mothername": "sdfgfsdg",
+      "class": "70",
+      "section": "dfgs",
+      "roll": "140",
+      "dob": "2025-07-18",
+      "address": "dsfgdfsg",
+      "gender": "Male",
+      "phone": "dsfgfdsg",
+      "photo": "dsfgsfdg"
     }
   ],
   "teacher": [
@@ -32,16 +64,268 @@
       "address": "Khilgaon, Dhaka",
       "phone": "018659848752",
       "photo": "https://avatars.githubusercontent.com/u/21266856?v=4"
+    },
+    {
+      "id": "9bed",
+      "firstname": "ytry",
+      "lastname": "ytryht",
+      "email": "te5t",
+      "fathersname": "yhtr",
+      "mothersname": "tfht",
+      "designation": "htyh",
+      "dob": "2025-07-15",
+      "joiningDate": "2025-07-08",
+      "gender": "Male",
+      "address": "hyt",
+      "phone": "thytt",
+      "photo": "htyh"
     }
   ],
   "studentFee": [
     {
-      "feeid": "number",
-      "feeCatagory": "string",
-      "feeMonth": "string",
-      "feeamount": "string",
-      "paymentDate": "string",
-      "id": "da16"
+      "id": "11df",
+      "feeCatagory": "Exam",
+      "feeMonth": "January",
+      "feeamount": 10000,
+      "paymentDate": "2025-01-01",
+      "Student": {
+        "id": "6bb8",
+        "email": "rakibislam@gmail.com",
+        "firstname": "Rakib",
+        "lastname": "Islam",
+        "fathername": "Rakib's Father Name",
+        "mothername": "Rakib's Mother Name",
+        "class": "10",
+        "section": "A",
+        "roll": "15",
+        "dob": "2000-01-01",
+        "address": "Mohammadpur, Dhaka",
+        "gender": "Male",
+        "phone": "01886321584",
+        "photo": "https://avatars.githubusercontent.com/u/196038058?v=4"
+      }
+    },
+    {
+      "id": "f504",
+      "feeCatagory": "Mid Term",
+      "feeMonth": "February",
+      "feeamount": 5000,
+      "paymentDate": "2025-07-17",
+      "Student": {
+        "id": "7189",
+        "email": "afd@sadfsda",
+        "firstname": "asdfsadf",
+        "lastname": "sadfasdf",
+        "fathername": "sadfasd",
+        "mothername": "safdasd",
+        "class": "sdafasd",
+        "section": "asdfdasf",
+        "roll": "safsda",
+        "dob": "2025-07-01",
+        "address": "sadfasdf",
+        "gender": "Male",
+        "phone": "01683022109",
+        "photo": "sadfasd"
+      }
+    }
+  ],
+  "examRoutine": [
+    {
+      "id": "5891"
+    },
+    {
+      "id": "b15f",
+      "exClass": "",
+      "exTime": "",
+      "exSubject1": "",
+      "exSubject2": "",
+      "exSubject3": "",
+      "exSubject4": "",
+      "exSubject5": "",
+      "exSubject6": "",
+      "exSubject7": "",
+      "exdate1": "",
+      "exdate2": "",
+      "exdate3": "",
+      "exdate4": "",
+      "exdate5": "",
+      "exdate6": "",
+      "exdate7": ""
+    },
+    {
+      "id": "a6ae",
+      "exClass": null,
+      "exTime": null,
+      "exSubject1": null,
+      "exSubject2": null,
+      "exSubject3": null,
+      "exSubject4": null,
+      "exSubject5": null,
+      "exSubject6": null,
+      "exSubject7": null,
+      "exdate1": null,
+      "exdate2": null,
+      "exdate3": null,
+      "exdate4": null,
+      "exdate5": null,
+      "exdate6": null,
+      "exdate7": null
+    },
+    {
+      "id": "c53c",
+      "exClass": null,
+      "exTime": null,
+      "exSubject1": null,
+      "exSubject2": null,
+      "exSubject3": null,
+      "exSubject4": null,
+      "exSubject5": null,
+      "exSubject6": null,
+      "exSubject7": null,
+      "exdate1": null,
+      "exdate2": null,
+      "exdate3": null,
+      "exdate4": null,
+      "exdate5": null,
+      "exdate6": null,
+      "exdate7": null
+    },
+    {
+      "id": "d4c1",
+      "exClass": null,
+      "exTime": null,
+      "exSubject1": null,
+      "exSubject2": null,
+      "exSubject3": null,
+      "exSubject4": null,
+      "exSubject5": null,
+      "exSubject6": null,
+      "exSubject7": null,
+      "exdate1": null,
+      "exdate2": null,
+      "exdate3": null,
+      "exdate4": null,
+      "exdate5": null,
+      "exdate6": null,
+      "exdate7": null
+    }
+  ],
+  "result": [
+    {
+      "id": "8b79"
+    }
+  ],
+  "syllabus": [
+    {
+      "id": "8ab4"
+    }
+  ],
+  "subject": [
+    {
+      "id": "452e"
+    }
+  ],
+  "user": [
+    {
+      "id": "5501",
+      "name": "Md.RahmatUllah",
+      "email": "rahmat@gmail.com",
+      "password": "12345",
+      "photo": "https://avatars.githubusercontent.com/u/108518708?v=4",
+      "role": "user"
+    },
+    {
+      "id": "f472",
+      "name": "eiasin",
+      "email": "eiasin@gmail.com",
+      "password": "12345",
+      "photo": "https://avatars.githubusercontent.com/u/196037667?v=4",
+      "role": "user"
+    }
+  ],
+  "apply": [
+    {
+      "appFirstName": "Atiqur",
+      "applastName": "Rahman",
+      "appEmail": "weqew@adfa",
+      "ppPhone": "01683022109",
+      "appClss": "8",
+      "appCatogory": "sfsd",
+      "approved": "Rejected",
+      "id": "e338"
+    }
+  ],
+  "attendence": [
+    {
+      "ssid": 68,
+      "aDates": "2025-07-22",
+      "aattendance": "Leave",
+      "id": "84e0"
+    }
+  ],
+  "exam": [
+    {
+      "id": "707c",
+      "exClass": "4",
+      "exTime": "10.00pm",
+      "exSubject1": "juysf",
+      "exdate1": "2025-07-24",
+      "exSubject2": "",
+      "exdate2": "",
+      "exSubject3": "",
+      "exdate3": "",
+      "exSubject4": "",
+      "exdate4": "",
+      "exSubject5": "",
+      "exdate5": "",
+      "exSubject6": "",
+      "exdate6": "",
+      "exSubject7": "",
+      "exdate7": ""
+    },
+    {
+      "id": "3a7c",
+      "exClass": "5",
+      "exTime": "9.00 pm",
+      "exSubject1": "Bangla",
+      "exdate1": "2025-07-23",
+      "exSubject2": "English",
+      "exdate2": "2025-07-24",
+      "exSubject3": "Math",
+      "exdate3": "2025-07-25",
+      "exSubject4": "Biology",
+      "exdate4": "2025-07-26",
+      "exSubject5": "Physics",
+      "exdate5": "2025-07-27",
+      "exSubject6": "Chemestry",
+      "exdate6": "2025-07-28",
+      "exSubject7": "Political science",
+      "exdate7": "2025-07-29"
+    }
+  ],
+  "notice": [],
+  "studentfee": [],
+  "payment": [],
+  "class": [
+    {
+      "id": "6",
+      "class": "six"
+    },
+    {
+      "id": "7",
+      "class": "seven"
+    },
+    {
+      "id": "8",
+      "class": "eight"
+    },
+    {
+      "id": "9",
+      "class": "nine"
+    },
+    {
+      "id": "10",
+      "class": "ten"
     }
   ]
 }

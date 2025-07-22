@@ -1,0 +1,46 @@
+<form [formGroup]="applyForm" (ngSubmit)="onSubmit()" class="p-4 rounded shadow bg-light" style="max-width: 600px; margin: auto;">
+  <h3 class="text-center mb-4 text-primary">Application Form</h3>
+
+  <div class="mb-3">
+    <label class="form-label">First Name</label>
+    <input type="text" class="form-control" formControlName="appFirstName" placeholder="Enter first name" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Last Name</label>
+    <input type="text" class="form-control" formControlName="applastName" placeholder="Enter last name" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="appEmail" placeholder="Enter email" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input type="text" class="form-control" formControlName="ppPhone" placeholder="Enter phone number" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Class</label>
+    <input type="text" class="form-control" formControlName="appClss" placeholder="Enter class" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Category</label>
+    <input type="text" class="form-control" formControlName="appCatogory" placeholder="Enter category" />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Approval Status</label>
+    <select class="form-select" formControlName="approved">
+      <option value="Pending">Pending</option>
+      <option value="Approved">Approved</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary px-4">Submit</button>
+  </div>
+</form>

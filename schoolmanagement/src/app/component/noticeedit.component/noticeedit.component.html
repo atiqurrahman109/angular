@@ -1,0 +1,11 @@
+<form [formGroup]="form" (ngSubmit)="onUpdate()">
+  <input formControlName="ntitel" placeholder="Title" />
+  <input formControlName="nShortDiscription" placeholder="Short Description" />
+  <textarea formControlName="nlongDiscription" placeholder="Long Description"></textarea>
+
+  <input type="file" (change)="onFileChange($event)" />
+  <img *ngIf="imagePreview" [src]="imagePreview" width="100" />
+
+  <button type="submit">Update Notice</button>
+</form>
+
