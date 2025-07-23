@@ -10,50 +10,56 @@ import { Student } from '../model/student.model';
 
 export class StudentService {
 
-  baseUrl: string="http://localhost:3000/students";
+  baseUrl: string = "http://localhost:3000/students";
 
   constructor(
     private http: HttpClient
   ) { }
 
 
-getAllStudent(): Observable<any>{
+  getAllStudent(): Observable<any> {
 
-return this.http.get(this.baseUrl);
+    return this.http.get(this.baseUrl);
 
-}
+  }
 
-saveStudent(students:Student):Observable<any>{
+  saveStudent(students: Student): Observable<any> {
 
-return this.http.post(this.baseUrl,students);
+    return this.http.post(this.baseUrl, students);
 
 
-}
-  uploadImg(file: File){
+  }
+  uploadImg(file: File) {
     const formData: FormData = new FormData();
     formData.append('file', file);
-    return this.http.post(this.baseUrl+"/uploadImg", formData);
+    return this.http.post(this.baseUrl + "/uploadImg", formData);
   }
-  
-
-deleteStudent(id:string):Observable<any>{
-
-return this.http.delete(this.baseUrl+"/"+id);
 
 
-}
+  deleteStudent(id: string): Observable<any> {
 
-getStudentByid(id:string):Observable<any>{
-
-return this.http.get(this.baseUrl+"/"+id);
-
-}
-
-updateStudent(id:string,student:Student):Observable<any>{
+    return this.http.delete(this.baseUrl + "/" + id);
 
 
-  return this.http.put(this.baseUrl+"/"+id,student);
-}
+  }
+
+  getStudentByid(id: string): Observable<any> {
+
+    return this.http.get(this.baseUrl + "/" + id);
+
+  }
+
+  getStudentByClass(id: string): Observable<any>{
+
+    return this.http.get(this.baseUrl + "?class=" + id);
+
+  }
+
+  updateStudent(id: string, student: Student): Observable<any> {
+
+
+    return this.http.put(this.baseUrl + "/" + id, student);
+  }
 
 
 }

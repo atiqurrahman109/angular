@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'listapply', component: ApplylistComponent },
   { path: 'editapply/:id', component: ApplyeditComponent },
   { path: 'listattendence', component: AttendencelistComponent },
-  { path: 'addattendence', component: AttendenceComponent },
+  { path: 'addattendence/:class', component: AttendenceComponent },
   { path: 'editattendence/:id', component: AttendenceeditComponent },
   { path: 'examadd', component: ExamaddComponent },
   { path: 'examedit/:id', component: ExameditComponent },
