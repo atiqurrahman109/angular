@@ -5,7 +5,7 @@ export class Attendance{
 
 
     id!:string;
-    aDates!:string;
+    aDates!:Date;
     aattendance!:string;
     students!:Student;
     

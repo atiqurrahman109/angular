@@ -33,12 +33,16 @@ export class AddstudentComponent implements OnInit {
       dob: ['', Validators.required],
       address: ['', Validators.required],
       gender: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9]{10,15}$')]],
+      phone: ['', Validators.required],
       photo: ['']
     });
   }
 
   onSubmit(): void {
+    console.log('Button clicked');
+  console.log('Form Valid?', this.studentForm.valid);
+  console.log(this.studentForm.value);
+
     if (this.studentForm.valid) {
       const newStudent: Student = this.studentForm.value;
       this.studentService.saveStudent(newStudent).subscribe({

@@ -31,6 +31,7 @@ import { Registration } from './Auth/registration/registration';
 import { UserProfile } from './Auth/user-profile/user-profile';
 import { PaymentComponent } from './component/payment.component/payment.component';
 import { ViewComponent } from './component/view.component/view.component';
+import { ViewAttendenceComponent } from './component/view-attendence.component/view-attendence.component';
 
 const routes: Routes = [
   { path: 'viewteacher', component: ViewallteacherComponent },
@@ -40,7 +41,7 @@ const routes: Routes = [
   { path: 'addteacher', component: AddteacherComponent },
   { path: 'addstudent', component: AddstudentComponent },
   { path: 'viewstudent', component: ViewallstudentComponent },
-  { path: '', component: AddstudentComponent },
+  { path: 'addstu', component: AddstudentComponent },
   { path: 'updateteacher/:id', component: UpdateteacherComponent },
 
   { path: 'addapply', component: ApplyaddComponent },
@@ -48,6 +49,9 @@ const routes: Routes = [
   { path: 'editapply/:id', component: ApplyeditComponent },
   { path: 'listattendence', component: AttendencelistComponent },
   { path: 'addattendence/:class', component: AttendenceComponent },
+
+  {path: 'viewAttendence', component: ViewAttendenceComponent},
+
   { path: 'editattendence/:id', component: AttendenceeditComponent },
   { path: 'examadd', component: ExamaddComponent },
   { path: 'examedit/:id', component: ExameditComponent },
@@ -64,7 +68,7 @@ const routes: Routes = [
 
 
 
-  {path: 'login', component: Login},
+  {path: '', component: Login},
   {path: 'reg', component: Registration},
   {path: 'user', component: UserProfile}
 

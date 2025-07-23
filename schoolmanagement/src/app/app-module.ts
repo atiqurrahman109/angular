@@ -39,6 +39,7 @@ import { Logout } from './Auth/logout/logout';
 import { Registration } from './Auth/registration/registration';
 import { UserProfile } from './Auth/user-profile/user-profile';
 import { ViewComponent } from './component/view.component/view.component';
+import { ViewAttendenceComponent } from './component/view-attendence.component/view-attendence.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { ViewComponent } from './component/view.component/view.component';
     Registration,
     UserProfile,
     ViewComponent,
+    ViewAttendenceComponent,
 
     
   ],

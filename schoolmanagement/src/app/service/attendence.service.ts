@@ -11,8 +11,8 @@ private baseUrl = 'http://localhost:3000/attendence'; // Replace with your actua
 
   constructor(private http: HttpClient) {}
 
-  getAllAtten(): Observable<Attendance[]> {
-    return this.http.get<Attendance[]>(this.baseUrl);
+  getAllAtten(): Observable<any> {
+    return this.http.get(this.baseUrl);
   }
 
   getById(id: string): Observable<Attendance> {
