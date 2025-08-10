@@ -15,6 +15,9 @@ import { Footer } from './layout/footer/footer';
 import { Dashboard } from './layout/dashboard/dashboard';
 import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
+import { Attendence } from './Component/add-attendence/attendence';
+import { ViewAttendence } from './Component/view-attendence/view-attendence';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { Registration } from './Component/auth/registration/registration';
     Footer,
     Dashboard,
     Login,
-    Registration
+    Registration,
+    Attendence,
+    ViewAttendence,
+ 
   ],
   imports: [
     BrowserModule,

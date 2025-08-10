@@ -7,6 +7,9 @@ import { ViewTeacherComponent } from './Component/view-teacher-component/view-te
 import { Dashboard } from './layout/dashboard/dashboard';
 import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
+import { Attendence } from './Component/add-attendence/attendence';
+
+
 
 const routes: Routes = [
   {path: 'addStu', component: AddStudentComponent},
@@ -15,7 +18,9 @@ const routes: Routes = [
   {path:'viewAllTeacher', component:ViewTeacherComponent},
   {path:'', component:Dashboard},
   {path:'login', component:Login},
-  {path:'reg', component:Registration}
+  {path:'reg', component:Registration},
+  {path:'attendence', component:Attendence}
+  
 ];
 
 @NgModule({
