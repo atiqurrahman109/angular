@@ -40,6 +40,7 @@ import { Registration } from './Auth/registration/registration';
 import { UserProfile } from './Auth/user-profile/user-profile';
 import { ViewComponent } from './component/view.component/view.component';
 import { ViewAttendenceComponent } from './component/view-attendence.component/view-attendence.component';
+import { AttendenceShowComponent } from './component/attendence-show.component/attendence-show.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ViewAttendenceComponent } from './component/view-attendence.component/v
     UserProfile,
     ViewComponent,
     ViewAttendenceComponent,
+    AttendenceShowComponent,
 
     
   ],
