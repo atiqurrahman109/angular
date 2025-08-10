@@ -417,6 +417,17 @@
         "class": "7",
         "roll": "22"
       }
+    },
+    {
+      "id": "8c34",
+      "aDates": "2025-07-24T05:50",
+      "aattendance": "Present",
+      "students": {
+        "id": "6bb8",
+        "firstname": "Rakib",
+        "class": "six",
+        "roll": "15"
+      }
     }
   ],
   "exam": [
