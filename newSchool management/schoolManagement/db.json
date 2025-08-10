@@ -1,0 +1,21 @@
+{
+  "students": [
+    {
+      "id": "673e",
+      "firstName": "Atiqur",
+      "lastName": "Rahman",
+      "dob": "2025-08-04",
+      "gender": "Male",
+      "email": "atiqur@gmail.com",
+      "phone": "01683022109",
+      "address": "Agargaon",
+      "class": "Grade 2",
+      "section": "B"
+    }
+  ],
+
+  "teachers":[
+
+    
+  ]
+}
