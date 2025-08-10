@@ -1,0 +1,38 @@
+ body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .register-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      width: 100%;
+      max-width: 900px;
+      color: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    .form-control {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+    }
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.3);
+      outline: none;
+      box-shadow: none;
+      color: white;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: #0077b6;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #023e8a;
+    }

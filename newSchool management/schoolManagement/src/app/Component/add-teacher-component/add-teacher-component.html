@@ -1,0 +1,71 @@
+<div class="container mt-4">
+  <h2>Add New Teacher</h2>
+  <form (ngSubmit)="onSubmit()" #teacherForm="ngForm">
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>First Name</label>
+        <input type="text" [(ngModel)]="teacher.firstName" name="firstName" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Last Name</label>
+        <input type="text" [(ngModel)]="teacher.lastName" name="lastName" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Date of Birth</label>
+        <input type="date" [(ngModel)]="teacher.dob" name="dob" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Gender</label>
+        <select [(ngModel)]="teacher.gender" name="gender" class="form-control">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="teacher.email" name="email" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Phone</label>
+        <input type="text" [(ngModel)]="teacher.phone" name="phone" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Address</label>
+      <textarea [(ngModel)]="teacher.address" name="address" class="form-control" required></textarea>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Qualification</label>
+        <input type="text" [(ngModel)]="teacher.qualification" name="qualification" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Experience (Years)</label>
+        <input type="number" [(ngModel)]="teacher.experience" name="experience" class="form-control" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Subject</label>
+        <input type="text" [(ngModel)]="teacher.subject" name="subject" class="form-control" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Joining Date</label>
+        <input type="date" [(ngModel)]="teacher.joiningDate" name="joiningDate" class="form-control" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="teacherForm.invalid">Save</button>
+  </form>
+</div>
