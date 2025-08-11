@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TeacherService {
-  baseUrl: string = 'https://localhost:3000/teachers'; // Replace with your API
+  baseUrl: string = 'http://localhost:3000/teachers'; // Replace with your API
 
   constructor(private http: HttpClient) {}
 

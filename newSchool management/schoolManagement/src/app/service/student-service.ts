@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class StudentService {
-   baseUrl: string = "http://localhost:3000/students";
+   baseUrl: string = 'http://localhost:3000/students';
 
   constructor(private http: HttpClient) { }
 

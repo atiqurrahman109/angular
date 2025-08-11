@@ -17,6 +17,9 @@ import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
 import { Attendence } from './Component/add-attendence/attendence';
 import { ViewAttendence } from './Component/view-attendence/view-attendence';
+import { AddClassScheduleComponent } from './Component/add-class-schedule-component/add-class-schedule-component';
+import { ViewClassScheduleComponent } from './Component/view-class-schedule-component/view-class-schedule-component';
+import { ClassRoutineStuComponent } from './Component/class-routine-stu-component/class-routine-stu-component';
 
 
 @NgModule({
@@ -34,6 +37,9 @@ import { ViewAttendence } from './Component/view-attendence/view-attendence';
     Registration,
     Attendence,
     ViewAttendence,
+    AddClassScheduleComponent,
+    ViewClassScheduleComponent,
+    ClassRoutineStuComponent,
  
   ],
   imports: [
