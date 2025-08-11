@@ -15,11 +15,11 @@ import { Footer } from './layout/footer/footer';
 import { Dashboard } from './layout/dashboard/dashboard';
 import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
-import { Attendence } from './Component/add-attendence/attendence';
-import { ViewAttendence } from './Component/view-attendence/view-attendence';
+
 import { AddClassScheduleComponent } from './Component/add-class-schedule-component/add-class-schedule-component';
 import { ViewClassScheduleComponent } from './Component/view-class-schedule-component/view-class-schedule-component';
 import { ClassRoutineStuComponent } from './Component/class-routine-stu-component/class-routine-stu-component';
+import { AttendanceComponent } from './Component/attendence/attendence';
 
 
 @NgModule({
@@ -35,11 +35,10 @@ import { ClassRoutineStuComponent } from './Component/class-routine-stu-componen
     Dashboard,
     Login,
     Registration,
-    Attendence,
-    ViewAttendence,
     AddClassScheduleComponent,
     ViewClassScheduleComponent,
     ClassRoutineStuComponent,
+    AttendanceComponent
  
   ],
   imports: [

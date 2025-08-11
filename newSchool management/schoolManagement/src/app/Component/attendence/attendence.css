@@ -1,0 +1,149 @@
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #f9f9fb;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.attendance-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1.8px solid #bdc3c7;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.4);
+}
+
+.error {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+button[type="submit"] {
+  grid-column: span 2;
+  padding: 12px 25px;
+  background-color: #2980b9;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-self: center;
+  max-width: 250px;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background-color: #1c5980;
+}
+
+button[type="submit"]:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+hr {
+  border: none;
+  border-top: 1.5px solid #ecf0f1;
+  margin: 35px 0;
+}
+
+h3 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.attendance-table th,
+.attendance-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.attendance-table th {
+  background-color: #2980b9;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.attendance-table tbody tr:hover {
+  background-color: #f1f8ff;
+  transition: background-color 0.3s ease;
+}
+
+.status {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+  min-width: 70px;
+}
+
+/* Status color variants */
+.status.present {
+  background-color: #27ae60;
+}
+
+.status.absent {
+  background-color: #e74c3c;
+}
+
+.status.leave {
+  background-color: #f39c12;
+}
+
+.status.late {
+  background-color: #8e44ad;
+}

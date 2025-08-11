@@ -1,1 +1,85 @@
-<p>view-class-schedule-component works!</p>
+<div class="container">
+  <h2>📘 Class Schedule Management</h2>
+
+  <!-- Schedule Form -->
+  <form [formGroup]="scheduleForm" (ngSubmit)="addSchedule()" class="schedule-form">
+    <div class="form-group">
+      <label for="className">Class Name:</label>
+      <input id="className" formControlName="className" placeholder="e.g. Grade 5, Class A" required />
+    </div>
+
+    <div class="form-group">
+      <label for="section">Section:</label>
+      <input id="section" formControlName="section" placeholder="e.g. A, B" required />
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input id="subject" formControlName="subject" placeholder="e.g. Math, English" required />
+    </div>
+
+    <div class="form-group">
+      <label for="teacherName">Teacher Name:</label>
+      <input id="teacherName" formControlName="teacherName" placeholder="Teacher's Name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="dayOfWeek">Day of the Week:</label>
+      <select id="dayOfWeek" formControlName="dayOfWeek" required>
+        <option value="" disabled selected>Select a day</option>
+        <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="startTime">Start Time:</label>
+      <input id="startTime" type="time" formControlName="startTime" required />
+    </div>
+
+    <div class="form-group">
+      <label for="endTime">End Time:</label>
+      <input id="endTime" type="time" formControlName="endTime" required />
+    </div>
+
+    <button type="submit" [disabled]="scheduleForm.invalid">➕ Add Schedule</button>
+  </form>
+
+  <hr />
+
+  <!-- Schedule List -->
+  @if (schedules.length > 0) {
+    <h3>📋 Class Schedule List</h3>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Class</th>
+          <th>Section</th>
+          <th>Subject</th>
+          <th>Teacher</th>
+          <th>Day</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of schedules">
+          <td>{{ schedule.id }}</td>
+          <td>{{ schedule.className }}</td>
+          <td>{{ schedule.section }}</td>
+          <td>{{ schedule.subject }}</td>
+          <td>{{ schedule.teacherName }}</td>
+          <td>{{ schedule.dayOfWeek }}</td>
+          <td>{{ schedule.startTime }}</td>
+          <td>{{ schedule.endTime }}</td>
+          <td>
+            <button (click)="deleteSchedule(schedule.id)">🗑 Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  } @else {
+    <p class="no-schedule-msg">⚠️ No schedules added yet.</p>
+  }
+</div>

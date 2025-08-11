@@ -7,9 +7,12 @@ import { ViewTeacherComponent } from './Component/view-teacher-component/view-te
 import { Dashboard } from './layout/dashboard/dashboard';
 import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
-import { Attendence } from './Component/add-attendence/attendence';
+
 import { AddClassScheduleComponent } from './Component/add-class-schedule-component/add-class-schedule-component';
 import { ClassRoutineStuComponent } from './Component/class-routine-stu-component/class-routine-stu-component';
+import { AttendanceComponent } from './Component/attendence/attendence';
+import { ViewClassScheduleComponent } from './Component/view-class-schedule-component/view-class-schedule-component';
+import { ClassSchedule } from './model/classSchedule.model';
 
 
 
@@ -22,9 +25,13 @@ const routes: Routes = [
   {path:'', component:Dashboard},
   {path:'login', component:Login},
   {path:'reg', component:Registration},
-  {path:'attendence', component:Attendence},
+  
   {path:'classSchedule', component:AddClassScheduleComponent},
-  {path:'classRoutine', component:ClassRoutineStuComponent}
+  {path:'classRoutine', component:ClassRoutineStuComponent},
+  {path: 'attendence', component: AttendanceComponent},
+  {path:'viewClassSched', component:ViewClassScheduleComponent},
+  {path:'addClassSched', component:AddClassScheduleComponent},
+  
   
 ];
 

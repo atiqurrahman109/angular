@@ -41,7 +41,57 @@
       "joiningDate": "2025-08-12"
     }
   ],
-  "attendances": [],
+  "attendances": [
+    {
+      "id": "a6de",
+      "date": "2025-08-11",
+      "status": "Absent",
+      "studentId": "1"
+    },
+    {
+      "id": "cfac",
+      "date": "2025-08-11",
+      "status": "Leave",
+      "remarks": "ydr",
+      "studentId": "1"
+    },
+    {
+      "id": "b0cb",
+      "studentId": 2,
+      "studentName": "Sadiar",
+      "className": "8",
+      "section": "A",
+      "attendanceDate": "2025-08-11T00:00:00.000Z",
+      "status": "Absent"
+    },
+    {
+      "id": "fba6",
+      "studentId": 4234,
+      "studentName": "retwet",
+      "className": "8",
+      "section": "A",
+      "attendanceDate": "2025-08-11T00:00:00.000Z",
+      "status": "Present"
+    },
+    {
+      "id": "f5d6",
+      "studentId": 1212,
+      "studentName": "Sadiar",
+      "className": "8",
+      "section": "A",
+      "attendanceDate": "2025-08-11T00:00:00.000Z",
+      "status": "Late"
+    },
+    {
+      "id": "ce06",
+      "studentId": 3,
+      "studentName": "retwet",
+      "className": "8",
+      "section": "A",
+      "attendanceDate": "2025-08-11T00:00:00.000Z",
+      "status": "Late"
+    }
+  ],
   "ClassSchedule": [
     {
       "id": "48ce",
@@ -64,6 +114,5 @@
       "dayOfWeek": "sunday"
     }
   ],
-  "ClassRoutineStu":[]
-
+  "ClassRoutineStu": []
 }

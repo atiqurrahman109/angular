@@ -1,0 +1,79 @@
+<div class="container">
+  <h2>Attendance</h2>
+
+  <form [formGroup]="attendanceForm" (ngSubmit)="onSubmit()" class="attendance-form">
+    <div class="form-group">
+      <label for="studentId">Student ID:</label>
+      <input id="studentId" type="number" formControlName="studentId" placeholder="Enter student ID" />
+      <div *ngIf="attendanceForm.get('studentId')?.invalid && attendanceForm.get('studentId')?.touched" class="error">
+        Student ID is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="studentName">Student Name:</label>
+      <input id="studentName" type="text" formControlName="studentName" placeholder="Enter student name" />
+      <div *ngIf="attendanceForm.get('studentName')?.invalid && attendanceForm.get('studentName')?.touched" class="error">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="className">Class:</label>
+      <input id="className" type="text" formControlName="className" placeholder="Enter class" />
+    </div>
+
+    <div class="form-group">
+      <label for="section">Section:</label>
+      <input id="section" type="text" formControlName="section" placeholder="Enter section" />
+    </div>
+
+    <div class="form-group">
+      <label for="attendanceDate">Date:</label>
+      <input id="attendanceDate" type="date" formControlName="attendanceDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <select id="status" formControlName="status">
+        <option value="" disabled selected>Select status</option>
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+        <option value="Leave">Leave</option>
+        <option value="Late">Late</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="attendanceForm.invalid">Add Attendance</button>
+  </form>
+
+  <hr />
+
+  <h3>Attendance Records</h3>
+  <table class="attendance-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Section</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attendance of attendanceList">
+        <td>{{ attendance.studentId }}</td>
+        <td>{{ attendance.studentName }}</td>
+        <td>{{ attendance.className }}</td>
+        <td>{{ attendance.section }}</td>
+        <td>{{ attendance.attendanceDate | date: 'yyyy-MM-dd' }}</td>
+        <td>
+          <span class="status" [ngClass]="attendance.status.toLowerCase()">
+            {{ attendance.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,8 +1,8 @@
-export class Attendance {
-  id?: number;
-  date!: string; // Format: YYYY-MM-DD
-  status!: 'Present' | 'Absent' | 'Late' | 'Leave';
-  remarks?: string;
-
-  studentId!: number; // Linking to a student
+export interface AttendanceModel {
+  studentId: number;
+  studentName: string;
+  className: string;
+  section: string;
+  attendanceDate: Date;
+  status: 'Present' | 'Absent' | 'Leave' | 'Late';
 }
