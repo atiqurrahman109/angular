@@ -7,6 +7,6 @@ export interface StudentModel {
   email: string;
   phone: string;
   address: string;
-  class: string;        // e.g. "Grade 5"
+  clas: string;        // e.g. "Grade 5"
   section: string;      // e.g. "A"
 }

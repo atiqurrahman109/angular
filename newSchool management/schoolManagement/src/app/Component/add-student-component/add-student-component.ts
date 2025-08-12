@@ -29,7 +29,7 @@ export class AddStudentComponent {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       address: ['', Validators.required],
-      class: ['', Validators.required],
+      clas: ['', Validators.required],
       section: ['', Validators.required],
     });
   }
