@@ -1,0 +1,104 @@
+<div class="container py-4">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header bg-success text-white">
+      <h4 class="mb-0">💰 Add & View Student Fees</h4>
+    </div>
+
+    <div class="card-body">
+      <!-- Add Fee Form -->
+      <form [formGroup]="feeForm" (ngSubmit)="addFee()">
+        
+        <!-- Student Selection -->
+        <div class="mb-3">
+          <label class="form-label">Select Student</label>
+          <select class="form-select" formControlName="studentId" required>
+            <option value="" disabled selected>-- Select Student --</option>
+            <option *ngFor="let s of students" [value]="s.id">
+              {{ s.firstName }} {{ s.lastName }} - {{ s.clas }} {{ s.section }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Fee Category -->
+        <div class="mb-3">
+          <label class="form-label">Fee Category</label>
+          <input type="text" class="form-control" formControlName="feeCategory" placeholder="e.g. Tuition, Exam Fee" required />
+        </div>
+
+        <!-- Multi Month Selection -->
+        <div class="mb-3">
+          <label class="form-label">Select Months</label>
+          <select class="form-select" formControlName="months" multiple required (change)="updateTotal()">
+            <option *ngFor="let month of monthsList" [value]="month">{{ month }}</option>
+          </select>
+          <div class="form-text">Hold Ctrl (Windows) or Cmd (Mac) to select multiple months</div>
+        </div>
+
+        <!-- Fee Amount -->
+        <div class="mb-3">
+          <label class="form-label">Fee Amount per Month</label>
+          <input type="number" class="form-control" formControlName="feeAmount" placeholder="Enter amount" required (input)="updateTotal()" />
+        </div>
+
+        <!-- Total Fee Display -->
+        <div class="alert alert-info" *ngIf="totalAmount > 0">
+          💵 Total Fee: <strong>৳{{ totalAmount }}</strong>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-primary" type="submit" [disabled]="feeForm.invalid">➕ Add Fee</button>
+      </form>
+
+      <hr />
+
+      <!-- Fee Table -->
+      <div *ngIf="fees.length > 0; else noFees">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Student</th>
+                <th>Class</th>
+                <th>Fee Category</th>
+                <th>Month</th>
+                <th>Amount</th>
+                <th>Payment Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let fee of fees; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ fee.student?.firstName }} {{ fee.student?.lastName }}</td>
+                <td>{{ fee.student?.clas }} {{ fee.student?.section }}</td>
+                <td>{{ fee.feeCategory }}</td>
+                <td>{{ fee.feeMonth }}</td>
+                <td>৳{{ fee.feeAmount }}</td>
+                <td>{{ fee.paymentDate || '—' }}</td>
+                <td>
+                  <span class="badge" [ngClass]="fee.paymentDate ? 'bg-success' : 'bg-danger'">
+                    {{ fee.paymentDate ? 'Paid' : 'Pending' }}
+                  </span>
+                </td>
+                <td>
+                  <button *ngIf="!fee.paymentDate" class="btn btn-sm btn-success" (click)="markAsPaid(fee)">
+                    💳 Pay Now
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- No Fees Message -->
+      <ng-template #noFees>
+        <div class="alert alert-warning text-center">
+          ⚠ No fee records found.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

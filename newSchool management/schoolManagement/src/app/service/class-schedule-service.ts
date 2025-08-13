@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ClassSchedule } from '../model/classSchedule.model';
+import { environment } from '../environment/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { ClassSchedule } from '../model/classSchedule.model';
 })
 export class ClassScheduleService {
 
-  private baseUrl = 'http://localhost:3000/ClassSchedule'; // backend API URL
+ private baseUrl =  environment.apiBaseUrl + '/schedule'; // backend API URL
 
   constructor(private http: HttpClient) {}
 

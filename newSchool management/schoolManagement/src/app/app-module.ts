@@ -16,10 +16,10 @@ import { Dashboard } from './layout/dashboard/dashboard';
 import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
 
-import { AddClassScheduleComponent } from './Component/add-class-schedule-component/add-class-schedule-component';
 import { ViewClassScheduleComponent } from './Component/view-class-schedule-component/view-class-schedule-component';
 import { ClassRoutineStuComponent } from './Component/class-routine-stu-component/class-routine-stu-component';
 import { AttendanceComponent } from './Component/attendence/attendence';
+import { AddFeeComponent } from './Component/add-fee-component/add-fee-component';
 
 
 @NgModule({
@@ -35,10 +35,10 @@ import { AttendanceComponent } from './Component/attendence/attendence';
     Dashboard,
     Login,
     Registration,
-    AddClassScheduleComponent,
     ViewClassScheduleComponent,
     ClassRoutineStuComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    AddFeeComponent
  
   ],
   imports: [

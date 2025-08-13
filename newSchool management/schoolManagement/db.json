@@ -126,5 +126,15 @@
       "dayOfWeek": "sunday"
     }
   ],
-  "ClassRoutineStu": []
+  "ClassRoutineStu": [],
+  "fees": [
+    {
+      "id": "f332",
+      "studentId": "1",
+      "feeCategory": "jmkjmku",
+      "feeMonth": "2025-02",
+      "feeAmount": 550,
+      "paymentDate": "2025-08-13"
+    }
+  ]
 }
