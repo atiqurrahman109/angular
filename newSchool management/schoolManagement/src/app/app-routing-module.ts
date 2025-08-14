@@ -12,6 +12,7 @@ import { AttendanceComponent } from './Component/attendence/attendence';
 import { ViewClassScheduleComponent } from './Component/view-class-schedule-component/view-class-schedule-component';
 
 import { AddFeeComponent } from './Component/add-fee-component/add-fee-component';
+import { RoutineComponent } from './Component/routine-component/routine-component';
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'attendence', component: AttendanceComponent},
   {path:'viewClassSched', component:ViewClassScheduleComponent},
   {path: 'fee',component: AddFeeComponent},
+  {path: 'viewRoutine',component: RoutineComponent}
   
  
   

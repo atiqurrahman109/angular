@@ -20,6 +20,7 @@ import { ViewClassScheduleComponent } from './Component/view-class-schedule-comp
 
 import { AttendanceComponent } from './Component/attendence/attendence';
 import { AddFeeComponent } from './Component/add-fee-component/add-fee-component';
+import { RoutineComponent } from './Component/routine-component/routine-component';
 
 
 
@@ -41,9 +42,9 @@ import { AddFeeComponent } from './Component/add-fee-component/add-fee-component
 
     AttendanceComponent,
     AddFeeComponent,
-  
+    RoutineComponent
 
- 
+
   ],
   imports: [
     BrowserModule,

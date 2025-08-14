@@ -1,8 +1,8 @@
-// src/app/services/routine.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RoutineModel } from '../model/routine.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class RoutineService {
 
   constructor(private http: HttpClient) {}
 
-  getAllRoutines(): Observable<RoutineModel[]> {
+  getRoutines(): Observable<RoutineModel[]> {
     return this.http.get<RoutineModel[]>(this.baseUrl);
   }
 
@@ -20,12 +20,13 @@ export class RoutineService {
     return this.http.get<RoutineModel>(`${this.baseUrl}/${id}`);
   }
 
-  createRoutine(routine: RoutineModel): Observable<RoutineModel> {
+  addRoutine(routine: RoutineModel): Observable<RoutineModel> {
     return this.http.post<RoutineModel>(this.baseUrl, routine);
   }
 
-  updateRoutine(id: number, routine: RoutineModel): Observable<RoutineModel> {
-    return this.http.put<RoutineModel>(`${this.baseUrl}/${id}`, routine);
+  updateRoutine(routine: RoutineModel): Observable<RoutineModel> {
+    if (!routine.id) throw new Error('Routine ID is required for update');
+    return this.http.put<RoutineModel>(`${this.baseUrl}/${routine.id}`, routine);
   }
 
   deleteRoutine(id: number): Observable<void> {
