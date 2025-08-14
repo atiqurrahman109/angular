@@ -17,9 +17,11 @@ import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
 
 import { ViewClassScheduleComponent } from './Component/view-class-schedule-component/view-class-schedule-component';
-import { ClassRoutineStuComponent } from './Component/class-routine-stu-component/class-routine-stu-component';
+
 import { AttendanceComponent } from './Component/attendence/attendence';
 import { AddFeeComponent } from './Component/add-fee-component/add-fee-component';
+
+
 
 
 @NgModule({
@@ -36,9 +38,11 @@ import { AddFeeComponent } from './Component/add-fee-component/add-fee-component
     Login,
     Registration,
     ViewClassScheduleComponent,
-    ClassRoutineStuComponent,
+
     AttendanceComponent,
-    AddFeeComponent
+    AddFeeComponent,
+  
+
  
   ],
   imports: [

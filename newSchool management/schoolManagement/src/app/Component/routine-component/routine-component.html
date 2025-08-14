@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h2>Routine Management</h2>
+
+  <!-- Add Routine Form -->
+  <form (ngSubmit)="addRoutine()" class="row g-3">
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Class Name" [(ngModel)]="newRoutine.className" name="className" required>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Subject" [(ngModel)]="Routine.subject" name="subject" required>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Teacher ID" [(ngModel)]="newRoutine.teacherId" name="teacherId" required>
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="Day of Week" [(ngModel)]="newRoutine.dayOfWeek" name="dayOfWeek" required>
+    </div>
+    <div class="col-md-3">
+      <input type="time" class="form-control" [(ngModel)]="newRoutine.startTime" name="startTime" required>
+    </div>
+    <div class="col-md-3">
+      <input type="time" class="form-control" [(ngModel)]="newRoutine.endTime" name="endTime" required>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary" type="submit">Add Routine</button>
+    </div>
+  </form>
+
+  <!-- Routine Table -->
+  <table class="table table-bordered table-striped mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Class</th>
+        <th>Subject</th>
+        <th>Teacher ID</th>
+        <th>Teacher Name</th>
+        <th>Day</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let routine of routines">
+        <td>{{ routine.id }}</td>
+        <td>{{ routine.className }}</td>
+        <td>{{ routine.subject }}</td>
+        <td>{{ routine.teacherId }}</td>
+        <td>{{ routine.teacherName || 'N/A' }}</td>
+        <td>{{ routine.dayOfWeek }}</td>
+        <td>{{ routine.startTime }}</td>
+        <td>{{ routine.endTime }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteRoutine(routine.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

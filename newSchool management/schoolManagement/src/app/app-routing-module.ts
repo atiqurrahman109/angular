@@ -7,10 +7,10 @@ import { ViewTeacherComponent } from './Component/view-teacher-component/view-te
 import { Dashboard } from './layout/dashboard/dashboard';
 import { Login } from './Component/auth/login/login';
 import { Registration } from './Component/auth/registration/registration';
-import { ClassRoutineStuComponent } from './Component/class-routine-stu-component/class-routine-stu-component';
+
 import { AttendanceComponent } from './Component/attendence/attendence';
 import { ViewClassScheduleComponent } from './Component/view-class-schedule-component/view-class-schedule-component';
-import { ClassSchedule } from './model/classSchedule.model';
+
 import { AddFeeComponent } from './Component/add-fee-component/add-fee-component';
 
 
@@ -24,11 +24,11 @@ const routes: Routes = [
   {path:'', component:Dashboard},
   {path:'login', component:Login},
   {path:'reg', component:Registration},
-  {path:'classRoutine', component:ClassRoutineStuComponent},
+  
   {path: 'attendence', component: AttendanceComponent},
   {path:'viewClassSched', component:ViewClassScheduleComponent},
   {path: 'fee',component: AddFeeComponent},
-  {path: 'viewRoutine', component: ViewClassScheduleComponent}
+  
  
   
   
