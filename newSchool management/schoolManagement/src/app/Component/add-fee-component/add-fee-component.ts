@@ -61,7 +61,7 @@ export class AddFeeComponent implements OnInit{
     months.forEach((month: string) => {
       const newFee: StudentFeeModel = {
         id: this.fees.length + 1,
-        studentId: studentId,
+       
         feeCategory: feeCategory,
         feeMonth: month,
         feeAmount: feeAmount,
