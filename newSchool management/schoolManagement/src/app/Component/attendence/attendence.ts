@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AttendenceService } from '../../service/attendence.service';
 import { AttendanceModel } from '../../model/attendence.model';
 
@@ -10,67 +10,31 @@ import { AttendanceModel } from '../../model/attendence.model';
   styleUrls: ['./attendence.css']
 })
 export class AttendanceComponent implements OnInit {
-  attendanceForm!: FormGroup;
-  attendanceList: AttendanceModel[] = [];
+  attendances: AttendanceModel[] = [];
+newAttendance: AttendanceModel = { studentId: 1, attendanceDate: '2025-08-19', status: 'Present' };
 
-  constructor(
-    private fb: FormBuilder,
-    private attendanceService: AttendenceService
-  ) {}
+
+  constructor(private attendenceService: AttendenceService) {}
 
   ngOnInit(): void {
-    this.initializeForm();
-    this.loadAttendanceList();
+    this.loadData();
   }
 
-  initializeForm(): void {
-    this.attendanceForm = this.fb.group({
-      studentId: [null, Validators.required],
-      studentName: ['', Validators.required],
-      className: ['', Validators.required],
-      section: ['', Validators.required],
-      attendanceDate: [this.getTodayDateString(), Validators.required],
-      status: ['Present', Validators.required]
+  loadData() {
+    this.attendenceService.getAll().subscribe(data => {
+      this.attendances = data;
     });
   }
 
-  loadAttendanceList(): void {
-    this.attendanceService.getAttendanceList().subscribe({
-      next: (data) => {
-        this.attendanceList = data;
-      },
-      error: (err) => console.error('Error fetching attendance:', err)
+  save() {
+    this.attendenceService.save(this.newAttendance).subscribe(() => {
+      this.loadData();
     });
   }
 
-  onSubmit(): void {
-    if (this.attendanceForm.invalid) {
-      this.attendanceForm.markAllAsTouched();
-      return;
-    }
-
-    const attendance: AttendanceModel = {
-      ...this.attendanceForm.value,
-      attendanceDate: new Date(this.attendanceForm.value.attendanceDate)
-    };
-
-    this.attendanceService.createAttendance(attendance).subscribe({
-      next: (response) => {
-        this.attendanceList.push(response);
-        this.attendanceForm.reset({
-          studentId: null,
-          studentName: '',
-          className: '',
-          section: '',
-          attendanceDate: this.getTodayDateString(),
-          status: 'Present'
-        });
-      },
-      error: (err) => console.error('Error adding attendance:', err)
+  delete(id: number) {
+    this.attendenceService.delete(id).subscribe(() => {
+      this.loadData();
     });
-  }
-
-  private getTodayDateString(): string {
-    return new Date().toISOString().split('T')[0];
   }
 }

@@ -79,4 +79,4 @@ export class AddFeeComponent implements OnInit{
   }
 }
 
-...AddFeeComponent.apply.apply.apply.apply.
+

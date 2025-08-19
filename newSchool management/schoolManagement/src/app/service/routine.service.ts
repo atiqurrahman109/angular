@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RoutineModel } from '../model/routine.model';
+import { environment } from '../environment/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoutineService {
-  private baseUrl = 'http://localhost:8080/api/routines';
+   private baseUrl =  environment.apiBaseUrl + '/routine';
 
   constructor(private http: HttpClient) {}
 

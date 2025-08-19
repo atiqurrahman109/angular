@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StudentFeeModel } from '../model/fee.model';
+import { environment } from '../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeeService {
   
-   private baseUrl = 'http://localhost:3000/fees'; // JSON server endpoint
+     private baseUrl =  environment.apiBaseUrl + '/fees'; // JSON server endpoint
 
   constructor(private http: HttpClient) {}
 

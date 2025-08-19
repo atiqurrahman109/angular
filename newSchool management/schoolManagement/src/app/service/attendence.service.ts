@@ -10,13 +10,27 @@ import { environment } from '../environment/environment';
 export class AttendenceService {
   private baseUrl =  environment.apiBaseUrl + '/attendence';
 
+ 
+
   constructor(private http: HttpClient) {}
 
-  createAttendance(attendance: AttendanceModel): Observable<AttendanceModel> {
-    return this.http.post<AttendanceModel>(this.baseUrl, attendance);
+  // Create or Update
+  save(attendence: AttendanceModel): Observable<AttendanceModel> {
+    return this.http.post<AttendanceModel>(`${this.baseUrl}`, attendence);
   }
 
-  getAttendanceList(): Observable<AttendanceModel[]> {
-    return this.http.get<AttendanceModel[]>(this.baseUrl);
+  // Get All
+  getAll(): Observable<AttendanceModel[]> {
+    return this.http.get<AttendanceModel[]>(`${this.baseUrl}`);
+  }
+
+  // Get by ID
+  getById(id: number): Observable<AttendanceModel> {
+    return this.http.get<AttendanceModel>(`${this.baseUrl}/${id}`);
+  }
+
+  // Delete
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }

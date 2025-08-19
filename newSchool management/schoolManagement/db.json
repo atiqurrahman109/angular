@@ -54,12 +54,7 @@
     }
   ],
   "attendances": [
-    {
-      "id": "a6de",
-      "date": "2025-08-11",
-      "status": "Absent",
-      "studentId": "1"
-    },
+   
     {
       "id": "cfac",
       "date": "2025-08-11",
@@ -136,5 +131,10 @@
       "feeAmount": 550,
       "paymentDate": "2025-08-13"
     }
+  ],
+  "attendence":[
+ 
+
+
   ]
 }
