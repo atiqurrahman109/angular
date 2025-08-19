@@ -78,3 +78,5 @@ export class AddFeeComponent implements OnInit{
     fee.paymentDate = new Date().toISOString().split('T')[0];
   }
 }
+
+...AddFeeComponent.apply.apply.apply.apply.
