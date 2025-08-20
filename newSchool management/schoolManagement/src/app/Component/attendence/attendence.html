@@ -1,9 +1,9 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <h2 class="mb-3">Attendance Entry</h2>
 
   <form [formGroup]="formGroup" (ngSubmit)="addAtten()" novalidate class="card p-3 shadow-sm">
 
-    <!-- Attendance Date -->
+   
     <div class="mb-3">
       <label class="form-label">Date & Time</label>
       <input
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <!-- Status -->
+    
     <div class="mb-3">
       <label class="form-label">Status</label>
       <select class="form-select" formControlName="status">
@@ -33,14 +33,14 @@
       </div>
     </div>
 
-    <!-- Student -->
+   
     <div class="mb-3">
       <label class="form-label">Student</label>
       <select class="form-select" formControlName="studentId">
         <option value="" disabled>Select student</option>
         <option *ngFor="let s of students" [value]="s.id">
           {{ s.firstName }} {{ s.lastName ? s.lastName : '' }}
-          — Class: {{ s.clas }} | Roll: {{ s. }}
+          — Class: {{ s.clas }} |
         </option>
       </select>
       <div class="text-danger mt-1"
@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <!-- Actions -->
+    
     <div class="d-flex gap-2">
       <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid || submitting">
         {{ submitting ? 'Saving...' : 'Save Attendance' }}
@@ -60,4 +60,4 @@
       </button>
     </div>
   </form>
-</div>
+</div> -->
