@@ -8,29 +8,35 @@ import { environment } from '../environment/environment';
   providedIn: 'root'
 })
 export class AttendenceService {
-  private baseUrl =  environment.apiBaseUrl + '/attendence';
-
- 
+private baseUrl =  environment.apiBaseUrl + '/attendence';
 
   constructor(private http: HttpClient) {}
 
-  // Create or Update
-  save(attendence: AttendanceModel): Observable<AttendanceModel> {
-    return this.http.post<AttendanceModel>(`${this.baseUrl}`, attendence);
+  getAllAtten(): Observable<any> {
+    return this.http.get(this.baseUrl);
   }
 
-  // Get All
-  getAll(): Observable<AttendanceModel[]> {
-    return this.http.get<AttendanceModel[]>(`${this.baseUrl}`);
-  }
-
-  // Get by ID
   getById(id: number): Observable<AttendanceModel> {
     return this.http.get<AttendanceModel>(`${this.baseUrl}/${id}`);
   }
 
-  // Delete
-  delete(id: number): Observable<void> {
+  // create(attendance: AttendanceModel): Observable<AttendanceModel> {
+  //   return this.http.post<AttendanceModel>(this.baseUrl, attendance);
+  // }
+
+create(attendance: AttendanceModel, studentId: number) {
+  return this.http.post<AttendanceModel>(
+    `http://localhost:8080/api/attendence?studentId=${studentId}`,
+    attendance
+  );
+}
+
+
+  update(id: number, attendance: AttendanceModel): Observable<AttendanceModel> {
+    return this.http.put<AttendanceModel>(`${this.baseUrl}/${id}`, attendance);
+  }
+
+  delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }

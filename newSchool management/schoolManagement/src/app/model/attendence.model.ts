@@ -1,8 +1,11 @@
+import { StudentModel } from "./student.model";
+
 export interface AttendanceModel {
-  studentId: number;
+  id: number;
   studentName: string;
   className: string;
   section: string;
   attendanceDate: Date;
   status: 'Present' | 'Absent' | 'Leave' | 'Late';
+  student:StudentModel
 }

@@ -1,96 +1,63 @@
 <div class="container mt-4">
+  <h2 class="mb-3">Attendance Entry</h2>
 
-  <h2 class="mb-3">Attendance Management</h2>
+  <form [formGroup]="formGroup" (ngSubmit)="addAtten()" novalidate class="card p-3 shadow-sm">
 
-  <!-- Add Attendance Form -->
-  <div class="card shadow-sm mb-4">
-    <div class="card-header">
-      Add New Attendance
+    <!-- Attendance Date -->
+    <div class="mb-3">
+      <label class="form-label">Date & Time</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        formControlName="attendanceDate"
+      />
+      <div class="text-danger mt-1"
+           *ngIf="formGroup.get('attendanceDate')?.touched && formGroup.get('attendanceDate')?.invalid">
+        Date & time is required.
+      </div>
     </div>
-    <div class="card-body">
-      <form (ngSubmit)="save()" #attendanceForm="ngForm">
 
-        <!-- Student ID -->
-        <div class="mb-3">
-          <label class="form-label">Student ID</label>
-          <input type="number"
-                 class="form-control"
-                 [(ngModel)]="newAttendance.studentId"
-                 name="studentId"
-                 required />
-        </div>
-
-        <!-- Date -->
-        <div class="mb-3">
-          <label class="form-label">Date</label>
-          <input type="date"
-                 class="form-control"
-                 [(ngModel)]="newAttendance.attendanceDate"
-                 name="attendanceDate"
-                 required />
-        </div>
-
-        <!-- Status -->
-        <div class="mb-3">
-          <label class="form-label">Status</label>
-          <select class="form-select"
-                  [(ngModel)]="newAttendance.status"
-                  name="status"
-                  required>
-            <option value="Present">Present</option>
-            <option value="Absent">Absent</option>
-            <option value="Late">Late</option>
-            <option value="Excused">Excused</option>
-          </select>
-        </div>
-
-        <button class="btn btn-primary" type="submit">Save</button>
-      </form>
+    <!-- Status -->
+    <div class="mb-3">
+      <label class="form-label">Status</label>
+      <select class="form-select" formControlName="status">
+        <option value="" disabled>Select status</option>
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+        <option value="Leave">Leave</option>
+        <option value="Late">Late</option>
+      </select>
+      <div class="text-danger mt-1"
+           *ngIf="formGroup.get('status')?.touched && formGroup.get('status')?.invalid">
+        Status is required.
+      </div>
     </div>
-  </div>
 
-  <!-- Attendance List -->
-  <div class="card shadow-sm">
-    <div class="card-header">
-      Attendance Records
+    <!-- Student -->
+    <div class="mb-3">
+      <label class="form-label">Student</label>
+      <select class="form-select" formControlName="studentId">
+        <option value="" disabled>Select student</option>
+        <option *ngFor="let s of students" [value]="s.id">
+          {{ s.firstName }} {{ s.lastName ? s.lastName : '' }}
+          — Class: {{ s.clas }} | Roll: {{ s. }}
+        </option>
+      </select>
+      <div class="text-danger mt-1"
+           *ngIf="formGroup.get('studentId')?.touched && formGroup.get('studentId')?.invalid">
+        Student is required.
+      </div>
     </div>
-    <div class="table-responsive">
-      <table class="table table-hover mb-0">
-        <thead class="table-light">
-          <tr>
-            <th>ID</th>
-            <th>Student ID</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let a of attendances">
-            <td>{{ a.studentId }}</td>
-            <td>{{ a.studentId }}</td>
-            <td>{{ a.attendanceDate }}</td>
-            <td>
-              <span class="badge"
-                [ngClass]="{
-                  'bg-success': a.status === 'Present',
-                  'bg-danger': a.status === 'Absent',
-                  'bg-warning text-dark': a.status === 'Late',
-                  
-                }">
-                {{ a.status }}
-              </span>
-            </td>
-            <td>
-              <button class="btn btn-sm btn-danger" (click)="delete(a.studentId!)">Delete</button>
-            </td>
-          </tr>
-          <tr *ngIf="attendances.length === 0">
-            <td colspan="5" class="text-center text-muted py-3">No records found</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
 
+    <!-- Actions -->
+    <div class="d-flex gap-2">
+      <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid || submitting">
+        {{ submitting ? 'Saving...' : 'Save Attendance' }}
+      </button>
+      <button class="btn btn-outline-secondary" type="button"
+              (click)="formGroup.reset(); formGroup.patchValue({attendanceDate: (new Date() | date:'yyyy-MM-ddTHH:mm')})">
+        Reset
+      </button>
+    </div>
+  </form>
 </div>
