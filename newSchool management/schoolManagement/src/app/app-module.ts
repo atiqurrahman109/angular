@@ -21,6 +21,7 @@ import { ViewClassScheduleComponent } from './Component/view-class-schedule-comp
 import { AttendanceComponent } from './Component/attendence/attendence';
 import { AddFeeComponent } from './Component/add-fee-component/add-fee-component';
 import { RoutineComponent } from './Component/routine-component/routine-component';
+import { MarksAddComponent } from './Component/add-marks-component/add-marks-component';
 
 
 
@@ -42,7 +43,8 @@ import { RoutineComponent } from './Component/routine-component/routine-componen
 
     AttendanceComponent,
     AddFeeComponent,
-    RoutineComponent
+    RoutineComponent,
+    MarksAddComponent
 
 
   ],

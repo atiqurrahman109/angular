@@ -1,0 +1,105 @@
+<div class="container p-3">
+  <h2 class="mb-3">Add / Update Marks</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="card p-3 mb-4">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label">Student ID *</label>
+        <input type="number" class="form-control" formControlName="studentId" />
+        <div class="text-danger mt-1" *ngIf="form.get('studentId')?.touched && form.get('studentId')?.invalid">
+          Student ID is required
+        </div>
+      </div>
+
+      
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Bangla *</label>
+        <input type="number" class="form-control" formControlName="marksObtainedBangla" />
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">English *</label>
+        <input type="number" class="form-control" formControlName="marksObtainedEnglish" />
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Math *</label>
+        <input type="number" class="form-control" formControlName="marksObtainedMath" />
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Total</label>
+        <input type="number" class="form-control" formControlName="totalMarks" />
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Grade</label>
+        <input type="text" class="form-control" formControlName="grade" />
+      </div>
+
+      <div class="col-md-2">
+        <label class="form-label">Status</label>
+        <input type="text" class="form-control" formControlName="status" />
+      </div>
+    </div>
+
+    <div class="mt-3 d-flex gap-2">
+      <button class="btn btn-primary" type="submit" [disabled]="loading">Save</button>
+      <span *ngIf="loading" class="align-self-center">Saving...</span>
+    </div>
+
+    <div class="mt-2">
+      <div class="text-success" *ngIf="successMsg">{{ successMsg }}</div>
+      <div class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+    </div>
+  </form>
+
+  <h4 class="mb-2">Marks List</h4>
+  <div class="table-responsive">
+    <table class="table table-striped align-middle">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Student</th>
+          <th>Exam</th>
+          <th>Bangla</th>
+          <th>English</th>
+          <th>Math</th>
+          <th>Total</th>
+          <th>Grade</th>
+          <th>Status</th>
+          <th style="width: 100px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of marksList">
+          <td>{{ m.id }}</td>
+          <td>
+            <span *ngIf="m.studentDTO">
+              {{ m.studentDTO?.firstName || 'N/A' }} (ID: {{ m.studentDTO?.id }})
+            </span>
+          </td>
+          <td>
+            <span *ngIf="m.examDTO">
+              {{ m.examDTO?.examName || 'N/A' }} (ID: {{ m.examDTO?.id }})
+            </span>
+          </td>
+          <td>{{ m.marksObtainedBangla }}</td>
+          <td>{{ m.marksObtainedEnglish }}</td>
+          <td>{{ m.marksObtainedMath }}</td>
+          <td>{{ m.totalMarks }}</td>
+          <td>{{ m.grade }}</td>
+          <td>{{ m.status }}</td>
+          <td>
+            <button class="btn btn-sm btn-outline-danger" (click)="delete(m.id)">Delete</button>
+          </td>
+        </tr>
+        <tr *ngIf="marksList.length === 0">
+          <td colspan="10" class="text-center">No data</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
