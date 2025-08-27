@@ -1,42 +1,43 @@
 import { Injectable } from '@angular/core';
-import { AttendanceModel } from '../model/attendence.model';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environment/environment';
+import { Observable } from 'rxjs';
+import { AttendanceModel } from '../model/attendence.model';
+
+export interface Student {
+  id: number;
+  firstname: string;
+  lastname: string;
+}
+
+export interface Attendence {
+  id?: number;
+  attendanceDate: string;
+  status: string;
+  student: Student;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AttendenceService {
-private baseUrl =  environment.apiBaseUrl + '/attendence';
+
+  private apiUrl = 'http://localhost:8085/api/attendence';
 
   constructor(private http: HttpClient) {}
 
-  getAllAtten(): Observable<any> {
-    return this.http.get(this.baseUrl);
+  getAll(): Observable<AttendanceModel[]> {
+    return this.http.get<AttendanceModel[]>(this.apiUrl);
   }
 
   getById(id: number): Observable<AttendanceModel> {
-    return this.http.get<AttendanceModel>(`${this.baseUrl}/${id}`);
+    return this.http.get<AttendanceModel>(`${this.apiUrl}/${id}`);
   }
 
-  // create(attendance: AttendanceModel): Observable<AttendanceModel> {
-  //   return this.http.post<AttendanceModel>(this.baseUrl, attendance);
-  // }
-
-create(attendance: AttendanceModel, studentId: number) {
-  return this.http.post<AttendanceModel>(
-    `http://localhost:8080/api/attendence?studentId=${studentId}`,
-    attendance
-  );
-}
-
-
-  update(id: number, attendance: AttendanceModel): Observable<AttendanceModel> {
-    return this.http.put<AttendanceModel>(`${this.baseUrl}/${id}`, attendance);
+  create(attendence: AttendanceModel): Observable<AttendanceModel> {
+    return this.http.post<AttendanceModel>(this.apiUrl, attendence);
   }
 
-  delete(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

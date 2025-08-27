@@ -24,6 +24,7 @@ import { RoutineComponent } from './Component/routine-component/routine-componen
 import { MarksAddComponent } from './Component/add-marks-component/add-marks-component';
 import { AddExamComponent } from './Component/add-exam-component/add-exam-component';
 import { ViewExamComponent } from './Component/view-exam-component/view-exam-component';
+import { ViewAttendance } from './Component/view-attendance/view-attendance';
 
 
 
@@ -48,7 +49,8 @@ import { ViewExamComponent } from './Component/view-exam-component/view-exam-com
     RoutineComponent,
     MarksAddComponent,
     AddExamComponent,
-    ViewExamComponent
+    ViewExamComponent,
+    ViewAttendance
 
 
   ],

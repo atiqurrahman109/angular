@@ -1,18 +1,18 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AttendanceModel } from '../../model/attendence.model';
 import { StudentModel } from '../../model/student.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AttendenceService } from '../../service/attendence.service';
-import { StudentService } from '../../service/student-service';
 import { Router } from '@angular/router';
+import { StudentService } from '../../service/student-service';
 
 @Component({
+  selector: 'app-view-attendance',
   standalone: false,
-  selector: 'app-attendence',
-  templateUrl: './attendence.html',
-  styleUrls: ['./attendence.css']
+  templateUrl: './view-attendance.html',
+  styleUrl: './view-attendance.css'
 })
-export class AttendanceComponent implements OnInit {
+export class ViewAttendance implements OnInit{
 
   atttendance: AttendanceModel[] = []; // Attendance List
   student: StudentModel[] = [];
@@ -90,6 +90,5 @@ export class AttendanceComponent implements OnInit {
       }
     });
   }
-
 
 }
