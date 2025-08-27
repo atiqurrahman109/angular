@@ -7,8 +7,7 @@ export interface Marks {
   totalMarks?: number | null;
   grade?: string | null;
   status?: string | null;
-  student: { id: number }; // only id is needed
-  exam: { id: number };    // only id is needed
+  student: { id: number }; // only id is needed   // only id is needed
 }
 
 // Response DTO from GET /api/marks
@@ -21,5 +20,4 @@ export interface MarksDTO {
   grade: string | null;
   status: string | null;
   studentDTO?: { id: number; firstName?: string | null };
-  examDTO?: { id: number; examName?: string | null };
 }

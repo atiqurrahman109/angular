@@ -1,0 +1,36 @@
+<div class="exam-list-container">
+  <div class="exam-list-card">
+    <h2 class="title">📄 Exams</h2>
+
+    
+
+    <div *ngIf="loading" class="loading">Loading...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <table *ngIf="!loading && exams.length > 0" class="exam-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Exam Name</th>
+          <th>Exam Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ex of exams">
+          <td>{{ ex.id }}</td>
+          <td>{{ ex.examName }}</td>
+          <td>{{ ex.examType }}</td>
+          <td>
+            <button class="btn btn-edit" (click)="onEdit(ex.id)">✏️ Edit</button>
+            <button class="btn btn-delete" (click)="onDelete(ex.id)">🗑️ Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!loading && exams.length === 0" class="no-data">
+      No exams found.
+    </div>
+  </div>
+</div>

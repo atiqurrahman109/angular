@@ -1,0 +1,31 @@
+<div class="exam-form-container">
+  <div class="exam-form-card">
+    <h2 *ngIf="!isEdit" class="form-title">📄 Add Exam</h2>
+    <h2 *ngIf="isEdit" class="form-title">✏️ Edit Exam</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input formControlName="id" type="hidden">
+
+      <div class="form-group">
+        <label>Exam Name</label>
+        <input formControlName="examName" placeholder="Enter exam name"/>
+        <div class="error" *ngIf="form.get('examName')?.touched && form.get('examName')?.invalid">
+          Exam Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Exam Type</label>
+        <input formControlName="examType" placeholder="Enter exam type"/>
+        <div class="error" *ngIf="form.get('examType')?.touched && form.get('examType')?.invalid">
+          Exam Type is required
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" routerLink="/exams" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

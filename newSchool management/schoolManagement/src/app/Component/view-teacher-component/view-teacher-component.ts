@@ -44,4 +44,9 @@ export class ViewTeacherComponent implements OnInit{
       });
     }
   }
+
+  trackById(index: number, item: any): number {
+  return item.id;
+}
+
 }

@@ -1,0 +1,104 @@
+.exam-list-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: #f0f4f8;
+  min-height: 80vh;
+}
+
+.exam-list-card {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+.title {
+  text-align: center;
+  color: #0f766e;
+  margin-bottom: 20px;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.exam-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.exam-table th, .exam-table td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.exam-table th {
+  background-color: #0f766e;
+  color: white;
+  font-weight: 500;
+}
+
+.exam-table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+  margin: 0 2px;
+}
+
+.btn-primary {
+  background-color: #0f766e;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #115e59;
+}
+
+.btn-edit {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.btn-edit:hover {
+  background-color: #d97706;
+}
+
+.btn-delete {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #b91c1c;
+}
+
+.loading {
+  text-align: center;
+  color: #0f766e;
+  margin: 10px 0;
+}
+
+.error {
+  text-align: center;
+  color: #dc2626;
+  margin: 10px 0;
+}
+
+.no-data {
+  text-align: center;
+  color: #6b7280;
+  margin: 15px 0;
+}

@@ -1,41 +1,54 @@
-<div class="container mt-4">
-  <h2>All Teachers</h2>
+<!-- Full Page Background -->
+<div class="min-vh-100 d-flex justify-content-center align-items-start py-5" style="background: linear-gradient(135deg, #c3ecf7, #f8d7ff);">
+  <div class="w-100" style="max-width: 1200px;">
+    <div class="bg-white shadow-lg p-4 rounded">
+      <h2 class="text-center mb-4 fw-bold" style="color: #2c3e50; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        👨‍🏫 All Teachers
+      </h2>
 
-  @if (loading) {
-    <div class="alert alert-info">Loading teachers...</div>
-  }
-  @else if (!loading && teachers.length === 0) {
-    <div class="alert alert-warning">No teachers found.</div>
-  }
-  @else if (!loading && teachers.length > 0) {
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Subject</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Experience</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (t of teachers; track t.id) {
-          <tr>
-            <td>{{ t.id }}</td>
-            <td>{{ t.firstName }} {{ t.lastName }}</td>
-            <td>{{ t.subject }}</td>
-            <td>{{ t.email }}</td>
-            <td>{{ t.phone }}</td>
-            <td>{{ t.experience }} years</td>
-            <td>
-              <a [routerLink]="['/edit-teacher', t.id]" class="btn btn-sm btn-warning">Edit</a>
-              <button (click)="deleteTeacher(t.id)" class="btn btn-sm btn-danger">Delete</button>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  }
+      <!-- Loading -->
+      <div *ngIf="loading" class="text-center text-primary mb-3 fs-5">
+        <div class="spinner-border text-primary me-2" role="status"></div>
+        Loading teachers...
+      </div>
+
+     
+
+      <!-- No Teachers -->
+      <div *ngIf="!loading && teachers.length === 0" class="alert alert-warning text-center">
+        🚫 No teachers found.
+      </div>
+
+      <!-- Teachers Table -->
+      <div *ngIf="teachers.length > 0" class="table-responsive animated fadeIn">
+        <table class="table table-bordered table-hover text-center align-middle" style="border-radius: 10px; overflow: hidden;">
+          <thead style="background: linear-gradient(to right, #009688, #4db6ac); color: white;">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Subject</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Experience</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of teachers; let i = index; trackBy: trackById" class="table-light">
+              <td class="fw-bold">{{ i + 1 }}</td>
+              <td>{{ t.firstName }} {{ t.lastName }}</td>
+              <td>{{ t.subject }}</td>
+              <td>{{ t.email }}</td>
+              <td>{{ t.phone }}</td>
+              <td>{{ t.experience }} years</td>
+              <td>
+                <a [routerLink]="['/edit-teacher', t.id]" class="btn btn-sm btn-warning me-2">Edit</a>
+                <button (click)="deleteTeacher(t.id)" class="btn btn-sm btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

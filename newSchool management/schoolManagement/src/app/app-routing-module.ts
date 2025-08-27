@@ -14,6 +14,9 @@ import { ViewClassScheduleComponent } from './Component/view-class-schedule-comp
 import { AddFeeComponent } from './Component/add-fee-component/add-fee-component';
 import { RoutineComponent } from './Component/routine-component/routine-component';
 import { MarksAddComponent } from './Component/add-marks-component/add-marks-component';
+import { AddExamComponent } from './Component/add-exam-component/add-exam-component';
+import { ViewExamComponent } from './Component/view-exam-component/view-exam-component';
+
 
 
 
@@ -31,7 +34,10 @@ const routes: Routes = [
   {path:'viewClassSched', component:ViewClassScheduleComponent},
   {path: 'fee',component: AddFeeComponent},
   {path: 'viewRoutine',component: RoutineComponent},
-  {path:'addMarks', component: MarksAddComponent}
+  {path:'addMarks', component: MarksAddComponent},
+  {path:'addExam', component:AddExamComponent},
+  {path:'viewExam',component:ViewExamComponent}
+  
   
  
   

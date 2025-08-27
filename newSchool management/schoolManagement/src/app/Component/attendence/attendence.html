@@ -1,4 +1,4 @@
-<!-- <div class="container mt-4">
+<div class="container mt-4">
   <h2 class="mb-3">Attendance Entry</h2>
 
   <form [formGroup]="formGroup" (ngSubmit)="addAtten()" novalidate class="card p-3 shadow-sm">
@@ -54,10 +54,10 @@
       <button class="btn btn-primary" type="submit" [disabled]="formGroup.invalid || submitting">
         {{ submitting ? 'Saving...' : 'Save Attendance' }}
       </button>
-      <button class="btn btn-outline-secondary" type="button"
+      <!-- <button class="btn btn-outline-secondary" type="button"
               (click)="formGroup.reset(); formGroup.patchValue({attendanceDate: (new Date() | date:'yyyy-MM-ddTHH:mm')})">
         Reset
-      </button>
+      </button> -->
     </div>
   </form>
-</div> -->
+</div>

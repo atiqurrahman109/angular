@@ -12,7 +12,6 @@ import { MarksService } from '../../service/marks.service';
 @Injectable({
   providedIn: 'root'
 })
-
 export class MarksAddComponent implements OnInit {
   form!: FormGroup;
   loading = false;
@@ -22,24 +21,21 @@ export class MarksAddComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private marksService : MarksService
+    private marksService: MarksService
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       studentId: [null, [Validators.required, Validators.min(1)]],
-      examId: [null, [Validators.required, Validators.min(1)]],
-
+      // Removed examId since your backend model does not have exam field
       marksObtainedBangla: [0, [Validators.required, Validators.min(0)]],
       marksObtainedEnglish: [0, [Validators.required, Validators.min(0)]],
       marksObtainedMath: [0, [Validators.required, Validators.min(0)]],
-
       totalMarks: [{ value: 0, disabled: true }],
       grade: [''],
       status: ['']
     });
 
-    // Auto-calc total on marks change
     this.form.valueChanges.subscribe(val => {
       const total =
         (Number(val.marksObtainedBangla) || 0) +
@@ -48,9 +44,9 @@ export class MarksAddComponent implements OnInit {
 
       this.form.get('totalMarks')?.setValue(total, { emitEvent: false });
 
-      // Optionally compute grade & status on client
       const grade = this.computeGrade(total);
-      const status = total >= 150 ? 'Pass' : 'Fail'; // Demo rule; backend override করতে পারে
+      const status = total >= 150 ? 'Pass' : 'Fail';
+
       if (!this.isControlDirty(this.form.get('grade'))) {
         this.form.get('grade')?.setValue(grade, { emitEvent: false });
       }
@@ -67,12 +63,12 @@ export class MarksAddComponent implements OnInit {
   }
 
   private computeGrade(total: number): string {
-    if (total >= 240) return 'A+';
-    if (total >= 210) return 'A';
-    if (total >= 180) return 'A-';
-    if (total >= 150) return 'B';
-    if (total >= 120) return 'C';
-    if (total >= 90)  return 'D';
+    if (total >= 80) return 'A+';
+    if (total >= 70) return 'A';
+    if (total >= 60) return 'A-';
+    if (total >= 50) return 'B';
+    if (total >= 40) return 'C';
+    if (total >= 33) return 'D';
     return 'F';
   }
 
@@ -84,7 +80,8 @@ export class MarksAddComponent implements OnInit {
       return;
     }
 
-    const v = this.form.getRawValue(); // includes disabled totalMarks
+    const v = this.form.getRawValue();
+
     const payload: Marks = {
       marksObtainedBangla: Number(v.marksObtainedBangla),
       marksObtainedEnglish: Number(v.marksObtainedEnglish),
@@ -92,8 +89,7 @@ export class MarksAddComponent implements OnInit {
       totalMarks: Number(v.totalMarks),
       grade: v.grade || null,
       status: v.status || null,
-      student: { id: Number(v.studentId) },
-      exam: { id: Number(v.examId) }
+      student: { id: Number(v.studentId) }  // Only student ID as your backend expects
     };
 
     this.loading = true;
@@ -103,7 +99,6 @@ export class MarksAddComponent implements OnInit {
         this.form.markAsPristine();
         this.form.reset({
           studentId: null,
-          examId: null,
           marksObtainedBangla: 0,
           marksObtainedEnglish: 0,
           marksObtainedMath: 0,
