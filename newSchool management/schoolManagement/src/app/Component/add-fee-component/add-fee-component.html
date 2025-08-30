@@ -7,28 +7,33 @@
     <div class="card-body">
       <!-- Add Fee Form -->
       <form [formGroup]="feeForm" (ngSubmit)="addFee()">
-        
         <!-- Student Selection -->
         <div class="mb-3">
           <label class="form-label">Select Student</label>
-          <select class="form-select" formControlName="studentId" required>
-            <option value="" disabled selected>-- Select Student --</option>
+          <select class="form-select" formControlName="studentId">
+            <option value="" disabled>-- Select Student --</option>
             <option *ngFor="let s of students" [value]="s.id">
               {{ s.firstName }} {{ s.lastName }} - {{ s.clas }} {{ s.section }}
             </option>
           </select>
         </div>
 
+        <!-- Payment Date -->
+        <div class="mb-3">
+          <label class="form-label">Payment Date</label>
+          <input type="date" class="form-control" formControlName="paymentDate" />
+        </div>
+
         <!-- Fee Category -->
         <div class="mb-3">
           <label class="form-label">Fee Category</label>
-          <input type="text" class="form-control" formControlName="feeCategory" placeholder="e.g. Tuition, Exam Fee" required />
+          <input type="text" class="form-control" formControlName="feeCategory" placeholder="e.g. Tuition, Exam Fee" />
         </div>
 
         <!-- Multi Month Selection -->
         <div class="mb-3">
           <label class="form-label">Select Months</label>
-          <select class="form-select" formControlName="months" multiple required (change)="updateTotal()">
+          <select class="form-select" formControlName="months" multiple (change)="updateTotal()">
             <option *ngFor="let month of monthsList" [value]="month">{{ month }}</option>
           </select>
           <div class="form-text">Hold Ctrl (Windows) or Cmd (Mac) to select multiple months</div>
@@ -37,7 +42,7 @@
         <!-- Fee Amount -->
         <div class="mb-3">
           <label class="form-label">Fee Amount per Month</label>
-          <input type="number" class="form-control" formControlName="feeAmount" placeholder="Enter amount" required (input)="updateTotal()" />
+          <input type="number" class="form-control" formControlName="feeAmount" placeholder="Enter amount" (input)="updateTotal()" />
         </div>
 
         <!-- Total Fee Display -->
@@ -65,27 +70,27 @@
                 <th>Amount</th>
                 <th>Payment Date</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let fee of fees; let i = index">
                 <td>{{ i + 1 }}</td>
-                <td>{{ fee.student?.firstName }} {{ fee.student?.lastName }}</td>
-                <td>{{ fee.student?.clas }} {{ fee.student?.section }}</td>
+                <td>{{ fee.student?.firstName }}</td>
+                <td>{{ fee.student?.clas }} </td>
                 <td>{{ fee.feeCategory }}</td>
                 <td>{{ fee.feeMonth }}</td>
                 <td>৳{{ fee.feeAmount }}</td>
-                <td>{{ fee.paymentDate || '—' }}</td>
+                <td>{{ fee.paymentDate }}</td>
                 <td>
                   <span class="badge" [ngClass]="fee.paymentDate ? 'bg-success' : 'bg-danger'">
                     {{ fee.paymentDate ? 'Paid' : 'Pending' }}
                   </span>
                 </td>
                 <td>
-                  <button *ngIf="!fee.paymentDate" class="btn btn-sm btn-success" (click)="markAsPaid(fee)">
-                    <button *ngIf="!fee.paymentDate" class="btn btn-sm btn-warning" (click)="(fee)">delete</button>
-                    💳 Pay Now
+                 
+                  <button class="btn btn-sm btn-warning" (click)="deleteFee(fee)">
+                    🗑 Delete
                   </button>
                 </td>
               </tr>

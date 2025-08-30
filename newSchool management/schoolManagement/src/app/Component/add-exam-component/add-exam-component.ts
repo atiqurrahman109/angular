@@ -25,9 +25,9 @@ form!: FormGroup;
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      id: [0],
+      
       examName: ['', Validators.required],
-      examType: ['', Validators.required]
+      examMonth: ['', Validators.required]
     });
 
     this.route.paramMap.subscribe(params => {
@@ -47,7 +47,7 @@ form!: FormGroup;
         this.form.patchValue({
           id: ex.id,
           examName: ex.examName,
-          examType: ex.examType
+          examType: ex.examMonth
         });
         this.loading = false;
       },

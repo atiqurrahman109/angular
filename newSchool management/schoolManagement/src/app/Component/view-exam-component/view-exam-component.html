@@ -12,7 +12,7 @@
         <tr>
           <th>ID</th>
           <th>Exam Name</th>
-          <th>Exam Type</th>
+          <th>Exam Month</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -20,7 +20,7 @@
         <tr *ngFor="let ex of exams">
           <td>{{ ex.id }}</td>
           <td>{{ ex.examName }}</td>
-          <td>{{ ex.examType }}</td>
+          <td>{{ ex.examMonth }}</td>
           <td>
             <button class="btn btn-edit" (click)="onEdit(ex.id)">✏️ Edit</button>
             <button class="btn btn-delete" (click)="onDelete(ex.id)">🗑️ Delete</button>

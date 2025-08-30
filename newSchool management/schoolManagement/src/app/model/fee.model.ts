@@ -6,6 +6,6 @@ export interface StudentFeeModel{
   feeCategory: string;
   feeMonth: string;
   feeAmount: number;
-  paymentDate?: string;  // Optional - only when paid
+  paymentDate?: Date;  // Optional - only when paid
   student?: StudentModel;
 }
