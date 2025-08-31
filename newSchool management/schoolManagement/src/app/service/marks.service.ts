@@ -2,21 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { environment } from '../environment/environment';
-import { Marks, MarksDTO } from '../model/marks.model';
+import { MarksDTO } from '../model/marks.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarksService {
 
-  // প্রয়োজনমতো environment ব্যবহার করতে পারেন
+  
   private baseUrl =  environment.apiBaseUrl + '/marks'
 
   constructor(private http: HttpClient) {}
 
   // POST ""  -> save or update
-  saveOrUpdate(payload: Marks): Observable<Marks> {
-    return this.http.post<Marks>(this.baseUrl, payload).pipe(
+  saveOrUpdate(payload: MarksDTO): Observable<MarksDTO> {
+    return this.http.post<MarksDTO>(this.baseUrl, payload).pipe(
       tap(() => console.log('Marks saved/updated'))
     );
   }

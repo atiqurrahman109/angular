@@ -1,111 +1,67 @@
-/* Background with gradient */
-body {
-  background: linear-gradient(to right, #08b6b6, #620a0a);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:host {
+  display: block;
+  padding: 1rem;
+  background-color: #f8fafc; /* light background */
 }
 
-/* Container */
-.marks-container {
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-  min-height: 100vh;
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+  transition: all 0.3s ease;
 }
 
-.marks-card {
-  width: 100%;
-  max-width: 1300px;
-  background: #cc1717;
-  padding: 35px 40px;
-  border-radius: 14px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-  border-top: 6px solid #0f766e;
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59,130,246,0.3);
 }
 
-/* Title */
-.title {
-  color: #0f766e;
+/* Form Inputs */
+form input.form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  transition: all 0.3s ease;
+}
+
+form input.form-control:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+/* Table Styling */
+.table-primary {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: white;
   font-weight: 600;
 }
 
-/* Form */
-.form-label {
+.table-hover tbody tr:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 0.5rem;
   font-weight: 500;
-  color: #1e293b;
 }
 
-.form-control {
-  border-radius: 6px;
-  border: 1px solid #106ae0;
+/* Rounded Cards */
+.shadow-sm {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 0.75rem;
 }
 
-.form-control:focus {
-  border-color: #0f766e;
-  box-shadow: 0 0 8px rgba(15, 118, 110, 0.4);
+/* Table Pass/Fail */
+.table-success {
+  background-color: #dcfce7 !important;
+  transition: background 0.5s ease;
 }
 
-/* Buttons */
-.btn-save {
-  background: linear-gradient(to right, #0f766e, #2dd4bf);
-  color: white;
-  font-weight: 500;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 6px;
-  transition: 0.3s ease;
-}
-
-.btn-save:hover {
-  background: linear-gradient(to right, #0e524f, #1fbfaf);
-}
-
-.btn-delete {
-  background-color: #ef4444;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.btn-delete:hover {
-  background-color: #b91c1c;
-}
-
-/* Table */
-.table-header {
-  background-color: #0f766e;
-  color: white;
-}
-
-.colorful-table tbody tr:nth-child(even) {
-  background-color: #f0fdfa;
-}
-
-.colorful-table tbody tr:hover {
-  background-color: #d1fae5;
-}
-
-.table th, .table td {
-  text-align: center;
-  vertical-align: middle;
-}
-.page-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  min-height: 100vh;
-  background-color: #f4f4f4; /* Optional background */
-  overflow-y: auto;
-}
-
-.marks-container {
-  max-width: 1200px;
-  width: 100%;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+.table-danger {
+  background-color: #fee2e2 !important;
+  transition: background 0.5s ease;
 }

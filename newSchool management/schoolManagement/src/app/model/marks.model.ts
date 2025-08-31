@@ -1,23 +1,26 @@
-// Request payload for POST /api/marks
-export interface Marks {
-  id?: number;
-  marksObtainedBangla: number;
-  marksObtainedEnglish: number;
-  marksObtainedMath: number;
-  totalMarks?: number | null;
-  grade?: string | null;
-  status?: string | null;
-  student: { id: number }; // only id is needed   // only id is needed
+export interface StudentDTO {
+  id: number;
+  firstName: string;
 }
 
-// Response DTO from GET /api/marks
 export interface MarksDTO {
   id: number;
   marksObtainedBangla: number;
   marksObtainedEnglish: number;
   marksObtainedMath: number;
-  totalMarks: number | null;
-  grade: string | null;
-  status: string | null;
-  studentDTO?: { id: number; firstName?: string | null };
+  marksObtainedScience: number;
+  marksObtainedIslam: number;
+  marksObtainedSports: number;
+  totalMarks: number;
+  gpa: number;
+  grade: string;
+  status: string;
+  studentDTO?: StudentDTO;
+  examDTO?: ExamDTO;
+}
+
+export interface ExamDTO{
+    id: number;         // backend এ id থাকে — যদি frontend এ নতুন তৈরি করলে id 0 বা অনুপস্থিত থাকে, তোমার code তা হ্যান্ডেল করবে
+  examName: string;
+  examMonth: string;
 }
