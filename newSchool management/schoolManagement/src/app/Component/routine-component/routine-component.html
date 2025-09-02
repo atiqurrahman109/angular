@@ -5,6 +5,35 @@
       <!-- Page Title -->
       <h2 class="mb-4 text-center text-primary fw-bold">Routine Management</h2>
 
+
+      <!-- test -->
+         <h5>Search Production Orders by Order ID:</h5>
+
+  <div class="input-group mb-3">
+    <input type="number" class="form-control" placeholder="Enter Order ID" [(ngModel)]="searchOrderId"
+      name="searchOrderId" />
+
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <button class="btn btn-outline-primary" type="button" (click)="searchByOrderId()">
+        Search
+      </button>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-outline-primary" type="reset" (click)="reset()">
+        Reset
+      </button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
       <!-- Add / Update Routine Card -->
       <div class="card shadow-lg mb-5">
         <div class="card-header bg-primary text-white fw-bold">

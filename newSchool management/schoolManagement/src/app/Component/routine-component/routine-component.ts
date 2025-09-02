@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RoutineModel } from '../../model/routine.model';
 import { HttpClient } from '@angular/common/http';
 import { RoutineService } from '../../service/routine.service';
@@ -11,10 +11,17 @@ import { RoutineService } from '../../service/routine.service';
 })
 export class RoutineComponent implements OnInit {
 
-   routines: RoutineModel[] = [];
+  routines: RoutineModel[] = [];
   newRoutine: RoutineModel = this.resetRoutine();
 
-  constructor(private routineService: RoutineService) {}
+//test
+  filteredRoutines: RoutineModel[] = [];
+
+  searchOrderId!: number;
+
+  constructor(private routineService: RoutineService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.loadRoutines();
@@ -45,6 +52,34 @@ export class RoutineComponent implements OnInit {
   deleteRoutine(id: number) {
     this.routineService.deleteRoutine(id).subscribe(() => this.loadRoutines());
   }
+
+
+
+    searchByOrderId(): void {
+    if (this.searchOrderId != null) {
+      this.filteredRoutines = this.routines.filter(
+        (routines) => routines.id === this.searchOrderId,
+        console.log("++++++++", this.filteredRoutines)
+      );
+    } else {
+      this.filteredRoutines = this.routines;
+    }
+  }
+
+   reset(): void {
+    this.searchOrderId = null as any;
+    this.filteredRoutines = [...this.routines];
+     this.loadRoutines();
+    this.cdr.detectChanges();
+  }
+
+
+
+
+
+
+
+
 
   resetRoutine(): RoutineModel {
     return {
