@@ -2,39 +2,27 @@
   <div class="row justify-content-center">
     <div class="col-lg-10">
 
-      <!-- Page Title -->
       <h2 class="mb-4 text-center text-primary fw-bold">Routine Management</h2>
 
+      <!-- Filters -->
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <input type="number" class="form-control" placeholder="Enter Teacher ID"
+                 [(ngModel)]="searchTeacherId" name="searchTeacherId">
+        </div>
+        <div class="col-md-4">
+          <select class="form-select" [(ngModel)]="searchDay" name="searchDay">
+            <option value="">All Days</option>
+            <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+          </select>
+        </div>
+        <div class="col-md-4 d-flex gap-2">
+          <button class="btn btn-outline-primary" type="button" (click)="searchByTeacherAndDay()">Search</button>
+          <button class="btn btn-outline-secondary" type="button" (click)="resetFilters()">Reset</button>
+        </div>
+      </div>
 
-      <!-- test -->
-         <h5>Search Production Orders by Order ID:</h5>
-
-  <div class="input-group mb-3">
-    <input type="number" class="form-control" placeholder="Enter Order ID" [(ngModel)]="searchOrderId"
-      name="searchOrderId" />
-
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <button class="btn btn-outline-primary" type="button" (click)="searchByOrderId()">
-        Search
-      </button>
-    </div>
-    <div class="col-md-4">
-      <button class="btn btn-outline-primary" type="reset" (click)="reset()">
-        Reset
-      </button>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-      <!-- Add / Update Routine Card -->
+      <!-- Add / Update Routine -->
       <div class="card shadow-lg mb-5">
         <div class="card-header bg-primary text-white fw-bold">
           {{ newRoutine.id ? 'Update Routine' : 'Add New Routine' }}
@@ -50,47 +38,34 @@
                      [(ngModel)]="newRoutine.subject" name="subject" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="Teacher ID"
+              <input type="number" class="form-control" placeholder="Teacher ID"
                      [(ngModel)]="newRoutine.teacherId" name="teacherId" required>
             </div>
             <div class="col-md-4">
-              <!-- DROPDOWN for Day of Week -->
               <select class="form-select" [(ngModel)]="newRoutine.dayOfWeek" name="dayOfWeek" required>
-                <option value="AllDay" disabled selected>Select Day</option>
-                <option value="Saturday" >Saturday</option>
-                <option value="Sunday" >Sunday</option>
-                <option value="Monday" >Monday</option>
-                <option value="Tuesday" >Tuesday</option>
-                <option value="Wednesday" >Wednesday</option>
-                <option value="Thursday" >Thursday</option>
-                
+                <option value="" disabled selected>Select Day</option>
+                <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
               </select>
             </div>
             <div class="col-md-4">
-              <input type="time" class="form-control"
-                     [(ngModel)]="newRoutine.startTime" name="startTime" required>
+              <input type="time" class="form-control" [(ngModel)]="newRoutine.startTime" name="startTime" required>
             </div>
             <div class="col-md-4">
-              <input type="time" class="form-control"
-                     [(ngModel)]="newRoutine.endTime" name="endTime" required>
+              <input type="time" class="form-control" [(ngModel)]="newRoutine.endTime" name="endTime" required>
             </div>
             <div class="col-12 d-flex gap-2 mt-3 justify-content-end">
               <button type="submit" class="btn btn-success">
                 {{ newRoutine.id ? 'Update Routine' : 'Add Routine' }}
               </button>
-              <button type="button" class="btn btn-secondary" (click)="newRoutine = resetRoutine()">
-                Reset
-              </button>
+              <button type="button" class="btn btn-secondary" (click)="newRoutine = resetRoutine()">Reset</button>
             </div>
           </form>
         </div>
       </div>
 
-      <!-- Routine Table Card -->
+      <!-- Routine Table -->
       <div class="card shadow-lg">
-        <div class="card-header bg-dark text-white fw-bold">
-          All Routines
-        </div>
+        <div class="card-header bg-dark text-white fw-bold">All Routines</div>
         <div class="card-body p-0">
           <div class="table-responsive">
             <table class="table table-hover table-striped mb-0">
@@ -100,7 +75,6 @@
                   <th>Class</th>
                   <th>Subject</th>
                   <th>Teacher ID</th>
-                  <!-- <th>Teacher Name</th> -->
                   <th>Day</th>
                   <th>Start</th>
                   <th>End</th>
@@ -108,26 +82,25 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let routine of routines">
+                <tr *ngFor="let routine of filteredRoutines">
                   <td>{{ routine.id }}</td>
                   <td>{{ routine.className }}</td>
                   <td>{{ routine.subject }}</td>
                   <td>{{ routine.teacherId }}</td>
-                  <!-- <td>{{ routine.teacherName || 'N/A' }}</td> -->
                   <td>{{ routine.dayOfWeek }}</td>
                   <td>{{ routine.startTime }}</td>
                   <td>{{ routine.endTime }}</td>
                   <td class="text-center">
                     <button class="btn btn-sm btn-warning me-1" (click)="selectRoutine(routine)">
-                      <i class="bi bi-pencil-square"></i> Edit 
+                      <i class="bi bi-pencil-square"></i> Edit
                     </button>
                     <button class="btn btn-sm btn-danger" (click)="deleteRoutine(routine.id!)">
                       <i class="bi bi-trash"></i> Delete
                     </button>
                   </td>
                 </tr>
-                <tr *ngIf="routines.length === 0">
-                  <td colspan="9" class="text-center text-muted py-3">No routines available.</td>
+                <tr *ngIf="filteredRoutines.length === 0">
+                  <td colspan="8" class="text-center text-muted py-3">No routines available.</td>
                 </tr>
               </tbody>
             </table>
