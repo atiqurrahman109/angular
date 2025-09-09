@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RoutineModel } from '../model/routine.model';
 import { environment } from '../environment/environment';
+import { ClassRoutineDTO } from '../classRoutineDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,12 @@ export class RoutineService {
   private baseUrl = environment.apiBaseUrl + '/routine';
 
   constructor(private http: HttpClient) {}
-
-  getRoutines(): Observable<RoutineModel[]> {
-    return this.http.get<RoutineModel[]>(this.baseUrl);
+getRoutines(): Observable<ClassRoutineDTO[]> {
+    return this.http.get<ClassRoutineDTO[]>(this.baseUrl);
   }
 
   getRoutineByTeacherId(id: number): Observable<RoutineModel[]> {
     return this.http.get<RoutineModel[]>(`${this.baseUrl}/teacher_id/${id}`);
-  }
-
-  getRoutineByTeacherAndDay(id: number, day: string): Observable<RoutineModel[]> {
-    return this.http.get<RoutineModel[]>(`${this.baseUrl}/teacher_id/${id}/day/${day}`);
   }
 
   addRoutine(routine: RoutineModel): Observable<RoutineModel> {
@@ -36,4 +32,10 @@ export class RoutineService {
   deleteRoutine(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  getRoutineByTeacherAndDay(teacherId: number, day: string): Observable<ClassRoutineDTO[]> {
+    return this.http.get<ClassRoutineDTO[]>(`${this.baseUrl}/teacher_id/${teacherId}/day/${day}`);
+  }
 }
+
+

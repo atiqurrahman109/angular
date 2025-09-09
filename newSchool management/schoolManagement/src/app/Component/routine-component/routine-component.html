@@ -1,8 +1,7 @@
 <div class="container-fluid bg-light min-vh-100 py-5">
   <div class="row justify-content-center">
     <div class="col-lg-10">
-
-      <h2 class="mb-4 text-center text-primary fw-bold">Routine Management</h2>
+      <h2 class="mb-4 text-center text-primary fw-bold">📅 Routine Management</h2>
 
       <!-- Filters -->
       <div class="row mb-3">
@@ -17,15 +16,15 @@
           </select>
         </div>
         <div class="col-md-4 d-flex gap-2">
-          <button class="btn btn-outline-primary" type="button" (click)="searchByTeacherAndDay()">Search</button>
-          <button class="btn btn-outline-secondary" type="button" (click)="resetFilters()">Reset</button>
+          <button class="btn btn-outline-primary w-50" type="button" (click)="searchByTeacherAndDay()">Search</button>
+          <button class="btn btn-outline-secondary w-50" type="button" (click)="resetFilters()">Reset</button>
         </div>
       </div>
 
       <!-- Add / Update Routine -->
       <div class="card shadow-lg mb-5">
         <div class="card-header bg-primary text-white fw-bold">
-          {{ newRoutine.id ? 'Update Routine' : 'Add New Routine' }}
+          {{ newRoutine.id ? '✏️ Update Routine' : '➕ Add New Routine' }}
         </div>
         <div class="card-body">
           <form (ngSubmit)="saveRoutine()" class="row g-3">
@@ -38,12 +37,17 @@
                 name="subject" required>
             </div>
             <div class="col-md-4">
-              <input type="number" class="form-control" placeholder="Teacher ID" [(ngModel)]="newRoutine.teacherId"
-                name="teacherId" required>
+              <select class="form-select" [(ngModel)]="newRoutine.teacher" name="teacherSelect" required>
+                <option [ngValue]="null" disabled>Select Teacher</option>
+                <option *ngFor="let t of teachers" [ngValue]="t">
+                  {{ t.firstName }} {{ t.lastName }}
+                </option>
+              </select>
+
             </div>
             <div class="col-md-4">
               <select class="form-select" [(ngModel)]="newRoutine.dayOfWeek" name="dayOfWeek" required>
-                <option value="" disabled selected>Select Day</option>
+                <option value="" disabled>Select Day</option>
                 <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
               </select>
             </div>
@@ -54,9 +58,8 @@
               <input type="time" class="form-control" [(ngModel)]="newRoutine.endTime" name="endTime" required>
             </div>
             <div class="col-12 d-flex gap-2 mt-3 justify-content-end">
-              <button type="submit" class="btn btn-success">
-                {{ newRoutine.id ? 'Update Routine' : 'Add Routine' }}
-              </button>
+              <button type="submit" class="btn btn-success">{{ newRoutine.id ? 'Update Routine' : 'Add Routine'
+                }}</button>
               <button type="button" class="btn btn-secondary" (click)="newRoutine = resetRoutine()">Reset</button>
             </div>
           </form>
@@ -75,6 +78,7 @@
                   <th>Class</th>
                   <th>Subject</th>
                   <th>Teacher ID</th>
+                  <th>Teacher Name</th>
                   <th>Day</th>
                   <th>Start</th>
                   <th>End</th>
@@ -82,13 +86,12 @@
                 </tr>
               </thead>
               <tbody>
-
-                @for (routine of filteredRoutines; track routine.id) {
-                <tr>
+                <tr *ngFor="let routine of filteredRoutines">
                   <td>{{ routine.id }}</td>
                   <td>{{ routine.className }}</td>
                   <td>{{ routine.subject }}</td>
-                  <td>{{ routine.teacherId }}</td>
+                  <td>{{ routine.teacher?.id || '-' }}</td>
+                  <td>{{ routine.teacher?.firstName || '-' }}</td>
                   <td>{{ routine.dayOfWeek }}</td>
                   <td>{{ routine.startTime }}</td>
                   <td>{{ routine.endTime }}</td>
@@ -101,15 +104,9 @@
                     </button>
                   </td>
                 </tr>
-                }
-                
-
-                @if (filteredRoutines.length === 0) {
-                <tr>
-                  <td colspan="8" class="text-center text-muted py-3">No routines available.</td>
+                <tr *ngIf="filteredRoutines.length === 0">
+                  <td colspan="9" class="text-center text-muted py-3">No routines available.</td>
                 </tr>
-                }
-
               </tbody>
             </table>
           </div>
