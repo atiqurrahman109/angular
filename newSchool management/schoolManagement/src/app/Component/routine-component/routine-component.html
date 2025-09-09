@@ -7,8 +7,8 @@
       <!-- Filters -->
       <div class="row mb-3">
         <div class="col-md-4">
-          <input type="number" class="form-control" placeholder="Enter Teacher ID"
-                 [(ngModel)]="searchTeacherId" name="searchTeacherId">
+          <input type="number" class="form-control" placeholder="Enter Teacher ID" [(ngModel)]="searchTeacherId"
+            name="searchTeacherId">
         </div>
         <div class="col-md-4">
           <select class="form-select" [(ngModel)]="searchDay" name="searchDay">
@@ -30,16 +30,16 @@
         <div class="card-body">
           <form (ngSubmit)="saveRoutine()" class="row g-3">
             <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="Class Name"
-                     [(ngModel)]="newRoutine.className" name="className" required>
+              <input type="text" class="form-control" placeholder="Class Name" [(ngModel)]="newRoutine.className"
+                name="className" required>
             </div>
             <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="Subject"
-                     [(ngModel)]="newRoutine.subject" name="subject" required>
+              <input type="text" class="form-control" placeholder="Subject" [(ngModel)]="newRoutine.subject"
+                name="subject" required>
             </div>
             <div class="col-md-4">
-              <input type="number" class="form-control" placeholder="Teacher ID"
-                     [(ngModel)]="newRoutine.teacherId" name="teacherId" required>
+              <input type="number" class="form-control" placeholder="Teacher ID" [(ngModel)]="newRoutine.teacherId"
+                name="teacherId" required>
             </div>
             <div class="col-md-4">
               <select class="form-select" [(ngModel)]="newRoutine.dayOfWeek" name="dayOfWeek" required>
@@ -82,7 +82,9 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let routine of filteredRoutines">
+
+                @for (routine of filteredRoutines; track routine.id) {
+                <tr>
                   <td>{{ routine.id }}</td>
                   <td>{{ routine.className }}</td>
                   <td>{{ routine.subject }}</td>
@@ -99,9 +101,15 @@
                     </button>
                   </td>
                 </tr>
-                <tr *ngIf="filteredRoutines.length === 0">
+                }
+                
+
+                @if (filteredRoutines.length === 0) {
+                <tr>
                   <td colspan="8" class="text-center text-muted py-3">No routines available.</td>
                 </tr>
+                }
+
               </tbody>
             </table>
           </div>
