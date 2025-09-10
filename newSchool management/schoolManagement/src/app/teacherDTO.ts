@@ -1,4 +1,11 @@
-export interface TeacherDTO {
+import { TeacherModel } from "./model/teacher.model";
+
+export interface TeacherRoutineDTO {
   id: number;
-  firstName: string;
+  className: string;
+  subject: string;
+  dayOfWeek: string;
+  startTime: string;
+  endTime: string;
+  teacher?: TeacherModel;
 }

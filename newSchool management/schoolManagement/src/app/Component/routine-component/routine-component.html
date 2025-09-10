@@ -1,118 +1,75 @@
-<div class="container-fluid bg-light min-vh-100 py-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-10">
-      <h2 class="mb-4 text-center text-primary fw-bold">📅 Routine Management</h2>
+<div class="container">
+  <h2>📝 Teacher Routine Management</h2>
 
-      <!-- Filters -->
-      <div class="row mb-3">
-        <div class="col-md-4">
-          <input type="number" class="form-control" placeholder="Enter Teacher ID" [(ngModel)]="searchTeacherId"
-            name="searchTeacherId">
-        </div>
-        <div class="col-md-4">
-          <select class="form-select" [(ngModel)]="searchDay" name="searchDay">
-            <option value="">All Days</option>
-            <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
-          </select>
-        </div>
-        <div class="col-md-4 d-flex gap-2">
-          <button class="btn btn-outline-primary w-50" type="button" (click)="searchByTeacherAndDay()">Search</button>
-          <button class="btn btn-outline-secondary w-50" type="button" (click)="resetFilters()">Reset</button>
-        </div>
-      </div>
-
-      <!-- Add / Update Routine -->
-      <div class="card shadow-lg mb-5">
-        <div class="card-header bg-primary text-white fw-bold">
-          {{ newRoutine.id ? '✏️ Update Routine' : '➕ Add New Routine' }}
-        </div>
-        <div class="card-body">
-          <form (ngSubmit)="saveRoutine()" class="row g-3">
-            <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="Class Name" [(ngModel)]="newRoutine.className"
-                name="className" required>
-            </div>
-            <div class="col-md-4">
-              <input type="text" class="form-control" placeholder="Subject" [(ngModel)]="newRoutine.subject"
-                name="subject" required>
-            </div>
-            <div class="col-md-4">
-              <select class="form-select" [(ngModel)]="newRoutine.teacher" name="teacherSelect" required>
-                <option [ngValue]="null" disabled>Select Teacher</option>
-                <option *ngFor="let t of teachers" [ngValue]="t">
-                  {{ t.firstName }} {{ t.lastName }}
-                </option>
-              </select>
-
-            </div>
-            <div class="col-md-4">
-              <select class="form-select" [(ngModel)]="newRoutine.dayOfWeek" name="dayOfWeek" required>
-                <option value="" disabled>Select Day</option>
-                <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
-              </select>
-            </div>
-            <div class="col-md-4">
-              <input type="time" class="form-control" [(ngModel)]="newRoutine.startTime" name="startTime" required>
-            </div>
-            <div class="col-md-4">
-              <input type="time" class="form-control" [(ngModel)]="newRoutine.endTime" name="endTime" required>
-            </div>
-            <div class="col-12 d-flex gap-2 mt-3 justify-content-end">
-              <button type="submit" class="btn btn-success">{{ newRoutine.id ? 'Update Routine' : 'Add Routine'
-                }}</button>
-              <button type="button" class="btn btn-secondary" (click)="newRoutine = resetRoutine()">Reset</button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Routine Table -->
-      <div class="card shadow-lg">
-        <div class="card-header bg-dark text-white fw-bold">All Routines</div>
-        <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table table-hover table-striped mb-0">
-              <thead class="table-dark">
-                <tr>
-                  <th>ID</th>
-                  <th>Class</th>
-                  <th>Subject</th>
-                  <th>Teacher ID</th>
-                  <th>Teacher Name</th>
-                  <th>Day</th>
-                  <th>Start</th>
-                  <th>End</th>
-                  <th class="text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let routine of filteredRoutines">
-                  <td>{{ routine.id }}</td>
-                  <td>{{ routine.className }}</td>
-                  <td>{{ routine.subject }}</td>
-                  <td>{{ routine.teacher?.id || '-' }}</td>
-                  <td>{{ routine.teacher?.firstName || '-' }}</td>
-                  <td>{{ routine.dayOfWeek }}</td>
-                  <td>{{ routine.startTime }}</td>
-                  <td>{{ routine.endTime }}</td>
-                  <td class="text-center">
-                    <button class="btn btn-sm btn-warning me-1" (click)="selectRoutine(routine)">
-                      <i class="bi bi-pencil-square"></i> Edit
-                    </button>
-                    <button class="btn btn-sm btn-danger" (click)="deleteRoutine(routine.id!)">
-                      <i class="bi bi-trash"></i> Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr *ngIf="filteredRoutines.length === 0">
-                  <td colspan="9" class="text-center text-muted py-3">No routines available.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
+  <!-- Form Section -->
+  <form (ngSubmit)="saveRoutine()" #routineForm="ngForm" class="routine-form">
+    <div>
+      <label>Class Name:</label>
+      <input type="text" required [(ngModel)]="newRoutine.className" name="className" />
     </div>
-  </div>
+
+    <div>
+      <label>Subject:</label>
+      <input type="text" required [(ngModel)]="newRoutine.subject" name="subject" />
+    </div>
+
+    <div>
+      <label>Day of Week:</label>
+      <select required [(ngModel)]="newRoutine.dayOfWeek" name="dayOfWeek">
+        <option value="" disabled selected>Select Day</option>
+        <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Start Time:</label>
+      <input type="time" required [(ngModel)]="newRoutine.startTime" name="startTime" />
+    </div>
+
+    <div>
+      <label>End Time:</label>
+      <input type="time" required [(ngModel)]="newRoutine.endTime" name="endTime" />
+    </div>
+
+    <!-- <div>
+      <label>Teacher ID:</label>
+      <input type="number" required [(ngModel)]="newRoutine.teacher?.id" name="teacherId" />
+    </div> -->
+
+    <button type="submit" [disabled]="routineForm.invalid">Save Routine</button>
+  </form>
+
+  <hr />
+
+  <!-- Table Section -->
+  <h3>📋 All Routines</h3>
+
+  <table *ngIf="routines.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Class</th>
+        <th>Subject</th>
+        <th>Day</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Teacher</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let routine of routines">
+        <td>{{ routine.id ?? '-' }}</td>
+        <td>{{ routine.className }}</td>
+        <td>{{ routine.subject }}</td>
+        <td>{{ routine.dayOfWeek }}</td>
+        <td>{{ routine.startTime }}</td>
+        <td>{{ routine.endTime }}</td>
+        <td>
+          {{ routine.teacher?.firstName ?? 'N/A' }} (ID: {{ routine.teacher?.id ?? '-' }})
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="routines.length === 0">No routines available.</p>
 </div>

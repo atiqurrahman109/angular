@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RoutineModel } from '../model/routine.model';
 import { environment } from '../environment/environment';
 import { ClassRoutineDTO } from '../classRoutineDTO';
+import { TeacherRoutineDTO } from '../teacherDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +12,26 @@ import { ClassRoutineDTO } from '../classRoutineDTO';
 export class RoutineService {
   private baseUrl = environment.apiBaseUrl + '/routine';
 
-  constructor(private http: HttpClient) {}
-getRoutines(): Observable<ClassRoutineDTO[]> {
-    return this.http.get<ClassRoutineDTO[]>(this.baseUrl);
+  constructor(private http: HttpClient) { }
+
+ getAllRoutine(): Observable<RoutineModel[]> {
+    return this.http.get<RoutineModel[]>(`${this.baseUrl}/all`);
   }
 
-  getRoutineByTeacherId(id: number): Observable<RoutineModel[]> {
-    return this.http.get<RoutineModel[]>(`${this.baseUrl}/teacher_id/${id}`);
+  getAllDTOs(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}`);
   }
 
-  addRoutine(routine: RoutineModel): Observable<RoutineModel> {
-    return this.http.post<RoutineModel>(this.baseUrl, routine);
+  getByTeacherId(id: number): Observable<TeacherRoutineDTO[]> {
+    return this.http.get<TeacherRoutineDTO[]>(`${this.baseUrl}/teacher_id/${id}`);
   }
 
-  updateRoutine(routine: RoutineModel): Observable<RoutineModel> {
-    if (!routine.id) throw new Error('Routine ID is required for update');
-    return this.http.put<RoutineModel>(`${this.baseUrl}/${routine.id}`, routine);
+  getByTeacherAndDay(id: number, day: string): Observable<TeacherRoutineDTO[]> {
+    return this.http.get<TeacherRoutineDTO[]>(`${this.baseUrl}/teacher_id/${id}/day/${day}`);
   }
 
-  deleteRoutine(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
-  }
-
-  getRoutineByTeacherAndDay(teacherId: number, day: string): Observable<ClassRoutineDTO[]> {
-    return this.http.get<ClassRoutineDTO[]>(`${this.baseUrl}/teacher_id/${teacherId}/day/${day}`);
+  create(routine: RoutineModel): Observable<RoutineModel> {
+    return this.http.post<RoutineModel>(`${this.baseUrl}`, routine);
   }
 }
 
