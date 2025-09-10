@@ -11,30 +11,24 @@
           <div class="col-md-6">
             <label for="className" class="form-label fw-bold">Class Name</label>
             <input type="text" id="className" class="form-control" placeholder="e.g. Grade 5, Class A"
-              formControlName="className" required>
+              formControlName="className">
           </div>
 
           <div class="col-md-6">
             <label for="section" class="form-label fw-bold">Section</label>
             <input type="text" id="section" class="form-control" placeholder="e.g. A, B"
-              formControlName="section" required>
+              formControlName="section">
           </div>
 
           <div class="col-md-6">
             <label for="subject" class="form-label fw-bold">Subject</label>
             <input type="text" id="subject" class="form-control" placeholder="e.g. Math, English"
-              formControlName="subject" required>
-          </div>
-
-          <div class="col-md-6">
-            <label for="teacherName" class="form-label fw-bold">Teacher Name</label>
-            <input type="text" id="teacherName" class="form-control" placeholder="Teacher's Name"
-              formControlName="teacherName" required>
+              formControlName="subject">
           </div>
 
           <div class="col-md-6">
             <label for="dayOfWeek" class="form-label fw-bold">Day of the Week</label>
-            <select id="dayOfWeek" class="form-select" formControlName="dayOfWeek" required>
+            <select id="dayOfWeek" class="form-select" formControlName="dayOfWeek">
               <option value="" disabled selected>Select a day</option>
               <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
             </select>
@@ -42,12 +36,12 @@
 
           <div class="col-md-3">
             <label for="startTime" class="form-label fw-bold">Start Time</label>
-            <input type="time" id="startTime" class="form-control" formControlName="startTime" required>
+            <input type="time" id="startTime" class="form-control" formControlName="startTime">
           </div>
 
           <div class="col-md-3">
             <label for="endTime" class="form-label fw-bold">End Time</label>
-            <input type="time" id="endTime" class="form-control" formControlName="endTime" required>
+            <input type="time" id="endTime" class="form-control" formControlName="endTime">
           </div>
         </div>
 
@@ -62,8 +56,23 @@
 
   <hr class="my-5">
 
+  <!-- 🔍 Search Input -->
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <label for="searchClass" class="form-label fw-bold">🔍 Search by Class</label>
+      <input
+        type="text"
+        id="searchClass"
+        class="form-control"
+        placeholder="e.g. Grade 1, Grade 5"
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+      >
+    </div>
+  </div>
+
   <!-- Schedule List -->
-  <div *ngIf="schedules.length > 0; else noSchedule">
+  <div *ngIf="filteredSchedules.length > 0; else noSchedule">
     <h3 class="mb-3">📋 Class Schedule List</h3>
     <div class="table-responsive">
       <table class="table table-hover table-bordered align-middle shadow-sm">
@@ -73,7 +82,6 @@
             <th>Class</th>
             <th>Section</th>
             <th>Subject</th>
-            <th>Teacher Name</th>
             <th>Day</th>
             <th>Start</th>
             <th>End</th>
@@ -81,12 +89,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let schedule of schedules">
+          <tr *ngFor="let schedule of filteredSchedules">
             <td>{{ schedule.id }}</td>
             <td>{{ schedule.className }}</td>
             <td>{{ schedule.section }}</td>
             <td>{{ schedule.subject }}</td>
-            <td>{{ schedule.teacher.firstName }}</td>
             <td>{{ schedule.dayOfWeek }}</td>
             <td>{{ schedule.startTime }}</td>
             <td>{{ schedule.endTime }}</td>
@@ -103,7 +110,7 @@
 
   <ng-template #noSchedule>
     <div class="alert alert-warning mt-4 text-center">
-      ⚠️ No schedules added yet.
+      ⚠️ No schedules found for the entered class name.
     </div>
   </ng-template>
 </div>

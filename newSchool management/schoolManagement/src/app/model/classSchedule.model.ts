@@ -8,7 +8,4 @@ export class ClassSchedule {
   dayOfWeek?: string;         // Day of the week (e.g., Monday)
   startTime?: string;         // Start time (HH:mm format)
   endTime?: string;           // End time (HH:mm format)
-
-  teacher!: TeacherModel;
-
 }

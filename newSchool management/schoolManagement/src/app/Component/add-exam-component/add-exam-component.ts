@@ -1,4 +1,86 @@
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { ExamService } from '../../service/exam.service';
+// import { ActivatedRoute, Router } from '@angular/router';
+// import { Exam } from '../../model/exam.model';
+
+// @Component({
+//   selector: 'app-add-exam-component',
+//   standalone: false,
+//   templateUrl: './add-exam-component.html',
+//   styleUrl: './add-exam-component.css'
+// })
+// export class AddExamComponent {
+// form!: FormGroup;
+//   id?: number;
+//   isEdit = false;
+//   loading = false;
+
+//   months: string[] = [
+//     'January', 'February', 'March', 'April',
+//     'May', 'June', 'July', 'August',
+//     'September', 'October', 'November', 'December'
+//   ];
+
+//   constructor(
+//     private fb: FormBuilder,
+//     private examService: ExamService,
+//     private route: ActivatedRoute,
+//     private router: Router
+//   ) {}
+
+//   ngOnInit(): void {
+//     this.form = this.fb.group({
+      
+//       examName: ['', Validators.required],
+      
+//       examMonth: ['', Validators.required]
+//     });
+
+//     this.route.paramMap.subscribe(params => {
+//       const idParam = params.get('id');
+//       if (idParam) {
+//         this.id = +idParam;
+//         this.isEdit = true;
+//         this.loadExam(this.id);
+//       }
+//     });
+//   }
+
+//   loadExam(id: number): void {
+//     this.loading = true;
+//     this.examService.getById(id).subscribe({
+//       next: (ex: Exam) => {
+//         this.form.patchValue({
+//           id: ex.id,
+//           examName: ex.examName,
+//           examType: ex.examMonth
+//         });
+//         this.loading = false;
+//       },
+//       error: (err) => { console.error(err); this.loading = false; }
+//     });
+//   }
+
+//   onSubmit(): void {
+//     if (this.form.invalid) {
+//       this.form.markAllAsTouched();
+//       return;
+//     }
+//     const payload = this.form.value;
+//     this.examService.save(payload).subscribe({
+//       next: (saved) => {
+//         alert('Saved successfully');
+//         this.router.navigate(['/exams']);
+//       },
+//       error: (err) => { console.error(err); alert('Save failed'); }
+//     });
+//   }
+// }
+
+
+
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ExamService } from '../../service/exam.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,13 +90,20 @@ import { Exam } from '../../model/exam.model';
   selector: 'app-add-exam-component',
   standalone: false,
   templateUrl: './add-exam-component.html',
-  styleUrl: './add-exam-component.css'
+  styleUrls: ['./add-exam-component.css'] // Note: fixed `styleUrl` to `styleUrls`
 })
-export class AddExamComponent {
-form!: FormGroup;
+export class AddExamComponent implements OnInit {
+  form!: FormGroup;
   id?: number;
   isEdit = false;
   loading = false;
+
+  // ✅ Add 12 months
+  months: string[] = [
+    'January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +114,6 @@ form!: FormGroup;
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      
       examName: ['', Validators.required],
       examMonth: ['', Validators.required]
     });
@@ -45,13 +133,15 @@ form!: FormGroup;
     this.examService.getById(id).subscribe({
       next: (ex: Exam) => {
         this.form.patchValue({
-          id: ex.id,
           examName: ex.examName,
-          examType: ex.examMonth
+          examMonth: ex.examMonth // ✅ Fixed field name
         });
         this.loading = false;
       },
-      error: (err) => { console.error(err); this.loading = false; }
+      error: (err) => {
+        console.error(err);
+        this.loading = false;
+      }
     });
   }
 
@@ -60,13 +150,18 @@ form!: FormGroup;
       this.form.markAllAsTouched();
       return;
     }
+
     const payload = this.form.value;
     this.examService.save(payload).subscribe({
-      next: (saved) => {
+      next: () => {
         alert('Saved successfully');
         this.router.navigate(['/exams']);
       },
-      error: (err) => { console.error(err); alert('Save failed'); }
+      error: (err) => {
+        console.error(err);
+        alert('Save failed');
+      }
     });
   }
 }
+

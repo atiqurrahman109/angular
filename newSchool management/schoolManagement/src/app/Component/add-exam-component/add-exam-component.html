@@ -1,30 +1,46 @@
-<div class="exam-form-container">
-  <div class="exam-form-card">
-    <h2 *ngIf="!isEdit" class="form-title">📄 Add Exam</h2>
-    <h2 *ngIf="isEdit" class="form-title">✏️ Edit Exam</h2>
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow p-4" style="width: 100%; max-width: 500px;">
+    <h4 class="text-center mb-4 text-primary">
+      {{ isEdit ? '✏️ Edit Exam' : '➕ Add New Exam' }}
+    </h4>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <input formControlName="id" type="hidden">
-
-      <div class="form-group">
-        <label>Exam Name</label>
-        <input formControlName="examName" placeholder="Enter exam name"/>
-        <div class="error" *ngIf="form.get('examName')?.touched && form.get('examName')?.invalid">
+      <!-- Exam Name -->
+      <div class="form-group mb-3">
+        <label for="examName">Exam Name</label>
+        <input
+          id="examName"
+          type="text"
+          class="form-control"
+          formControlName="examName"
+          placeholder="Enter exam name"
+        />
+        <div class="text-danger mt-1" *ngIf="form.get('examName')?.touched && form.get('examName')?.invalid">
           Exam Name is required
         </div>
       </div>
 
-      <div class="form-group">
-        <label>Exam Month </label>
-        <input formControlName="examMonth" placeholder="Enter exam Month"/>
-        <div class="error" *ngIf="form.get('examMonth')?.touched && form.get('examMonth')?.invalid">
-          Exam Type is required
+      <!-- Exam Month Dropdown -->
+      <div class="form-group mb-4">
+        <label for="examMonth">Exam Month</label>
+        <select
+          id="examMonth"
+          class="form-control"
+          formControlName="examMonth"
+        >
+          <option value="" disabled>Select Exam Month</option>
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </select>
+        <div class="text-danger mt-1" *ngIf="form.get('examMonth')?.touched && form.get('examMonth')?.invalid">
+          Exam Month is required
         </div>
       </div>
 
-      <div class="button-group">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" routerLink="/exams" class="btn btn-secondary">Cancel</button>
+      <!-- Submit Button -->
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+          {{ isEdit ? 'Update Exam' : 'Add Exam' }}
+        </button>
       </div>
     </form>
   </div>

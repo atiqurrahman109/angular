@@ -1,88 +1,15 @@
-.exam-form-container {
+/* add-exam-component.css */
+
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  background: #f0f4f8;
-  padding: 20px;
+  min-height: 100vh;
 }
 
-.exam-form-card {
-  background: #ffffff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.card {
   width: 100%;
-  max-width: 400px;
-}
-
-.form-title {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #0f766e;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: #333333;
-}
-
-.form-group input {
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-.form-group input:focus {
-  border-color: #0f766e;
-  outline: none;
-  box-shadow: 0 0 5px rgba(15,118,110,0.3);
-}
-
-.error {
-  color: #dc2626;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.button-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn-primary {
-  background-color: #0f766e;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #115e59;
-}
-
-.btn-secondary {
-  background-color: #e5e7eb;
-  color: #333;
-}
-
-.btn-secondary:hover {
-  background-color: #d1d5db;
+  max-width: 500px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
