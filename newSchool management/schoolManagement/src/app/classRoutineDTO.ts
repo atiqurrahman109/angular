@@ -1,4 +1,5 @@
-import { TeacherDTO } from "./teacherDTO";
+import { TeacherRoutineDTO } from "./teacherDTO";
+
 
 export interface ClassRoutineDTO {
   id: number;
@@ -7,5 +8,5 @@ export interface ClassRoutineDTO {
   dayOfWeek: string;
   startTime: string;
   endTime: string;
-  teacherDTO: TeacherDTO;
+  teacherDTO: TeacherRoutineDTO;
 }

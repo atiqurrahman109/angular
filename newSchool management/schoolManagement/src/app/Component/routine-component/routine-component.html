@@ -1,72 +1,98 @@
 <div class="container">
-  <h2>📝 Teacher Routine Management</h2>
+  <h2>Teacher Routine Management</h2>
 
-  <!-- Form Section -->
-  <form (ngSubmit)="saveRoutine()" #routineForm="ngForm" class="routine-form">
-    <div>
-      <label>Class Name:</label>
-      <input type="text" required [(ngModel)]="newRoutine.className" name="className" />
+  <!-- Routine Form -->
+  <form [formGroup]="routineForm" (ngSubmit)="addTeacherRoutine()" novalidate>
+
+    <!-- Class Name -->
+    <div class="form-group">
+      <label for="className">Class Name</label>
+      <input type="text" id="className" class="form-control" formControlName="className" />
+      <div *ngIf="routineForm.get('className')?.invalid && routineForm.get('className')?.touched" class="text-danger">
+        Class Name is required.
+      </div>
     </div>
 
-    <div>
-      <label>Subject:</label>
-      <input type="text" required [(ngModel)]="newRoutine.subject" name="subject" />
+    <!-- Subject -->
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" class="form-control" formControlName="subject" />
+      <div *ngIf="routineForm.get('subject')?.invalid && routineForm.get('subject')?.touched" class="text-danger">
+        Subject is required.
+      </div>
     </div>
 
-    <div>
-      <label>Day of Week:</label>
-      <select required [(ngModel)]="newRoutine.dayOfWeek" name="dayOfWeek">
-        <option value="" disabled selected>Select Day</option>
+    <!-- Day of Week -->
+    <div class="form-group">
+      <label for="dayOfWeek">Day of Week</label>
+      <select id="dayOfWeek" class="form-control" formControlName="dayOfWeek">
+        <option value="">-- Select Day --</option>
         <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
       </select>
+      <div *ngIf="routineForm.get('dayOfWeek')?.invalid && routineForm.get('dayOfWeek')?.touched" class="text-danger">
+        Day is required.
+      </div>
     </div>
 
-    <div>
-      <label>Start Time:</label>
-      <input type="time" required [(ngModel)]="newRoutine.startTime" name="startTime" />
+    <!-- Start Time -->
+    <div class="form-group">
+      <label for="startTime">Start Time</label>
+      <input type="time" id="startTime" class="form-control" formControlName="startTime" />
+      <div *ngIf="routineForm.get('startTime')?.invalid && routineForm.get('startTime')?.touched" class="text-danger">
+        Start Time is required.
+      </div>
     </div>
 
-    <div>
-      <label>End Time:</label>
-      <input type="time" required [(ngModel)]="newRoutine.endTime" name="endTime" />
+    <!-- End Time -->
+    <div class="form-group">
+      <label for="endTime">End Time</label>
+      <input type="time" id="endTime" class="form-control" formControlName="endTime" />
+      <div *ngIf="routineForm.get('endTime')?.invalid && routineForm.get('endTime')?.touched" class="text-danger">
+        End Time is required.
+      </div>
     </div>
 
-    <!-- <div>
-      <label>Teacher ID:</label>
-      <input type="number" required [(ngModel)]="newRoutine.teacher?.id" name="teacherId" />
-    </div> -->
+    <!-- Teacher Selection -->
+    <div class="form-group" formGroupName="teacher">
+      <label for="teacher">Teacher</label>
+      <select id="teacher" class="form-control" formControlName="id">
+        <option value="">-- Select Teacher --</option>
+        <option *ngFor="let t of teacher" [value]="t.id">
+          {{ t.firstName }} {{ t.lastName }}
+        </option>
+      </select>
+      <div *ngIf="routineForm.get('teacher.id')?.invalid && routineForm.get('teacher.id')?.touched" class="text-danger">
+        Teacher is required.
+      </div>
+    </div>
 
-    <button type="submit" [disabled]="routineForm.invalid">Save Routine</button>
+    <!-- Submit Button -->
+    <button class="btn btn-primary mt-3" type="submit" [disabled]="routineForm.invalid">Add Routine</button>
   </form>
 
   <hr />
 
-  <!-- Table Section -->
-  <h3>📋 All Routines</h3>
-
-  <table *ngIf="routines.length > 0">
+  <!-- Routine List Table -->
+  <h3>All Teacher Routines</h3>
+  <table class="table table-bordered table-striped mt-3" *ngIf="routines.length > 0">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Class</th>
         <th>Subject</th>
         <th>Day</th>
-        <th>Start</th>
-        <th>End</th>
+        <th>Start Time</th>
+        <th>End Time</th>
         <th>Teacher</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let routine of routines">
-        <td>{{ routine.id ?? '-' }}</td>
         <td>{{ routine.className }}</td>
         <td>{{ routine.subject }}</td>
         <td>{{ routine.dayOfWeek }}</td>
         <td>{{ routine.startTime }}</td>
         <td>{{ routine.endTime }}</td>
-        <td>
-          {{ routine.teacher?.firstName ?? 'N/A' }} (ID: {{ routine.teacher?.id ?? '-' }})
-        </td>
+        <td>{{ routine.teacher?.firstName }} {{ routine.teacher?.lastName }}</td>
       </tr>
     </tbody>
   </table>
