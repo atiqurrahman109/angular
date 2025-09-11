@@ -15,12 +15,22 @@ import { TeacherService } from '../../service/teacher-service';
   imports: [FormsModule, CommonModule, ReactiveFormsModule]
 })
 export class RoutineComponent implements OnInit {
+  // All routines from backend
   routines: TeacherRoutineDTO[] = [];
-  teacherRoutine: RoutineModel[] = [];
+
+  // Filtered routines to show in table
+  filteredRoutines: TeacherRoutineDTO[] = [];
+
+  // All teachers
   teacher: TeacherModel[] = [];
 
+  // Reactive form group for adding a routine
   routineForm!: FormGroup;
 
+  // Selected teacher ID for filtering
+  selectedTeacherId: number | null = null;
+
+  // Days of the week options
   daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   constructor(
@@ -28,9 +38,10 @@ export class RoutineComponent implements OnInit {
     private fb: FormBuilder,
     private teacherService: TeacherService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    // Initialize the form
     this.routineForm = this.fb.group({
       className: ['', Validators.required],
       subject: ['', Validators.required],
@@ -42,27 +53,31 @@ export class RoutineComponent implements OnInit {
       })
     });
 
+    // Optional: Log selected teacher from form
     this.routineForm.get('teacher.id')?.valueChanges.subscribe((id: number) => {
       const selected = this.teacher.find(i => i.id === +id);
       if (selected) {
-        console.log('Selected teacher:', selected);
+        console.log('Selected teacher (in form):', selected);
       }
     });
 
+    // Load all data
+    this.loadAllTeachers();
     this.loadAllRoutines();
-    this.loadAllTeacher();
   }
 
-  loadAllTeacher(): void {
+  // Fetch all teachers
+  loadAllTeachers(): void {
     this.teacherService.getAllTeacher().subscribe({
       next: (data) => {
         this.teacher = data;
-        this.cdr.detectChanges();
+        this.cdr.detectChanges(); // Refresh view
       },
       error: (err) => console.log('Error loading teachers:', err)
     });
   }
 
+  // Fetch all routines
   loadAllRoutines(): void {
     this.routineService.getAllDTOs().subscribe({
       next: (data) => {
@@ -70,6 +85,7 @@ export class RoutineComponent implements OnInit {
           ...routine,
           teacher: routine.teacher ?? { id: 0, firstName: 'N/A', lastName: '' }
         }));
+        this.applyTeacherFilter(); // Apply filtering after data loads
       },
       error: (err) => {
         console.error('Error loading routines:', err);
@@ -77,8 +93,21 @@ export class RoutineComponent implements OnInit {
     });
   }
 
+  // Apply filtering based on selected teacher
+  applyTeacherFilter(): void {
+    if (this.selectedTeacherId != null) {
+      this.filteredRoutines = this.routines.filter(
+        r => r.teacher?.id === this.selectedTeacherId
+      );
+    } else {
+      this.filteredRoutines = this.routines;
+    }
+  }
+
+  // Add a new teacher routine
   addTeacherRoutine(): void {
     const formValue = this.routineForm.value;
+
     const routine: RoutineModel = {
       className: formValue.className,
       subject: formValue.subject,
@@ -91,11 +120,10 @@ export class RoutineComponent implements OnInit {
     console.log('Submitting routine:', routine);
 
     this.routineService.create(routine).subscribe({
-      next: (or) => {
-        console.log('Routine created successfully!', or);
-        this.loadAllRoutines();
-        this.loadAllTeacher();
+      next: () => {
+        console.log('Routine created successfully!');
         this.routineForm.reset();
+        this.loadAllRoutines(); // Re-fetch data after add
       },
       error: (err) => {
         console.error('Error creating routine:', err);

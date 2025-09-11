@@ -3,7 +3,6 @@
 
   <!-- Routine Form -->
   <form [formGroup]="routineForm" (ngSubmit)="addTeacherRoutine()" novalidate>
-
     <!-- Class Name -->
     <div class="form-group">
       <label for="className">Class Name</label>
@@ -72,9 +71,20 @@
 
   <hr />
 
+  <!-- Filter Dropdown -->
+  <div class="form-group mt-4">
+    <label for="teacherFilter">Filter by Teacher:</label>
+    <select id="teacherFilter" class="form-control" [(ngModel)]="selectedTeacherId" (change)="applyTeacherFilter()">
+      <option [ngValue]="null">-- All Teachers --</option>
+      <option *ngFor="let t of teacher" [ngValue]="t.id">
+        {{ t.firstName }} {{ t.lastName }}
+      </option>
+    </select>
+  </div>
+
   <!-- Routine List Table -->
-  <h3>All Teacher Routines</h3>
-  <table class="table table-bordered table-striped mt-3" *ngIf="routines.length > 0">
+  <h3 class="mt-4">Teacher Routines</h3>
+  <table class="table table-bordered table-striped mt-3" *ngIf="filteredRoutines.length > 0">
     <thead>
       <tr>
         <th>Class</th>
@@ -86,7 +96,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let routine of routines">
+      <tr *ngFor="let routine of filteredRoutines">
         <td>{{ routine.className }}</td>
         <td>{{ routine.subject }}</td>
         <td>{{ routine.dayOfWeek }}</td>
@@ -97,5 +107,5 @@
     </tbody>
   </table>
 
-  <p *ngIf="routines.length === 0">No routines available.</p>
+  <p *ngIf="filteredRoutines.length === 0">No routines available for the selected teacher.</p>
 </div>
