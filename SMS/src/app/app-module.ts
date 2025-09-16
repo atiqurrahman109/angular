@@ -12,6 +12,16 @@ import { SchoolClassForm } from './component/school-class-form/school-class-form
 import { SectionList } from './component/section-list/section-list';
 import { SectionForm } from './component/section-form/section-form';
 
+import { ExamComponent } from './component/exam-component/exam-component';
+import { AttendanceComponent } from './component/attendance-component/attendance-component';
+import { FeeComponent } from './component/fee-component/fee-component';
+import { ResultComponent } from './component/result-component/result-component';
+import { Timetable } from './component/timetable/timetable';
+import { TeacherComponent } from './component/teacher-component/teacher-component';
+import { TeacherAssignmentComponent } from './component/teacher-assignment-component/teacher-assignment-component';
+import { TransportComponent } from './component/transport-component/transport-component';
+import { TransportAssignmentComponent } from './component/transport-assignment/transport-assignment';
+
 
 @NgModule({
   declarations: [
@@ -22,19 +32,27 @@ import { SectionForm } from './component/section-form/section-form';
     SchoolClassForm,
     SectionList,
     SectionForm,
+    ExamComponent,
+    AttendanceComponent,
+    FeeComponent,
+    ResultComponent,
+    Timetable,
+    TeacherComponent,
+    TeacherAssignmentComponent,
+    TransportComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-      FormsModule,
-     ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideClientHydration(withEventReplay()),
-      provideHttpClient(
+    provideHttpClient(
       withFetch())
   ],
   bootstrap: [App]

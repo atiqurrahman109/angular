@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Teacher Management</h2>
+
+  <form (submit)="addTeacher()" #teacherForm="ngForm">
+    <input type="text" [(ngModel)]="newTeacher.firstname" name="firstname" placeholder="First Name" required>
+    <input type="text" [(ngModel)]="newTeacher.lastname" name="lastname" placeholder="Last Name" required>
+    <input type="email" [(ngModel)]="newTeacher.email" name="email" placeholder="Email" required>
+    <input type="text" [(ngModel)]="newTeacher.phone" name="phone" placeholder="Phone" required>
+    <input type="text" [(ngModel)]="newTeacher.subject" name="subject" placeholder="Subject" required>
+    <button type="submit">Add Teacher</button>
+  </form>
+
+  <hr>
+
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Subject</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let teacher of teachers">
+        <td>{{ teacher.firstname }}</td>
+        <td>{{ teacher.lastname }}</td>
+        <td>{{ teacher.email }}</td>
+        <td>{{ teacher.phone }}</td>
+        <td>{{ teacher.subject }}</td>
+        <td>
+          <button (click)="deleteTeacher(teacher.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

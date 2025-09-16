@@ -1,0 +1,57 @@
+<div class="fee-container">
+  <h2>Fee Records</h2>
+
+  <!-- Fee Table -->
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Payment Date</th>
+        <th>Student ID</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fee of fees">
+        <td>{{ fee.id }}</td>
+        <td>{{ fee.category }}</td>
+        <td>{{ fee.amount }}</td>
+        <td>{{ fee.paymentDate }}</td>
+        <td>{{ fee.studentId }}</td>
+        <td>
+          <button (click)="deleteFee(fee.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Add New Fee</h3>
+  <form (submit)="addFee(); $event.preventDefault()">
+    <label>Category:
+      <input type="text" [(ngModel)]="newFee.category" name="category" required />
+    </label>
+    <label>Amount:
+      <input type="number" [(ngModel)]="newFee.amount" name="amount" required />
+    </label>
+    <label>Payment Date:
+      <input type="date" [(ngModel)]="newFee.paymentDate" name="paymentDate" required />
+    </label>
+    <label>Student ID:
+      <input type="number" [(ngModel)]="newFee.studentId" name="studentId" required />
+    </label>
+    <button type="submit">Add Fee</button>
+  </form>
+
+  <h3>Unpaid Students</h3>
+  <label>Enter Month (e.g., "September", "2025-09"):</label>
+  <input type="text" [(ngModel)]="unpaidMonth" name="unpaidMonth" />
+  <button (click)="loadUnpaidStudents()">Load</button>
+
+  <ul *ngIf="unpaidStudents.length > 0">
+    <li *ngFor="let student of unpaidStudents">
+      ID: {{ student.id }}, Name: {{ student.name }}
+    </li>
+  </ul>
+</div>

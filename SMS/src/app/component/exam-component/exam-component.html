@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h2>Exams</h2>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Exam Form -->
+  <form [formGroup]="examForm" (ngSubmit)="onSubmit()" class="mb-3">
+    <div class="row g-2">
+
+      <div *ngIf="examForm.get('examName')?.invalid && examForm.get('examName')?.touched" class="text-danger">
+  Required
+</div>
+
+<div *ngIf="examForm.get('subject')?.invalid && examForm.get('subject')?.touched" class="text-danger">
+  Required
+</div>
+
+<div *ngIf="examForm.get('date')?.invalid && examForm.get('date')?.touched" class="text-danger">
+  Required
+</div>
+
+
+      <!-- Submit Button -->
+      <div class="col-md-1 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">Add</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-muted">Loading exams...</div>
+
+  <!-- Exams Table -->
+  <table *ngIf="!loading && exams.length" class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Exam Name</th>
+        <th>Subject</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of exams; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ e.examName }}</td>
+        <td>{{ e.subject }}</td>
+        <td>{{ e.date }}</td>
+        <td>
+          <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(e)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- No Exams Message -->
+  <div *ngIf="!loading && !exams.length" class="text-muted">No exams found.</div>
+</div>

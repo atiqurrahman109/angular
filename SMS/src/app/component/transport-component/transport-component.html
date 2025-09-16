@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Transport Management</h2>
+
+  <form (ngSubmit)="saveTransport()" #transportForm="ngForm">
+    <input
+      type="text"
+      name="vehicleNumber"
+      [(ngModel)]="newTransport.vehicleNumber"
+      placeholder="Vehicle Number"
+      required
+    />
+    <input
+      type="text"
+      name="driverName"
+      [(ngModel)]="newTransport.driverName"
+      placeholder="Driver Name"
+      required
+    />
+    <input
+      type="text"
+      name="route"
+      [(ngModel)]="newTransport.route"
+      placeholder="Route"
+      required
+    />
+
+    <button type="submit">
+      {{ editMode ? 'Update' : 'Add' }} Transport
+    </button>
+    <button type="button" (click)="resetForm()" *ngIf="editMode">Cancel</button>
+  </form>
+
+  <hr />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Vehicle Number</th>
+        <th>Driver Name</th>
+        <th>Route</th>
+        <th>Assigned Student</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of transports">
+        <td>{{ t.vehicleNumber }}</td>
+        <td>{{ t.driverName }}</td>
+        <td>{{ t.route }}</td>
+        <td>
+          {{ t.student?.firstname }} {{ t.student?.lastname }}
+        </td>
+        <td>
+          <button (click)="editTransport(t)">Edit</button>
+          <button (click)="deleteTransport(t.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

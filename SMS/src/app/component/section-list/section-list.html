@@ -16,12 +16,12 @@
       <tr *ngFor="let s of sections; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ s.name }}</td>
-        <td>{{ s.schoolClass?.className }}</td>
-        <td>{{ s.students?.length || 0 }}</td>
-        <td>
+        <!-- <td>{{ s.schoolClass?.className }}</td>
+        <td>{{ s.students?.length || 0 }}</td> -->
+        <!-- <td>
           <button class="btn btn-sm btn-warning me-2" [routerLink]="['/sections/edit', s.id]">Edit</button>
           <button class="btn btn-sm btn-danger" (click)="deleteSection(s.id)">Delete</button>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>

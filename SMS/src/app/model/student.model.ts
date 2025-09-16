@@ -12,7 +12,10 @@ export interface Section {
 
 export interface Result {
   id?: number;
-  // minimal fields; adjust if backend returns more
+   grade: '';
+   student: { id: 0 },
+    exam: { id: 0 }
+ 
   subject?: string;
   marks?: number;
 }
