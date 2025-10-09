@@ -1,0 +1,83 @@
+<div class="container py-4">
+  <h3 class="fw-light mb-3">Add Class Routine</h3>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-success mt-4">
+    {{ successMessage }}
+  </div>
+
+  <!-- Routine Form -->
+  <form (ngSubmit)="onSubmit()" class="card border-0 shadow-sm p-4">
+    <div class="row mb-3">
+      <!-- School Class Dropdown -->
+      <div class="col-md-4" *ngIf="isSchoolClassesLoaded">
+        <label class="form-label small text-muted">Class</label>
+        <select class="form-select" [(ngModel)]="selectedSchoolClass" name="schoolClass" (ngModelChange)="filterSections()">
+          <option value="" disabled>Select Class</option>
+          <option *ngFor="let schoolClass of schoolClasses" [value]="schoolClass.id">
+            {{ schoolClass.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Section Dropdown -->
+      <div class="col-md-4" *ngIf="isSectionsLoaded && selectedSchoolClass">
+        <label class="form-label small text-muted">Section</label>
+        <select class="form-select" [(ngModel)]="selectedSection" name="section" required>
+          <option value="" disabled>Select Section</option>
+          <option *ngFor="let section of filteredSections" [value]="section.id">
+            {{ section.schoolClass.name }} - {{ section.name }}
+          </option>
+        </select>
+
+        <!-- Message if no sections available -->
+        <div *ngIf="filteredSections.length === 0">
+          <p>No sections available for the selected class.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <!-- Day Dropdown -->
+      <div class="col-md-4">
+        <label class="form-label small text-muted">Day</label>
+        <select class="form-select" [(ngModel)]="selectedDay" name="day" required>
+          <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+        </select>
+      </div>
+
+      <!-- Start Time Input -->
+      <div class="col-md-4">
+        <label class="form-label small text-muted">Start Time</label>
+        <input type="time" class="form-control" [(ngModel)]="startTime" name="startTime" required />
+      </div>
+
+      <!-- End Time Input -->
+      <div class="col-md-4">
+        <label class="form-label small text-muted">End Time</label>
+        <input type="time" class="form-control" [(ngModel)]="endTime" name="endTime" required />
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <!-- Teacher Dropdown -->
+      <div class="col-md-4" *ngIf="isTeachersLoaded">
+        <label class="form-label small text-muted">Teacher</label>
+        <select class="form-select" [(ngModel)]="selectedTeacher" name="teacher" required>
+          <option value="" disabled>Select Teacher</option>
+          <option *ngFor="let teacher of teachers" [value]="teacher.id">
+            {{ teacher.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Subject Input -->
+      <div class="col-md-4">
+        <label class="form-label small text-muted">Subject</label>
+        <input type="text" class="form-control" [(ngModel)]="subject" name="subject" required />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Routine</button>
+  </form>
+</div>

@@ -1,10 +1,8 @@
-export class User {
-
-    id!: string;
-    name!: string;
-    email!: string;
-    password!: string;
-    role!: 'admin' | 'user' ;
-    photo!: string;
-
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  photo: string;
+  password: string;
+  role: string;
 }

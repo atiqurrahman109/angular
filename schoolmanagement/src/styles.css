@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
+
+/* Define variables for easy customization */
+:root {
+  --navbar-height: 65px;
+  --sidebar-width: 260px;
+  --primary-theme-color: #4a47a3; /* A nice school-themed purple */
+  --sidebar-bg: #2c3e50;
+  --sidebar-link-color: #ecf0f1;
+  --sidebar-link-hover-bg: #34495e;
+  --sidebar-active-color: #ffffff;
+}
+
+body {
+  /* Add padding to the top to prevent content from being hidden by the fixed navbar */
+  padding-top: var(--navbar-height);
+  background-color: #f4f7f6; /* A very light grey for the content area */
+}
+
+/* --- Main Content Area --- */
+.main-content {
+  /* Offset by the width of the sidebar */
+  margin-left: var(--sidebar-width);
+  padding: 2rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-bg);
+  padding: 1.5rem 0;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar .nav-link {
+  color: var(--sidebar-link-color);
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  border-left: 4px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-left 0.2s;
+}
+
+.sidebar .nav-link:hover {
+  background-color: var(--sidebar-link-hover-bg);
+  color: var(--sidebar-active-color);
+}
+
+/* The active link style */
+.sidebar .nav-link.active {
+  background-color: var(--sidebar-link-hover-bg);
+  color: var(--sidebar-active-color);
+  font-weight: 500;
+  border-left: 4px solid var(--primary-theme-color);
+}
+
+.sidebar .nav-link .fa-fw {
+  width: 1.5em; /* Ensures icons are aligned */
+  margin-right: 0.75rem;
+}
+
+/* Collapsible Submenu */
+.sidebar-submenu {
+  list-style: none;
+  padding-left: 2rem; /* Indent sub-items */
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-submenu a {
+  color: var(--sidebar-link-color);
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+  display: block;
+  text-decoration: none;
+}
+.sidebar-submenu a.active,
+.sidebar-submenu a:hover {
+  color: var(--sidebar-active-color);
+  font-weight: 500;
+}
+
+/* Rotate the dropdown arrow */
+.sidebar .toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+.sidebar a[aria-expanded="true"] .toggle-icon {
+  transform: rotate(180deg);
+}

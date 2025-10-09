@@ -1,0 +1,89 @@
+<div class="container py-4">
+  <div class="row gy-4">
+
+    <!-- Add / Edit Section Form -->
+    <div class="col-lg-4">
+      <h5 class="fw-light mb-3">{{ editingSectionId ? 'Edit Section' : 'Add New Section' }}</h5>
+      <form [formGroup]="sectionForm" (ngSubmit)="saveSection()" class="card border-0 shadow-sm p-3">
+        <div class="mb-3">
+          <label class="form-label small text-muted">Section Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="e.g. A, B, C"
+          />
+          <div *ngIf="sectionForm.get('name')?.invalid && sectionForm.get('name')?.touched" class="text-danger small">
+            Section name is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label small text-muted">Class</label>
+          <select
+            class="form-select"
+            formControlName="schoolClassId"
+          >
+            <option value="">Select</option>
+            <option *ngFor="let cls of schoolClasses" [value]="cls.id">
+              {{ cls.name }}
+            </option>
+          </select>
+          <div *ngIf="sectionForm.get('schoolClassId')?.invalid && sectionForm.get('schoolClassId')?.touched" class="text-danger small">
+            Grade is required.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="sectionForm.invalid">
+          {{ editingSectionId ? 'Update' : 'Save' }} Section
+        </button>
+      </form>
+    </div>
+
+    <!-- Sections List -->
+    <div class="col-lg-8">
+      <h5 class="fw-light mb-3">Sections List</h5>
+      <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Section</th>
+                <th>Class</th>
+                <th class="text-end pe-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let section of sections; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ section.name }}</td>
+                <td>{{ section.schoolClass.name }}</td>
+                <td class="text-end">
+                  <button
+                    class="btn btn-sm btn-outline-secondary me-1"
+                    (click)="editSection(section)"
+                    title="Edit"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="deleteSection(section.id)"
+                    title="Delete"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="sections.length === 0">
+                <td colspan="4" class="text-center text-muted py-3">No sections available.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

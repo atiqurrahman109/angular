@@ -1,0 +1,102 @@
+<div class="container py-5">
+  <div class="row">
+    <!-- Left Column: Add New Exam Form -->
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-light py-3">
+          <h5 class="my-0 fw-normal">Schedule New Exam</h5>
+        </div>
+        <div class="card-body p-4">
+          <form (ngSubmit)="onSubmit()">
+            <p class="text-muted small mb-3">Create an upcoming examination for a specific student.</p>
+
+            <!-- Exam Name Dropdown -->
+            <div class="mb-3">
+              <label for="examName" class="form-label">Exam Name</label>
+              <select [(ngModel)]="exam.examName" name="examName" class="form-select" id="examName" required>
+                <option selected disabled value="">Choose an Exam</option>
+                <option *ngFor="let name of examNames" [value]="name">{{ name }}</option>
+              </select>
+            </div>
+
+            <!-- Student Dropdown -->
+            <div class="mb-3">
+              <label for="student" class="form-label">Student</label>
+              <select [(ngModel)]="exam.student" name="student" class="form-select" id="student" required>
+                <option selected disabled value="">Choose a Student...</option>
+                <option *ngFor="let student of students" [ngValue]="student">{{ student.name }}</option>
+              </select>
+            </div>
+
+            <!-- Subject -->
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <input [(ngModel)]="exam.subject" name="subject" type="text" class="form-control" id="subject"
+                placeholder="e.g., Algebra" required>
+            </div>
+
+            <!-- Total Marks -->
+            <div class="mb-3">
+              <label for="totalMarks" class="form-label">Total Marks</label>
+              <input [(ngModel)]="exam.mark" name="totalMarks" type="number" class="form-control" id="totalMarks"
+                min="0" placeholder="e.g., 100" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Schedule Exam</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Show Exam List -->
+    <div class="col-lg-8">
+      <h4 class="mb-3">Scheduled Examinations</h4>
+
+      <!-- Filter by Student ID -->
+      <div class="mb-4">
+        <label for="studentIdFilter" class="form-label">Filter by Student ID</label>
+        <input [(ngModel)]="studentIdFilter" (ngModelChange)="filterExams()" type="text" class="form-control"
+          id="studentIdFilter" placeholder="Enter Student ID to filter">
+      </div>
+
+      <!-- Filter by Exam Name -->
+      <div class="mb-4">
+        <label for="examNameFilter" class="form-label">Filter by Exam Name</label>
+        <select [(ngModel)]="examNameFilter" (ngModelChange)="filterExams()" class="form-select" id="examNameFilter">
+          <option value="">Choose an Exam Name...</option>
+          <option *ngFor="let name of examNames" [value]="name">{{ name }}</option>
+        </select>
+      </div>
+
+      <!-- Print Button -->
+      <div class="mb-4">
+        <button (click)="printResults()" class="btn btn-secondary">Print Filtered Results</button>
+      </div>
+
+      <div class="table-responsive bg-white border rounded shadow-sm">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="bg-light">
+            <tr>
+              <th scope="col">Exam</th>
+              <th scope="col">Student</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Marks</th>
+              <th scope="col">Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let exam of filteredExams">
+              <td>
+                <strong>{{ exam.examName }}</strong>
+              </td>
+              <td>{{ exam.student.name }}</td>
+              <td>{{ exam.subject }}</td>
+              <td>{{ exam.mark }} Marks</td>
+              <td>{{ calculateGrade(exam.mark) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

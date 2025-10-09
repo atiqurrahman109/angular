@@ -1,0 +1,68 @@
+<aside class="sidebar">
+  <nav class="nav nav-pills flex-column">
+
+    <!-- Dashboard -->
+    <a class="nav-link" routerLink="/">
+      <i class="fas fa-tachometer-alt fa-fw"></i> Dashboard
+    </a>
+
+    <!-- Student Management -->
+    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#studentsCollapse" role="button">
+      <span><i class="fas fa-user-graduate fa-fw"></i> Students</span>
+      <i class="fas fa-chevron-down toggle-icon"></i>
+    </a>
+    <div class="collapse" id="studentsCollapse">
+      <ul class="sidebar-submenu">
+        <li><a routerLink="/students" routerLinkActive="active">All Students</a></li>
+        <li><a routerLink="/students/admission" routerLinkActive="active">Student Admissions</a></li>
+      </ul>
+    </div>
+
+    <!-- Teacher Management -->
+    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#teachersCollapse" role="button">
+      <span><i class="fas fa-chalkboard-teacher fa-fw"></i> Teachers</span>
+      <i class="fas fa-chevron-down toggle-icon"></i>
+    </a>
+    <div class="collapse" id="teachersCollapse">
+      <ul class="sidebar-submenu">
+        <li><a routerLink="/teachers" routerLinkActive="active">All Teachers</a></li>
+        <li><a routerLink="/teachers/add" routerLinkActive="active">Add Teacher</a></li>
+        <li><a routerLink="/teachers/schedule" routerLinkActive="active">Teacher Schedule</a></li>
+      </ul>
+    </div>
+
+    <!-- Academic -->
+    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#academicCollapse" role="button">
+      <span><i class="fas fa-book-open fa-fw"></i> Academic</span>
+      <i class="fas fa-chevron-down toggle-icon"></i>
+    </a>
+    <div class="collapse" id="academicCollapse">
+      <ul class="sidebar-submenu">
+        <li><a routerLink="/classes" routerLinkActive="active">Classes</a></li>
+        <li><a routerLink="/sections" routerLinkActive="active">Sections</a></li>
+        <li><a routerLink="/addclassroutine" routerLinkActive="active">Add Class Routine</a></li>
+        <li><a routerLink="/viewclassroutine" routerLinkActive="active">View Class Routine</a></li>
+        <li><a routerLink="/exams" routerLinkActive="active">Exams</a></li>
+      </ul>
+    </div>
+
+    <!-- Finance -->
+    <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#financeCollapse" role="button">
+      <span><i class="fas fa-dollar-sign fa-fw"></i> Finance</span>
+      <i class="fas fa-chevron-down toggle-icon"></i>
+    </a>
+    <div class="collapse" id="financeCollapse">
+      <ul class="sidebar-submenu">
+        <li><a routerLink="/fees" routerLinkActive="active">Fee Collection</a></li>
+      </ul>
+    </div>
+
+    <hr class="text-secondary">
+
+    <!-- Single Links -->
+    <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+      <i class="fas fa-cog fa-fw"></i> Settings
+    </a>
+
+  </nav>
+</aside>

@@ -1,0 +1,45 @@
+<div class="container py-5">
+  <h2 class="mb-4">All Students</h2>
+
+  <!-- Lighter container: removed shadow, added subtle border -->
+  <div class="table-responsive bg-white border rounded">
+    <!-- Lighter table: removed table-striped -->
+    <table class="table table-hover align-middle mb-0">
+      <!-- Light header instead of dark -->
+      <thead class="bg-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Name</th>
+          <th scope="col">Class</th>
+          <th scope="col">Section</th>
+          <th scope="col" class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over the students array and display each student's data -->
+        <tr *ngFor="let student of students; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <img [src]="'http://localhost:8080/images/students/' + student.photo" alt="Student Photo" class="img-fluid rounded-circle" width="40" />
+          </td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.schoolClass.name || 'N/A' }}</td>
+          <td>{{ student.section.name }}</td>
+          <td class="text-center">
+            <!-- Update and Delete action buttons -->
+            <a href="#" class="text-primary me-3" title="View Profile">
+              <i class="fas fa-eye"></i>
+            </a>
+            <a href="#" class="text-secondary me-3" title="Edit" (click)="updateStudent(student)">
+              <i class="fas fa-edit"></i>
+            </a>
+            <a href="#" class="text-danger" title="Delete" (click)="deleteStudent(student.id)">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

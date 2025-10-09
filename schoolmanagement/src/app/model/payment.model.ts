@@ -1,19 +1,11 @@
-import { Student } from "./student.model";
+import { Student } from "./student..model";
 
-export class Payment{
-
-    id!:string;
-    fromDate!: Date;
-    toDate!:Date;
-    month!:string;
-    fee!: number;
-    count!: number;
-    totalAmount!: number;
-
-    students!: Student;
-
-
-
-
-
+export interface Payment {
+  id: number;
+  month: string;
+  category: string;
+  amount: number;
+  paid: boolean;
+  paymentDate: Date;
+  student: Student
 }

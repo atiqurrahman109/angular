@@ -1,0 +1,56 @@
+<h3 class="fw-light mb-3 mt-5">Class Routine Table</h3>
+
+<!-- School Class Dropdown Filter -->
+<div class="mb-3">
+  <label for="schoolClass">Select School Class:</label>
+  <select id="schoolClass" class="form-control" [(ngModel)]="selectedSchoolClass" (change)="onFilterChange()">
+    <option value="0">-- Select a class --</option>
+    <option *ngFor="let class of schoolClasses" [value]="class.id">Class - {{ class.name }}</option>
+  </select>
+</div>
+
+<!-- Teacher Dropdown Filter -->
+<div class="mb-3">
+  <label for="teacher">Select Teacher:</label>
+  <select id="teacher" class="form-control" [(ngModel)]="selectedTeacher" (change)="onFilterChange()">
+    <option value="0">-- Select a teacher --</option>
+    <option *ngFor="let teacher of teachers" [value]="teacher.id">{{ teacher.name }}</option>
+  </select>
+</div>
+
+<!-- Section Dropdown Filter -->
+<div class="mb-3">
+  <label for="section">Select Section:</label>
+  <select id="section" class="form-control" [(ngModel)]="selectedSection" (change)="onFilterChange()">
+    <option value="0">-- Select a section --</option>
+    <option *ngFor="let section of sections" [value]="section.id">{{ section.schoolClass.name }} - {{ section.name }}</option>
+  </select>
+</div>
+
+<!-- Routine Table -->
+<div *ngIf="filteredRoutines.length > 0" class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeSlot of timeSlots">
+        <td>{{ timeSlot }}</td>
+        <td *ngFor="let day of daysOfWeek">
+          <div *ngIf="shouldMergeCell(timeSlot.split(' – ')[0], day)">
+            <p>{{ getRoutineCell(timeSlot.split(' – ')[0], day) }}</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- If no routines are available for the selected filters -->
+<div *ngIf="filteredRoutines.length === 0">
+  <p *ngIf="selectedSchoolClass !== 0 || selectedTeacher !== 0 || selectedSection !== 0">No routines available for the selected filters.</p>
+  <p *ngIf="selectedSchoolClass === 0 && selectedTeacher === 0 && selectedSection === 0">Please select a class and/or teacher and/or section to view routines.</p>
+</div>

@@ -1,0 +1,60 @@
+<div class="container py-4">
+  <h3 class="fw-light mb-3">New Student Admission</h3>
+
+  <form (ngSubmit)="onSubmit()" class="card border-0 shadow-sm p-4">
+    <!-- Personal Details -->
+    <h6 class="fw-semibold text-muted mb-3">Personal Details</h6>
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label small text-muted">Student's Name</label>
+        <input type="text" class="form-control" [(ngModel)]="student.name" name="name" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label small text-muted">Username</label>
+        <input type="text" class="form-control" [(ngModel)]="user.username" name="username" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label class="form-label small text-muted">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="student@example.com" required>
+      </div>
+      
+      <div class="col-md-4">
+        <label class="form-label small text-muted">Password</label>
+        <input type="password" class="form-control" [(ngModel)]="user.password" name="password" placeholder="Enter password" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label small text-muted">Class</label>
+        <select class="form-select" [(ngModel)]="selectedSchoolClass" name="schoolClass" required>
+          <option value="" disabled selected>Select Class</option>
+          <option *ngFor="let schoolClass of schoolClasses" [value]="schoolClass.id">
+            {{ schoolClass.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Section Dropdown -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label small text-muted">Section</label>
+        <select class="form-select" [(ngModel)]="selectedSection" name="section" required>
+          <option value="" disabled selected>Select Section</option>
+          <option *ngFor="let section of sections" [value]="section.id">
+            {{ section.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- File Upload -->
+    <div class="mb-4">
+      <label class="form-label small text-muted">Upload Photo</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)" accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary px-4">Submit Application</button>
+  </form>
+</div>

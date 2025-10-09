@@ -1,0 +1,195 @@
+<div class="container py-5">
+
+
+
+
+
+  <div class="container mt-4">
+
+    <!-- Search Bar -->
+    <!-- Search Bar + Export Print Button -->
+    <div class="row mb-3 align-items-center">
+      <!-- Student ID input -->
+      <div class="col-md-4">
+        <input type="number" class="form-control" [(ngModel)]="studentId" placeholder="Enter Student ID">
+      </div>
+
+      <!-- Search button -->
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100" (click)="searchStudent()">Search</button>
+      </div>
+
+      <!-- Spacer to push Export Print to the right -->
+      <div class="col-md-4"></div>
+
+      <!-- Export Print button aligned right -->
+      <div class="col-md-2 text-end">
+        <button class="btn btn-warning" (click)="downloadPaymentPDF()" [hidden]="!payments.length">
+          Export Print
+        </button>
+      </div>
+    </div>
+
+    <!-- <div class="row mb-3">
+      <div class="col-md-4">
+        <input type="number" class="form-control" [(ngModel)]="studentId" placeholder="Enter Student ID">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100" (click)="searchStudent()">Search</button>
+        <button class="btn btn-primary w-100" (click)="downloadPaymentPDF()"[hidden]="!payments.length">Export Print</button>
+      </div>
+    </div> -->
+
+
+    <!-- Student Info -->
+    <div *ngIf="studentName" class="mb-3">
+      <h4>Student: <span class="text-success">{{studentName}}</span></h4>
+      <p>Class: <strong>{{schoolClass}}</strong>, Section: <strong>{{section}}</strong></p>
+    </div>
+
+    <!-- Payment Table -->
+    <div *ngIf="payments.length > 0" class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Month</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Paid</th>
+            <th>Payment Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of payments">
+            <td>{{p.month}}</td>
+            <td>{{p.category}}</td>
+            <td>{{p.amount | currency}}</td>
+            <td>
+              <span class="badge" [ngClass]="p.paid ? 'bg-success' : 'bg-danger'">
+                {{p.paid ? 'Yes' : 'No'}}
+              </span>
+            </td>
+            <td>{{p.paymentDate | date:'shortDate'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- No Payments Message -->
+    <div *ngIf="payments.length === 0 && studentId" class="alert alert-warning">
+      No payments found.
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="row">
+
+    <!-- Left Column: Record New Payment Form -->
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-light py-3">
+          <h5 class="my-0 fw-normal">Record Payment</h5>
+        </div>
+        <div class="card-body p-4">
+          <form (ngSubmit)="onSubmit()">
+            <p class="text-muted small mb-3">Log a new fee payment for a student.</p>
+
+            <div class="mb-3">
+              <label for="paymentStudent" class="form-label">Student</label>
+              <select [(ngModel)]="selectedStudent" name="student" class="form-select" id="paymentStudent" required>
+                <option *ngFor="let student of students" [ngValue]="student">
+                  {{ student.name }} ({{ student.schoolClass.name }})
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="feeType" class="form-label">Fee Type</label>
+              <select [(ngModel)]="feeType" name="feeType" class="form-select" id="feeType" required>
+                <option>Tuition Fee</option>
+                <option>Exam Fee</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="amountPaid" class="form-label">Amount Paid</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input type="number" [(ngModel)]="paymentAmount" name="amountPaid" class="form-control" id="amountPaid"
+                  step="0.01" placeholder="0.00" required>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="paymentDate" class="form-label">Date</label>
+              <input type="date" [(ngModel)]="paymentDate" name="paymentDate" class="form-control" id="paymentDate"
+                required>
+            </div>
+
+            <!-- Month dropdown -->
+            <div class="mb-3">
+              <label for="paymentMonth" class="form-label">Month</label>
+              <select [(ngModel)]="selectedMonth" name="paymentMonth" class="form-select" id="paymentMonth" required>
+                <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+              <i class="fas fa-plus-circle me-1"></i> Log Payment
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Recent Transactions List -->
+    <div class="col-lg-8">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="mb-0">Recent Transactions</h4>
+        <a href="#" class="btn btn-outline-secondary btn-sm">
+          <i class="fas fa-download me-1"></i> Export Report
+        </a>
+      </div>
+
+      <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light">
+              <tr>
+                <th scope="col">Receipt No.</th>
+                <th scope="col">Student</th>
+                <th scope="col">Description</th>
+                <th scope="col">Month</th>
+                <th scope="col" class="text-end">Amount</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let transaction of recentTransactions">
+                <td><small class="text-muted">RCP-{{ transaction.id }}</small></td>
+                <td>
+                  {{ transaction.student.name }}
+                </td>
+                <td>
+                  <span class="badge bg-info text-dark">{{ transaction.category }}</span>
+                </td>
+                <td>{{ transaction.month }}</td>
+                <td class="text-end fw-bold">${{ transaction.amount }}</td>
+                <td>{{ transaction.paymentDate | date }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer bg-light py-2 text-center">
+          <a href="#" class="small text-decoration-none">View All Transactions</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
